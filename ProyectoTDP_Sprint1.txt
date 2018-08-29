@@ -1,0 +1,47 @@
+-Diseño del juego: 
+	Horizontal shooter, jugador (humano con arma) vs zombies con armas y zombies "bomba".
+-Diseño UML: 
+	Clases, ya hecho.
+-Generación del mapa: Generación por grilla/matríz, pseudocodigo:
+	generarMapa:
+		Input: numero entero que indica el nivel
+		Output: mapa acorde al nivel
+
+		crear la grilla que sera la base del nivel //todos los niveles tienen el mismo tamaño de mapa
+		cargar los datos del mapa del archivo //un archivo por cada nivel? un archivo de mapas con "secciones" para cada nivel?
+		crear la cantidad de enemigos que corresponden al nivel // la cantidad de enemigos se deciden en base al nivel en el que se encuentra
+		ubicar los enemigos en el lateral derecho del mapa //en su formacion de salida
+		ubicar al jugador en el lateral izquierdo del mapa
+		generar los obstáculos //si el nivel los requiere
+		devolver el mapa generado
+	fin
+-Movimiento jugador:
+	move:
+		Input: posicion actual en la grilla
+		Output: nueva posicion en la grilla
+		
+		tomar el input del teclado
+		crear una nueva posicion para el jugador en base al input del teclado
+		devolver la nueva posicion
+		
+	fin
+-Movimiento del enemigo: el movimiento depende de la inteligencia artificial que los este controlando en el momento, podrian tener o no arma y ser o no kamikazes, a su vez de movimiento aleatorio o movimiento buscador.
+	moveEnemigoAl:
+		Input: posicion actual en la grilla, posicion actual del jugador
+		Output: nueva posicion en la grilla
+		
+		calcular el mejor movimiento posible que acerque al jugador //restar las coordenadas (x - jugador.x ; y - jugador.y) y comparar cual es menor? realizar movimiento diagonal, hacia la posicion del jugador?
+		crear una nueva posicion en base al calculo anterior
+		devolver la nueva posicion
+		
+	fin
+	
+	moveEnemigoBusc:
+		Input: posicion actual en la grilla
+		Output: nueva posicion en la grilla
+		
+		calcular un random q indique la direccion del movimiento // 0..4 0: hacia delante ; 1: hacia derecha ; 2: hacia izquierda ; 3: diagonal izquierda ; 4: diagonal derecha
+		crear una nueva posicion en base al calculo anterior
+		devolver la nueva posicion
+		
+	fin
