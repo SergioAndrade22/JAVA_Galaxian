@@ -1,7 +1,10 @@
 package gui;
 
 import java.awt.EventQueue;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import juego.Juego;
@@ -43,7 +46,7 @@ public class GUI extends JFrame {
 		});
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 320, 320);
+		setBounds(0, 0,1024,600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -51,6 +54,7 @@ public class GUI extends JFrame {
 		j = new Juego(this);
 		tiempo = new ContadorTiempo(j, this);
 		tiempo.start();
+		agregarFondo();
 	}
 	
 	protected void mover(KeyEvent key){
@@ -70,5 +74,12 @@ public class GUI extends JFrame {
 	
 	public int getDirection(){
 		return this.direction;
+	}
+	public void agregarFondo() {
+		JLabel f=new JLabel();
+		ImageIcon i=new ImageIcon(this.getClass().getResource("/BattleCity/f1.jpg"));
+		f.setBounds(0,0,1024,600);
+		f.setIcon(i);
+		this.add(f);
 	}
 }

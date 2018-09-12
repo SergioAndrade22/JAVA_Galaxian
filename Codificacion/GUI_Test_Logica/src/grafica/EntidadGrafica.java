@@ -8,8 +8,8 @@ import mapa.Celda;
 public abstract class EntidadGrafica {
 	protected JLabel grafico;
 	protected Icon image[];
-	protected final int width = 32;
-	protected final int height = 32;
+	protected final int width = 60; //Aca agrando el tamaño del JLabel
+	protected final int height =60;
 	protected int velocidad;
 	protected Point pos;
 	

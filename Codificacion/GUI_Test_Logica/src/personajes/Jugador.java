@@ -25,12 +25,13 @@ public class Jugador extends Entidad{
 		case KeyEvent.VK_DOWN : //Abajo
 			super.mover(KeyEvent.VK_DOWN);
 			break;
+		/* No quiero que se mueva para los costados.
 		case KeyEvent.VK_LEFT : //Izquierda
 			super.mover(KeyEvent.VK_LEFT);
 			break;
 		case KeyEvent.VK_RIGHT : //Derecha
 			super.mover(KeyEvent.VK_RIGHT);
-			break;
+			break;*/
 		}
 		this.pos.setJugador(this);
 	}
