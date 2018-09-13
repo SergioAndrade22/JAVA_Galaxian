@@ -12,7 +12,7 @@ public class Juego {
 	private Malo malos[];
 	private int cantMalos = 3; //remover
 	private Mapa mapa;
-	private int tamanioCelda = 32;
+	private int tamanioCelda = 50;
 	//añadir Puntaje, hay que crear la clase y relacionarla con la GUI haciendo un metodo para modificarlo y un campo para mostrarlo
 	
 	public Juego(GUI gui){
