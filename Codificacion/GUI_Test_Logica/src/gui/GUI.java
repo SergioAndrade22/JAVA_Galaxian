@@ -28,6 +28,8 @@ public class GUI extends JFrame {
 				try {
 					GUI frame = new GUI();
 					frame.setVisible(true);
+					frame.setBounds(0, 0, 1024, 600);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -77,7 +79,7 @@ public class GUI extends JFrame {
 	}
 	public void agregarFondo() {
 		JLabel f=new JLabel();
-		ImageIcon i=new ImageIcon(this.getClass().getResource("/BattleCity/f1.jpg"));
+		ImageIcon i=new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
 		f.setBounds(0,0,1024,600);
 		f.setIcon(i);
 		this.add(f);
