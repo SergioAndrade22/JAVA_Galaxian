@@ -46,7 +46,7 @@ public class Celda {
 			case UP :
 				return this.mapa.getCelda(x, y+1);
 			case DOWN :
-				return this.mapa.getCelda(x, y-1);
+				return this.mapa.getCelda(x, 1-y);
 			case LEFT :
 				return this.mapa.getCelda(x-1, y);
 			case RIGHT :

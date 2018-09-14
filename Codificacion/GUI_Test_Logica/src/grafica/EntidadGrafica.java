@@ -55,8 +55,10 @@ public abstract class EntidadGrafica {
 				switch (dir){
 					case Celda.UP : // Arriba
 						for(int i = 0; i < this.height; i += this.velocidad){
-							if (this.pos.y - this.velocidad < 0)
+							if (this.pos.y - this.velocidad < 0) {
 								this.grafico.setBounds(this.pos.x, 720, width, height);
+								this.pos.setLocation(pos.x, 720);
+							}
 							else
 								this.grafico.setBounds(this.pos.x, this.pos.y -= this.velocidad, width, height);
 							Thread.sleep(50); //original t:100
@@ -64,8 +66,10 @@ public abstract class EntidadGrafica {
 						break;
 					case Celda.DOWN : // Abajo
 						for(int i = 0; i < this.height; i += this.velocidad){
-							if (this.pos.y + this.velocidad > 720)
+							if (this.pos.y + this.velocidad > 720) {
 								this.grafico.setBounds(this.pos.x, 0, width, height);
+								this.pos.setLocation(pos.x, 0);
+							}
 							else
 								this.grafico.setBounds(this.pos.x, this.pos.y += this.velocidad, width, height);
 							Thread.sleep(50); //original t:100
@@ -73,8 +77,10 @@ public abstract class EntidadGrafica {
 						break;
 					case Celda.RIGHT : // Derecha
 						for(int i = 0; i < this.width; i += this.velocidad){
-							if (this.pos.x + this.velocidad > 1024)
+							if (this.pos.x + this.velocidad > 1024) {
 								this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
+								this.pos.setLocation(pos);
+							}
 							else
 								this.grafico.setBounds(this.pos.x += this.velocidad, this.pos.y, width, height);
 							Thread.sleep(50); //original t:100
@@ -82,8 +88,10 @@ public abstract class EntidadGrafica {
 						break;
 					case Celda.LEFT : // Izquierda
 						for(int i = 0; i < this.width; i += this.velocidad){
-							if (this.pos.x - this.velocidad < 0)
+							if (this.pos.x - this.velocidad < 0) {
 								this.grafico.setBounds(1024, this.pos.y, width, height);
+								this.pos.setLocation(1024, this.pos.y);
+							}
 							else
 								this.grafico.setBounds(this.pos.x -= this.velocidad, this.pos.y, width, height);
 							Thread.sleep(50); //original t:100
