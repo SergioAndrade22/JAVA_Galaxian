@@ -1,9 +1,6 @@
 package gui;
 
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,10 +28,11 @@ public class GUI extends JFrame {
 				try {
 					GUI frame = new GUI();
 					frame.setVisible(true);
-					Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-					frame.setBounds(0, 0,(int) d.getWidth(),(int) d.getHeight());
+					frame.setBounds(0, 0,1024,720);
+					frame.setSize(1124, 820);
+					frame.setTitle("Shoot the Zombies");
 					frame.setResizable(false);
-					frame.setSize(d);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -53,8 +51,7 @@ public class GUI extends JFrame {
 		});
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(0, 0,(int)d.getWidth(),(int)d.getHeight());
+		setBounds(0, 0,1024,720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -88,8 +85,7 @@ public class GUI extends JFrame {
 	public void agregarFondo() {
 		JLabel f=new JLabel();
 		ImageIcon i=new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
-		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		f.setBounds(0,0,(int)d.getWidth(),(int)d.getHeight());
+		f.setBounds(0,0,1124,820);
 		f.setIcon(i);
 		this.add(f);
 	}

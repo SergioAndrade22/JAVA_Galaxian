@@ -8,8 +8,8 @@ import mapa.Celda;
 public abstract class EntidadGrafica {
 	protected JLabel grafico;
 	protected Icon image[];
-	protected final int width = 60; //Aca agrando el tamaño del JLabel
-	protected final int height =60;
+	protected final int width = 50; //Aca agrando el tamaño del JLabel
+	protected final int height= 50;
 	protected int velocidad;
 	protected Point pos;
 	
@@ -46,6 +46,8 @@ public abstract class EntidadGrafica {
 		this.grafico.setIcon(this.image[direccion]);
 	}
 	
+	
+	//Modificacion muy hardcodeada, no me gusta para nada pero no sabia como conseguir de otra manera los limites.
 	public void mover(int dir){
 		if(this.grafico != null){
 			this.changeIcon(dir);
@@ -53,25 +55,37 @@ public abstract class EntidadGrafica {
 				switch (dir){
 					case Celda.UP : // Arriba
 						for(int i = 0; i < this.height; i += this.velocidad){
-							this.grafico.setBounds(this.pos.x, this.pos.y -= this.velocidad, width, height);
+							if (this.pos.y - this.velocidad < 0)
+								this.grafico.setBounds(this.pos.x, 720, width, height);
+							else
+								this.grafico.setBounds(this.pos.x, this.pos.y -= this.velocidad, width, height);
 							Thread.sleep(50); //original t:100
 						}
 						break;
 					case Celda.DOWN : // Abajo
 						for(int i = 0; i < this.height; i += this.velocidad){
-							this.grafico.setBounds(this.pos.x, this.pos.y += this.velocidad, width, height);
+							if (this.pos.y + this.velocidad > 720)
+								this.grafico.setBounds(this.pos.x, 0, width, height);
+							else
+								this.grafico.setBounds(this.pos.x, this.pos.y += this.velocidad, width, height);
 							Thread.sleep(50); //original t:100
 						}
 						break;
 					case Celda.RIGHT : // Derecha
 						for(int i = 0; i < this.width; i += this.velocidad){
-							this.grafico.setBounds(this.pos.x += this.velocidad, this.pos.y, width, height);
+							if (this.pos.x + this.velocidad > 1024)
+								this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
+							else
+								this.grafico.setBounds(this.pos.x += this.velocidad, this.pos.y, width, height);
 							Thread.sleep(50); //original t:100
 						}
 						break;
 					case Celda.LEFT : // Izquierda
 						for(int i = 0; i < this.width; i += this.velocidad){
-							this.grafico.setBounds(this.pos.x -= this.velocidad, this.pos.y, width, height);
+							if (this.pos.x - this.velocidad < 0)
+								this.grafico.setBounds(1024, this.pos.y, width, height);
+							else
+								this.grafico.setBounds(this.pos.x -= this.velocidad, this.pos.y, width, height);
 							Thread.sleep(50); //original t:100
 						}
 						break;

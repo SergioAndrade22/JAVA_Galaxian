@@ -17,32 +17,10 @@ public class Mapa {
 	}
 	
 	public Celda getCelda(int x, int y){
-		if (x >= this.width){
-			if (y >= this.height)
-				return this.mapa[this.width-1][0];
-			else if (y < 0)
-				return this.mapa[this.width-1][this.height-1];
-			else
-				return this.mapa[this.width-1][y];
-		}
-		else if (x < 0){
-			if (y >= this.height)
-				return this.mapa[this.width-1][0];
-			else if (y < 0)
-				return this.mapa[this.width-1][this.height-1];
-			else
-				return this.mapa[this.width-1][y];
-			
-		}
-		else{
-			if (y >= this.height)
-				return this.mapa[x][0];
-			else if (y < 0)
-				return this.mapa[x][this.height-1];
-			else
-				return this.mapa[x][y];
-			
-		}
+		int[] aux = checkDirections(x, y);
+		x = aux[0];
+		y = aux[1];
+		return this.mapa[x][y];
 	}
 	
 	public Celda[][] getMapa() {
@@ -55,5 +33,21 @@ public class Mapa {
 
 	public int getHeight() {
 		return height;
+	}
+	
+	//metodo auxiliar q verifica el valor correcto de las coordenadas
+	private int[] checkDirections(int x, int y){
+		if (x >= mapa.length)
+			x = this.width-1;
+		if (x < 0)
+			x = this.width-1;
+		if (y >= mapa[0].length)
+			y = 0;
+		if (y < 0)
+			y = this.height-1;
+		int[] aux = new int[2];
+		aux[0] = x;
+		aux[1] = y;						
+		return aux;
 	}
 }

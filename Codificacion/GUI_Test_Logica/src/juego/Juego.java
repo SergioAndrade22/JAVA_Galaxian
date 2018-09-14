@@ -16,7 +16,7 @@ public class Juego {
 	//añadir Puntaje, hay que crear la clase y relacionarla con la GUI haciendo un metodo para modificarlo y un campo para mostrarlo
 	
 	public Juego(GUI gui){
-		this.mapa = new Mapa((gui.getWidth() / this.tamanioCelda)-2, (gui.getHeight() / this.tamanioCelda)-2); //hay que modificarlo para poder hacerlo con el archivo
+		this.mapa = new Mapa(gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
 		Celda c = this.mapa.getCelda(0, 0);
 		jugador = new Jugador(c);
 		gui.add(jugador.getGrafico());
