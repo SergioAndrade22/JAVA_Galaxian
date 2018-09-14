@@ -1,6 +1,8 @@
 package gui;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -16,6 +18,7 @@ public class GUI extends JFrame {
 	private JPanel contentPane;
 	private Juego j;
 	private ContadorTiempo tiempo;
+	private ContadorTiempoJugador tiempoJugador;
 	private boolean lock = false;
 	private int direction = -1;
 	
@@ -28,8 +31,10 @@ public class GUI extends JFrame {
 				try {
 					GUI frame = new GUI();
 					frame.setVisible(true);
-					frame.setBounds(0, 0, 1024, 600);
+					Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+					frame.setBounds(0, 0,(int) d.getWidth(),(int) d.getHeight());
 					frame.setResizable(false);
+					frame.setSize(d);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -42,20 +47,23 @@ public class GUI extends JFrame {
 	 */
 	public GUI() {
 		addKeyListener(new KeyAdapter() {
-			public void keyReleased(KeyEvent arg0) {
+			public void keyPressed(KeyEvent arg0) {
 				mover(arg0);
 			}
 		});
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0,1024,600);
+		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+		setBounds(0, 0,(int)d.getWidth(),(int)d.getHeight());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		j = new Juego(this);
 		tiempo = new ContadorTiempo(j, this);
+		tiempoJugador = new ContadorTiempoJugador(j, this);
 		tiempo.start();
+		tiempoJugador.start();
 		agregarFondo();
 	}
 	
@@ -80,7 +88,8 @@ public class GUI extends JFrame {
 	public void agregarFondo() {
 		JLabel f=new JLabel();
 		ImageIcon i=new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
-		f.setBounds(0,0,1024,600);
+		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+		f.setBounds(0,0,(int)d.getWidth(),(int)d.getHeight());
 		f.setIcon(i);
 		this.add(f);
 	}

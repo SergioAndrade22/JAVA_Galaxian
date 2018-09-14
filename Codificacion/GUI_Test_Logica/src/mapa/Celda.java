@@ -44,13 +44,13 @@ public class Celda {
 	public Celda getVecina(int dir){
 		switch (dir){
 			case UP :
-				return this.mapa.getCelda(x, y - 1);
+				return this.mapa.getCelda(x, y+1);
 			case DOWN :
-				return this.mapa.getCelda(x, y + 1);
+				return this.mapa.getCelda(x, y-1);
 			case LEFT :
-				return this.mapa.getCelda(x - 1, y);
+				return this.mapa.getCelda(x-1, y);
 			case RIGHT :
-				return this.mapa.getCelda(x + 1, y);
+				return this.mapa.getCelda(x+1, y);
 		}
 		return null;
 	}

@@ -13,17 +13,7 @@ public class ContadorTiempo extends Thread {
 
 	public void run() {
 		while(true){
-			try {
-				Thread.sleep(500); //original t:1000
-			} 
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			juego.mover();
-			if(gui.getLock()){
-				juego.mover(gui.getDirection());
-				gui.toggleLock();
-			}
 		}
 	}
 }

@@ -17,9 +17,32 @@ public class Mapa {
 	}
 	
 	public Celda getCelda(int x, int y){
-		if((x < this.width) && (x >= 0) && (y < this.height) && (y >= 0))
-			return this.mapa[x][y];
-		return null;
+		if (x >= this.width){
+			if (y >= this.height)
+				return this.mapa[this.width-1][0];
+			else if (y < 0)
+				return this.mapa[this.width-1][this.height-1];
+			else
+				return this.mapa[this.width-1][y];
+		}
+		else if (x < 0){
+			if (y >= this.height)
+				return this.mapa[this.width-1][0];
+			else if (y < 0)
+				return this.mapa[this.width-1][this.height-1];
+			else
+				return this.mapa[this.width-1][y];
+			
+		}
+		else{
+			if (y >= this.height)
+				return this.mapa[x][0];
+			else if (y < 0)
+				return this.mapa[x][this.height-1];
+			else
+				return this.mapa[x][y];
+			
+		}
 	}
 	
 	public Celda[][] getMapa() {
