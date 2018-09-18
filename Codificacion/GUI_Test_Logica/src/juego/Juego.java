@@ -18,7 +18,7 @@ public class Juego {
 	
 	public Juego(GUI gui){
 		this.mapa = new Mapa(gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
-		Celda c = this.mapa.getCelda(0, 0);
+		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
 		this.gui = gui;
 		this.gui.add(jugador.getGrafico());
