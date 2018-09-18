@@ -13,13 +13,15 @@ public class Juego {
 	private int cantMalos = 3; //remover
 	private Mapa mapa;
 	private int tamanioCelda = 50;
+	private GUI gui;
 	//añadir Puntaje, hay que crear la clase y relacionarla con la GUI haciendo un metodo para modificarlo y un campo para mostrarlo
 	
 	public Juego(GUI gui){
 		this.mapa = new Mapa(gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
 		Celda c = this.mapa.getCelda(0, 0);
 		jugador = new Jugador(c);
-		gui.add(jugador.getGrafico());
+		this.gui = gui;
+		this.gui.add(jugador.getGrafico());
 		this.malos = new Malo[this.cantMalos];
 		Random r = new Random();
 		Malo m;
@@ -30,7 +32,15 @@ public class Juego {
 			m = new Malo(c);
 			this.malos[i] = m;
 			c.addMalo(m);
-			gui.add(m.getGrafico());
+			this.gui.add(m.getGrafico());
+		}
+	}
+	
+	public void removeEnemies() {
+		for(int i = 0; i < malos.length; i++) {
+			gui.remove(malos[i].getGrafico());
+			malos[i].getPos().removeMalo(malos[i]);
+			malos[i] = null;
 		}
 	}
 	

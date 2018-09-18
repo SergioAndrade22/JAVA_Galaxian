@@ -46,7 +46,16 @@ public class GUI extends JFrame {
 	public GUI() {
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent arg0) {
-				mover(arg0);
+				switch(arg0.getKeyCode()) {
+					case KeyEvent.VK_D:
+						tiempo.stop();
+						j.removeEnemies();
+						contentPane.repaint();
+						break;
+					default:
+						mover(arg0);
+						break;
+				}
 			}
 		});
 		getContentPane().setLayout(null);
