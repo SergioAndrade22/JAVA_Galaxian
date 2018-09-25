@@ -38,7 +38,11 @@ public class Juego {
 	
 	public void removeEnemies() {
 		for(int i = 0; i < malos.length; i++) {
+<<<<<<< HEAD
 			if (malos[i] != null) {
+=======
+			if(malos[i]!=null) {
+>>>>>>> origin/master
 				gui.remove(malos[i].getGrafico());
 				malos[i].getPos().removeMalo(malos[i]);
 				malos[i] = null;
