@@ -66,7 +66,7 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		j = new Juego(this);
-		tiempo = new ContadorTiempo(j, this);
+		tiempo = new ContadorTiempo(j);
 		tiempoJugador = new ContadorTiempoJugador(j, this);
 		tiempo.start();
 		tiempoJugador.start();

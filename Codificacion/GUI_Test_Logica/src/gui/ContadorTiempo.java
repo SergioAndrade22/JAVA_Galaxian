@@ -4,11 +4,9 @@ import juego.Juego;
 
 public class ContadorTiempo extends Thread {
 	private Juego juego;
-	private GUI gui;
 
-	ContadorTiempo(Juego j, GUI gui) {
+	ContadorTiempo(Juego j) {
 		this.juego = j;
-		this.gui = gui;
 	}
 
 	public void run() {
