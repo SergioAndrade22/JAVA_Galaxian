@@ -46,8 +46,6 @@ public abstract class EntidadGrafica {
 		this.grafico.setIcon(this.image[direccion]);
 	}
 	
-	
-	//Modificacion muy hardcodeada, no me gusta para nada pero no sabia como conseguir de otra manera los limites.
 	public void mover(int dir){
 		if(this.grafico != null){
 			this.changeIcon(dir);

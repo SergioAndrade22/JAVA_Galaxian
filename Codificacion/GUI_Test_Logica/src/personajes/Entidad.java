@@ -40,6 +40,5 @@ public abstract class Entidad {
 	public JLabel getGrafico(){
 		return this.grafico.getGrafico();
 	}
-	
 	//añadir metodo para disparar
 }
