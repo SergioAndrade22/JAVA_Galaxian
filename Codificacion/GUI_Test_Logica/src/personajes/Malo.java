@@ -1,6 +1,8 @@
 package personajes;
 
 import java.util.Random;
+
+import Colliders.*;
 import grafica.MaloGrafico;
 import mapa.Celda;
 
@@ -9,11 +11,13 @@ public class Malo extends Entidad{
 	public Malo(int velocidad, Celda pos) {
 		super(velocidad, pos);
 		this.grafico = new MaloGrafico(velocidad, this.pos.getX(), this.pos.getY());
+		collider=new ColliderMalo();
 	}
 	
 	public Malo(Celda pos) {
 		super(pos);
 		this.grafico = new MaloGrafico(velocidad, this.pos.getX(), this.pos.getY());
+		collider=new ColliderMalo();
 	}
 
 	public void mover() {
@@ -40,4 +44,13 @@ public class Malo extends Entidad{
 	}
 	
 	//añadir metodo para disparar
+	
+	
+	public void colision(Entidad e) {
+		e.aceptar(collider);
+		
+	}
+	public void aceptar(Collider c) {
+		c.collideWith(this);
+	}
 }

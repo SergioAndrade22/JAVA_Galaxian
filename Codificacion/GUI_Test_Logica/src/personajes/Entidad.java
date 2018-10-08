@@ -1,6 +1,8 @@
 package personajes;
 
 import javax.swing.JLabel;
+
+import Colliders.*;
 import grafica.EntidadGrafica;
 import mapa.Celda;
 
@@ -8,6 +10,7 @@ public abstract class Entidad {
 	protected int velocidad = 6;
 	protected Celda pos;
 	protected EntidadGrafica grafico;
+	protected Collider collider;
 	//añadir arma
 	
 	protected Entidad(int velocidad, Celda pos) {
@@ -41,4 +44,11 @@ public abstract class Entidad {
 		return this.grafico.getGrafico();
 	}
 	//añadir metodo para disparar
+	
+	public void colision(Entidad e) {
+		
+	}
+	public void aceptar(Collider c) {
+		
+	}
 }

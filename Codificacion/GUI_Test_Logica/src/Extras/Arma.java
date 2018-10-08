@@ -4,7 +4,7 @@ public class Arma {
 	private int damage;
 	private int range;
 	
-	public Arma(int r, int d){
+	public Arma(int r, int d){ 
 		damage = d;
 		range = r;
 	}
