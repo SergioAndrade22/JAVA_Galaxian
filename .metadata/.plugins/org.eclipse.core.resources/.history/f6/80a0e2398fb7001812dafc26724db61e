@@ -1,0 +1,46 @@
+package gui;
+
+import juego.Juego;
+import java.lang.Thread;
+
+public class ContadorTiempo extends Thread {
+	private Juego juego;
+	private GUI gui;
+
+	ContadorTiempo(Juego j, GUI gui) {
+		this.juego = j;
+		this.gui = gui;
+	}
+
+	Runnable a= new Runnable(){
+	public void run() {
+		while(true){
+			try {
+				Thread.sleep(100); //original t:1000
+			} 
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			/*juego.mover();
+			if(gui.getLock()){
+				juego.mover(gui.getDirection());
+				gui.toggleLock();
+			}*/
+		}
+	}};
+	
+	Runnable b= new Runnable(){
+		public void run(){
+		juego.mover();
+		if(gui.getLock()){
+			juego.mover(gui.getDirection());
+			gui.toggleLock();
+		}
+		}
+	};
+	
+	public void run(){
+	while (true)
+	{new Thread(a).start();
+	new Thread(b).start();}}
+}

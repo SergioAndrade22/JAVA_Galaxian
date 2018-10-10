@@ -43,7 +43,7 @@ public class Juego {
 		for(int i = 0; i < malos.length; i++) {
 			if(malos[i]!=null) {
 				gui.remove(malos[i].getGrafico());
-				malos[i].getPos().removeMalo(malos[i]);
+				malos[i].getPos().removeMalo(malos[i]);  
 				malos[i] = null;
 				score.increase(10); //max 99999
 			}

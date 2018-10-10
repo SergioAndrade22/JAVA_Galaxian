@@ -5,19 +5,14 @@ import grafica.JugadorGrafico;
 import mapa.Celda;
 import Colliders.*;
 
-public class Jugador extends Entidad{
-	
-
-	public Jugador(int velocidad, Celda pos) {
-		super(velocidad+2, pos);
-		this.grafico = new JugadorGrafico(velocidad, this.pos.getX(), this.pos.getY());
-		collider=new ColliderJugador();
-	}
-	
+public class Jugador extends Personajes{
+		
 	public Jugador(Celda pos) {
 		super(pos);
 		this.grafico = new JugadorGrafico(velocidad, this.pos.getX(), this.pos.getY());
 		collider=new ColliderJugador();
+		hp=100;
+		fuerza_kamikaze=50;
 	}
 
 	public void mover(int dir){

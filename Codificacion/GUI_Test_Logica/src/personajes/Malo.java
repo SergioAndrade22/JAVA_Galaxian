@@ -6,18 +6,14 @@ import Colliders.*;
 import grafica.MaloGrafico;
 import mapa.Celda;
 
-public class Malo extends Entidad{
-
-	public Malo(int velocidad, Celda pos) {
-		super(velocidad, pos);
-		this.grafico = new MaloGrafico(velocidad, this.pos.getX(), this.pos.getY());
-		collider=new ColliderMalo();
-	}
+public class Malo extends Personajes{
 	
 	public Malo(Celda pos) {
 		super(pos);
 		this.grafico = new MaloGrafico(velocidad, this.pos.getX(), this.pos.getY());
 		collider=new ColliderMalo();
+		hp=50;
+		fuerza_kamikaze=50;
 	}
 
 	public void mover() {

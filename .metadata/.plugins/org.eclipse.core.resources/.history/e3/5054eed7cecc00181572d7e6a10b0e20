@@ -1,0 +1,8 @@
+package Objetos;
+import personajes.*;
+
+public abstract class Objeto extends Entidad{
+	
+	
+	
+}

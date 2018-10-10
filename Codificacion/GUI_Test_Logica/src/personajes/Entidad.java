@@ -7,38 +7,27 @@ import grafica.EntidadGrafica;
 import mapa.Celda;
 
 public abstract class Entidad {
-	protected int velocidad = 6;
 	protected Celda pos;
 	protected EntidadGrafica grafico;
 	protected Collider collider;
+	protected int hp; //Vida de la entidad.
 	//añadir arma
-	
-	protected Entidad(int velocidad, Celda pos) {
-		this.pos = pos;
-		this.velocidad = velocidad;
-		this.grafico = null;
-	}
 	
 	protected Entidad(Celda pos) {
 		this.pos = pos;
 		this.grafico = null;
 	}
 	
-	public int getVelocidad() {
-		return velocidad;
+	protected Entidad(Celda pos, int hp) {
+		this.pos = pos;
+		this.grafico = null;
+		this.hp=hp;
 	}
 
 	public Celda getPos() {
 		return pos;
 	}
 	
-	protected void mover(int dir){
-		Celda next = this.pos.getVecina(dir);
-		if(next != null){
-			this.pos = next;
-			this.grafico.mover(dir);
-		}
-	}
 	
 	public JLabel getGrafico(){
 		return this.grafico.getGrafico();
@@ -51,4 +40,8 @@ public abstract class Entidad {
 	public void aceptar(Collider c) {
 		
 	}
+	
+	public void eliminar(){ //Cuando elimine una entidad, deberia ocurrir algo.
+	}
+
 }

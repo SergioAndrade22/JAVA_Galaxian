@@ -1,0 +1,21 @@
+package personajes;
+
+import mapa.Celda;
+
+public abstract class EntidadMovimiento extends Entidad{
+	
+	protected int velocidad=10;
+	protected int fuerza_kamikaze;
+	
+	protected EntidadMovimiento(Celda pos) {
+		this.pos = pos;
+		this.grafico = null;
+	}
+	
+	protected EntidadMovimiento(Celda pos, int hp) {
+		this.pos = pos;
+		this.grafico = null;
+		this.hp=hp;
+	}
+
+}
