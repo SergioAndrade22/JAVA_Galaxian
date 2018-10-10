@@ -2,6 +2,8 @@ package mapa;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import personajes.Entidad;
 import personajes.Jugador;
 import personajes.Malo;
 
@@ -10,22 +12,32 @@ public class Celda {
 	public static final int RIGHT = KeyEvent.VK_RIGHT;
 	public static final int UP = KeyEvent.VK_UP;
 	public static final int DOWN = KeyEvent.VK_DOWN;
-	private ArrayList<Malo> malos;
-	private Jugador jugador;
+	//private ArrayList<Malo> malos; COMENTO POR LAS DUDIS
+	private ArrayList<Entidad> entidades;
+	//private Jugador jugador;
 	private Mapa mapa;
 	private int x;
 	private int y;
 	//añadir una coleccion para los obstaculos
 	
 	public Celda(Mapa mapa, int x, int y){
-		this.malos = new ArrayList<Malo>();
-		this.jugador = null;
+		entidades=new ArrayList<Entidad>();
+		//this.malos = new ArrayList<Malo>();
+		//this.jugador = null;
 		this.mapa = mapa;
 		this.x = x;
 		this.y = y;
 	}
 	
-	public void addMalo(Malo m){
+	public void addEntidad(Entidad e) {
+		for(Entidad a:entidades)
+			a.colision(e);
+		entidades.add(e);
+	}
+	public void removeEntidad(Entidad e) {
+		entidades.remove(e);
+	}
+	/*public void addMalo(Malo m){
 		this.malos.add(m);
 	}
 	
@@ -39,7 +51,7 @@ public class Celda {
 
 	public void setJugador(Jugador jugador) {
 		this.jugador = jugador;
-	}
+	}*/
 	
 	public Celda getVecina(int dir){
 		switch (dir){
