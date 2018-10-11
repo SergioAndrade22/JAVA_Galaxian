@@ -8,7 +8,6 @@ import mapa.Mapa;
 import personajes.Jugador;
 import personajes.Malo;
 import personajes.Disparo;
-import grafica.*;
 
 public class Juego {
 	private Jugador jugador;
@@ -61,9 +60,7 @@ public class Juego {
 	public void mover(){
 		for(Malo en : malos){
 				en.mover();
-				//System.out.println("Hola?");
 		}
-		
 		for(int i=0;i<disparos.size();i++){
 			System.out.println(disparos.size());
 			Disparo d= (Disparo) this.disparos.get(i);
@@ -79,19 +76,11 @@ public class Juego {
 		
 	}
 	
-	public void agregarDisparo(){
-		System.out.println("Entre");
-		int x = jugador.getPos().RIGHT; //Lo voy a agregar una celda a la derecha del jugador
-		int y = jugador.getPos().getY();
-		Celda c = this.mapa.getCelda(x,y);
-		//Celda c = this.mapa.getCelda(x+1,y);
-		Disparo d= new Disparo(jugador.getPos(),50,5);
+	public void disparoJugador(){
+		Disparo d = jugador.disparar();
 		disparos.add(d);
-		gui.add(score);
-		d.getPos().addEntidad(d);
 		this.gui.getContentPane().add(d.getGrafico());
 		gui.getContentPane().repaint();
 		gui.getContentPane().revalidate();
-		
 	}
 }

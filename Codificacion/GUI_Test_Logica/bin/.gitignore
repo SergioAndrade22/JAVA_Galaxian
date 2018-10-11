@@ -1,10 +1,5 @@
-/BattleCity/
-/Extras/
-/Objetos/
-/grafica/
-/gui/
-/juego/
-/mapa/
-/personajes/
-/ExtrasGraficos/
 /Colliders/
+/juego/
+/personajes/
+/gui/
+/mapa/

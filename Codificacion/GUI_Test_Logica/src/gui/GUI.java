@@ -55,7 +55,7 @@ public class GUI extends JFrame {
 						contentPane.repaint();
 						break;
 					case KeyEvent.VK_SPACE :
-						j.agregarDisparo();
+						j.disparoJugador();
 						contentPane.repaint();
 						contentPane.revalidate();
 						contentPane.updateUI();

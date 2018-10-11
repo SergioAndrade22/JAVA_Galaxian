@@ -1,8 +1,6 @@
 package personajes;
+
 import mapa.*;
-
-import java.util.Random;
-
 import grafica.*;
 
 public class Disparo extends EntidadMovimiento{
@@ -14,14 +12,10 @@ public class Disparo extends EntidadMovimiento{
 	}
 	
 	public void mover() {
-		int direccion = -1;
+		int direccion;
 		direccion = Celda.RIGHT;
 		this.pos.removeEntidad(this);
 		super.mover(direccion);
 		this.pos.addEntidad(this);
 	}
-	
-	
-	
-
 }
