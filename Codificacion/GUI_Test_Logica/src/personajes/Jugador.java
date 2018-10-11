@@ -24,14 +24,17 @@ public class Jugador extends Personajes{
 		case KeyEvent.VK_DOWN : //Abajo
 			super.mover(KeyEvent.VK_DOWN);
 			break;
-		case KeyEvent.VK_SPACE :
-			//aquí va el disparo
-			break;
 		}
 		this.pos.addEntidad(this);
 	}
 	
 	//añadir metodo para disparar
+	public Disparo disparar() {
+		Celda c = pos.getVecina(KeyEvent.VK_RIGHT);
+		Disparo d = new Disparo(c, 100, 5);
+		c.addEntidad(d);
+		return d;
+	}
 	
 	public void colision(Entidad e) {
 		e.aceptar(collider);

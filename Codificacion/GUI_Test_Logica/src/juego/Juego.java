@@ -8,7 +8,6 @@ import mapa.Mapa;
 import personajes.Jugador;
 import personajes.Malo;
 import personajes.Disparo;
-import grafica.*;
 
 public class Juego {
 	private Jugador jugador;
@@ -30,7 +29,7 @@ public class Juego {
 		this.gui = gui;
 		this.gui.add(jugador.getGrafico());
 		this.malos = new Malo[this.cantMalos];
-		agregarDisparo();
+		//agregarDisparo();
 		Random r = new Random();
 		Malo m;
 		for(int i = 0; i < this.cantMalos; i++){
@@ -43,6 +42,7 @@ public class Juego {
 			this.gui.add(m.getGrafico());
 		}
 		gui.add(score);
+		gui.agregarFondo();
 	}
 	
 	public void removeEnemies() {
@@ -60,13 +60,11 @@ public class Juego {
 	public void mover(){
 		for(Malo en : malos){
 				en.mover();
-				//System.out.println("Hola?");
 		}
-		
 		for(int i=0;i<disparos.size();i++){
 			System.out.println(disparos.size());
 			Disparo d= (Disparo) this.disparos.get(i);
-			d.mover(d.getPos().RIGHT);
+			d.mover();
 		}
 	}
 	
@@ -78,16 +76,11 @@ public class Juego {
 		
 	}
 	
-	public void agregarDisparo(){
-		System.out.println("Entre");
-		int x = jugador.getPos().RIGHT; //Lo voy a agregar una celda a la derecha del jugador
-		int y = jugador.getPos().getY();
-		Celda c = this.mapa.getCelda(x,y);
-		//Celda c = this.mapa.getCelda(x+1,y);
-		Disparo d= new Disparo(jugador.getPos(),20,5);
+	public void disparoJugador(){
+		Disparo d = jugador.disparar();
 		disparos.add(d);
-		jugador.getPos().addEntidad(d);
-		this.gui.add(d.getGrafico());
-		
+		this.gui.getContentPane().add(d.getGrafico());
+		gui.getContentPane().repaint();
+		gui.getContentPane().revalidate();
 	}
 }

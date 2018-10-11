@@ -1,5 +1,6 @@
 package personajes;
 
+import java.awt.event.KeyEvent;
 import java.util.Random;
 
 import Colliders.*;
@@ -39,8 +40,13 @@ public class Malo extends Personajes{
 		this.pos.addEntidad(this);
 	}
 	
-	//añadir metodo para disparar
-	
+	public Disparo disparar() {
+		Celda c = pos.getVecina(KeyEvent.VK_RIGHT);
+		Disparo d = new Disparo(c, 100, 5);
+		c.addEntidad(d);
+		return d;
+		
+	}
 	
 	public void colision(Entidad e) {
 		e.aceptar(collider);

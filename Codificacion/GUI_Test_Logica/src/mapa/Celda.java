@@ -56,9 +56,19 @@ public class Celda {
 	public Celda getVecina(int dir){
 		switch (dir){
 			case UP :
-				return this.mapa.getCelda(x, y+1);
+				if (--y >= 0)
+					return this.mapa.getCelda(x, y);
+				else {
+					y = mapa.getHeight();
+					return this.mapa.getCelda(x, y);
+				}
 			case DOWN :
-				return this.mapa.getCelda(x, 1-y);
+				if (++y <= mapa.getHeight())
+					return this.mapa.getCelda(x, y);
+				else {
+					y = 0;
+					return this.mapa.getCelda(x, y);
+				}
 			case LEFT :
 				return this.mapa.getCelda(x-1, y);
 			case RIGHT :
