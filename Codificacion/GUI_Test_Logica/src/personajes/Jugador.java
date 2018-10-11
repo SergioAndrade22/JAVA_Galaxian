@@ -16,7 +16,7 @@ public class Jugador extends Personajes{
 	}
 
 	public void mover(int dir){
-		this.pos.setJugador(null);
+		this.pos.removeEntidad(this);
 		switch (dir){
 		case KeyEvent.VK_UP : //Arriba
 			super.mover(KeyEvent.VK_UP);
@@ -28,7 +28,7 @@ public class Jugador extends Personajes{
 			//aquí va el disparo
 			break;
 		}
-		this.pos.setJugador(this);
+		this.pos.addEntidad(this);
 	}
 	
 	//añadir metodo para disparar

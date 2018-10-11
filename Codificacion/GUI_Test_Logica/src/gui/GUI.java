@@ -52,6 +52,11 @@ public class GUI extends JFrame {
 						j.removeEnemies();
 						contentPane.repaint();
 						break;
+					case KeyEvent.VK_SPACE :
+						//tiempo.stop();
+						j.agregarDisparo();
+						contentPane.repaint();
+						break;
 					default:
 						mover(arg0);
 						break;

@@ -16,7 +16,7 @@ public abstract class EntidadMovimiento extends Entidad{
 		this.velocidad=velocidad;
 	}
 	
-	protected void mover(int dir){
+	public void mover(int dir){
 		Celda next = this.pos.getVecina(dir);
 		if(next != null){
 			this.pos = next;

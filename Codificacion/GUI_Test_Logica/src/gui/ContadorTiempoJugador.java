@@ -21,6 +21,7 @@ public class ContadorTiempoJugador extends Thread {
 			}
 			if(gui.getLock()){
 				juego.mover(gui.getDirection());
+				juego.moverd(gui.getDirection());
 				gui.toggleLock();
 			}
 		}
