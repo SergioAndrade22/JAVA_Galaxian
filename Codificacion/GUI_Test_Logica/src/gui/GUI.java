@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.EventQueue;
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,9 +55,10 @@ public class GUI extends JFrame {
 						contentPane.repaint();
 						break;
 					case KeyEvent.VK_SPACE :
-						//tiempo.stop();
 						j.agregarDisparo();
 						contentPane.repaint();
+						contentPane.revalidate();
+						contentPane.updateUI();
 						break;
 					default:
 						mover(arg0);
@@ -63,6 +66,7 @@ public class GUI extends JFrame {
 				}
 			}
 		});
+		System.out.println("x");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0,1024,720);
@@ -70,12 +74,12 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		//agregarFondo();
 		j = new Juego(this);
 		tiempo = new ContadorTiempo(j);
 		tiempoJugador = new ContadorTiempoJugador(j, this);
 		tiempo.start();
 		tiempoJugador.start();
-		agregarFondo();
 	}
 	
 	protected void mover(KeyEvent key){
@@ -97,10 +101,15 @@ public class GUI extends JFrame {
 		return this.direction;
 	}
 	public void agregarFondo() {
-		JLabel f=new JLabel();
+		/*JLabel f=new JLabel();
 		ImageIcon i=new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
+		Image img=i.getImage();
+		Image temp=img.getScaledInstance(500,600,Image.SCALE_SMOOTH);
+		i=new ImageIcon(temp);
 		f.setBounds(0,0,1124,820);
 		f.setIcon(i);
-		this.add(f);
+		this.getContentPane().add(f);
+		this.getContentPane().revalidate();
+		this.getContentPane().repaint();*/
 	}
 }

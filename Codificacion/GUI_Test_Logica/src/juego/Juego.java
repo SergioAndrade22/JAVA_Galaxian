@@ -30,7 +30,7 @@ public class Juego {
 		this.gui = gui;
 		this.gui.add(jugador.getGrafico());
 		this.malos = new Malo[this.cantMalos];
-		agregarDisparo();
+		//agregarDisparo();
 		Random r = new Random();
 		Malo m;
 		for(int i = 0; i < this.cantMalos; i++){
@@ -43,6 +43,7 @@ public class Juego {
 			this.gui.add(m.getGrafico());
 		}
 		gui.add(score);
+		gui.agregarFondo();
 	}
 	
 	public void removeEnemies() {
@@ -66,7 +67,7 @@ public class Juego {
 		for(int i=0;i<disparos.size();i++){
 			System.out.println(disparos.size());
 			Disparo d= (Disparo) this.disparos.get(i);
-			d.mover(d.getPos().RIGHT);
+			d.mover();
 		}
 	}
 	
@@ -84,10 +85,13 @@ public class Juego {
 		int y = jugador.getPos().getY();
 		Celda c = this.mapa.getCelda(x,y);
 		//Celda c = this.mapa.getCelda(x+1,y);
-		Disparo d= new Disparo(jugador.getPos(),20,5);
+		Disparo d= new Disparo(jugador.getPos(),50,5);
 		disparos.add(d);
-		jugador.getPos().addEntidad(d);
-		this.gui.add(d.getGrafico());
+		gui.add(score);
+		d.getPos().addEntidad(d);
+		this.gui.getContentPane().add(d.getGrafico());
+		gui.getContentPane().repaint();
+		gui.getContentPane().revalidate();
 		
 	}
 }

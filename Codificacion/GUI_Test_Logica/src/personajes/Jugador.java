@@ -24,9 +24,9 @@ public class Jugador extends Personajes{
 		case KeyEvent.VK_DOWN : //Abajo
 			super.mover(KeyEvent.VK_DOWN);
 			break;
-		case KeyEvent.VK_SPACE :
+		//case KeyEvent.VK_SPACE :
 			//aquí va el disparo
-			break;
+			//break;
 		}
 		this.pos.addEntidad(this);
 	}
