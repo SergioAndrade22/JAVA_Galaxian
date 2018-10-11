@@ -25,12 +25,11 @@ public class Juego {
 		this.mapa = new Mapa(gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
-		disparos= new ArrayList<Disparo>();
+		disparos= new ArrayList();
 		score = new Score();
 		this.gui = gui;
 		this.gui.add(jugador.getGrafico());
 		this.malos = new Malo[this.cantMalos];
-		agregarDisparo();
 		Random r = new Random();
 		Malo m;
 		for(int i = 0; i < this.cantMalos; i++){
@@ -66,7 +65,7 @@ public class Juego {
 		for(int i=0;i<disparos.size();i++){
 			System.out.println(disparos.size());
 			Disparo d= (Disparo) this.disparos.get(i);
-			d.mover(d.getPos().RIGHT);
+			//d.mover(d.getPos().RIGHT);
 		}
 	}
 	
@@ -84,9 +83,9 @@ public class Juego {
 		int y = jugador.getPos().getY();
 		Celda c = this.mapa.getCelda(x,y);
 		//Celda c = this.mapa.getCelda(x+1,y);
-		Disparo d= new Disparo(jugador.getPos(),20,5);
+		Disparo d= new Disparo(c,20,5);
 		disparos.add(d);
-		jugador.getPos().addEntidad(d);
+		c.addEntidad(d);
 		this.gui.add(d.getGrafico());
 		
 	}
