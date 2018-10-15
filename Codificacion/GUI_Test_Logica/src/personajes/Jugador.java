@@ -43,4 +43,8 @@ public class Jugador extends Personajes{
 	public void aceptar(Collider c) {
 		c.collideWith(this);
 	}
+
+	public void disminuirHP(int i) {
+		hp-=i;		
+	}
 }

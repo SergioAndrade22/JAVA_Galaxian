@@ -19,4 +19,10 @@ public class ColliderMalo implements Collider {
 		System.out.println("No hacemos nada");
 	}
 
+	@Override
+	public void collideWith(Disparo d) {
+		d.eliminar();
+		
+	}
+
 }
