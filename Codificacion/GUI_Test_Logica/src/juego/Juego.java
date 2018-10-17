@@ -5,9 +5,7 @@ import java.util.Random;
 import gui.GUI;
 import mapa.Celda;
 import mapa.Mapa;
-import personajes.Jugador;
-import personajes.Malo;
-import personajes.Disparo;
+import personajes.*;
 
 public class Juego {
 	private Jugador jugador;
@@ -60,9 +58,9 @@ public class Juego {
 	public void mover(){
 		for(Malo en : malos){
 				en.mover();
+				disparoEnemigo(en);
 		}
 		for(int i=0;i<disparos.size();i++){
-			System.out.println(disparos.size());
 			Disparo d= (Disparo) this.disparos.get(i);
 			d.mover();
 		}
@@ -78,6 +76,13 @@ public class Juego {
 	
 	public void disparoJugador(){
 		Disparo d = jugador.disparar();
+		disparos.add(d);
+		this.gui.getContentPane().add(d.getGrafico());
+		gui.getContentPane().repaint();
+		gui.getContentPane().revalidate();
+	}
+	public void disparoEnemigo(Malo e) {
+		Disparo d = e.disparar();
 		disparos.add(d);
 		this.gui.getContentPane().add(d.getGrafico());
 		gui.getContentPane().repaint();

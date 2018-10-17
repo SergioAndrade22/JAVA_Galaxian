@@ -20,8 +20,14 @@ public class ColliderMalo implements Collider {
 	}
 
 	@Override
-	public void collideWith(Disparo d) {
+	public void collideWith(DisparoJugador d) {
 		d.eliminar();
+		
+	}
+
+	@Override
+	public void collideWith(DisparoEnemigo de) {
+		// TODO Auto-generated method stub
 		
 	}
 

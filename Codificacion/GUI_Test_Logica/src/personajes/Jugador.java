@@ -31,7 +31,7 @@ public class Jugador extends Personajes{
 	//añadir metodo para disparar
 	public Disparo disparar() {
 		Celda c = pos.getVecina(KeyEvent.VK_RIGHT);
-		Disparo d = new Disparo(c, 100, 5);
+		Disparo d =new DisparoJugador(c, 100, 5);
 		c.addEntidad(d);
 		return d;
 	}

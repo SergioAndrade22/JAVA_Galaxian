@@ -1,33 +1,28 @@
 package Colliders;
 
 import personajes.*;
+public class ColliderDisparoJugador implements Collider {
 
-public class ColliderJugador implements Collider {
-
-	public ColliderJugador() {
+	public ColliderDisparoJugador() {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public void collideWith(Jugador j) {
-		System.out.println("Imposible");
+		//Nada
+
 	}
 
-	@Override
 	public void collideWith(Malo m) {
-		System.out.println("Me saca vida");
-
+		m.eliminar();
+		System.out.println("Matar enemigo");
 	}
-
-	@Override
 	public void collideWith(DisparoJugador d) {
-		// TODO Auto-generated method stub
-		d.eliminar();
+		//Nada
 	}
 
 	@Override
 	public void collideWith(DisparoEnemigo de) {
-		// TODO Auto-generated method stub
+		// Supongo que nada pero preguntar
 		
 	}
 
