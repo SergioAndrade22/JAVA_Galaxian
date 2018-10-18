@@ -2,10 +2,7 @@ package mapa;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
 import personajes.Entidad;
-import personajes.Jugador;
-import personajes.Malo;
 
 public class Celda {
 	public static final int LEFT = KeyEvent.VK_LEFT;
@@ -22,8 +19,6 @@ public class Celda {
 	
 	public Celda(Mapa mapa, int x, int y){
 		entidades=new ArrayList<Entidad>();
-		//this.malos = new ArrayList<Malo>();
-		//this.jugador = null;
 		this.mapa = mapa;
 		this.x = x;
 		this.y = y;
@@ -34,27 +29,16 @@ public class Celda {
 		if(entidades.size()>1)
 			for(Entidad a:entidades) {
 				a.colision(e);
-				e.colision(a);
 			}
 	}
 	public void removeEntidad(Entidad e) {
 		entidades.remove(e);
 	}
-	/*public void addMalo(Malo m){
-		this.malos.add(m);
-	}
 	
-	public void removeMalo(Malo m){
-		this.malos.remove(m);
+	public void eliminarEntidad(Entidad e) {
+		entidades.remove(e);
+		mapa.remove(e);
 	}
-
-	public Jugador getJugador() {
-		return jugador;
-	}
-
-	public void setJugador(Jugador jugador) {
-		this.jugador = jugador;
-	}*/
 	
 	public Celda getVecina(int dir){
 		switch (dir){
@@ -62,7 +46,7 @@ public class Celda {
 				if (--y >= 0)
 					return this.mapa.getCelda(x, y);
 				else {
-					y = mapa.getHeight();
+					y = mapa.getHeight()-1;
 					return this.mapa.getCelda(x, y);
 				}
 			case DOWN :
@@ -73,7 +57,12 @@ public class Celda {
 					return this.mapa.getCelda(x, y);
 				}
 			case LEFT :
-				return this.mapa.getCelda(x-1, y);
+				if (--x >= 0)
+					return this.mapa.getCelda(x, y);
+				else {
+					x = mapa.getWidth()-1;
+					return this.mapa.getCelda(x, y);
+				}
 			case RIGHT :
 				return this.mapa.getCelda(x+1, y);
 		}

@@ -19,7 +19,7 @@ public class Malo extends Personajes{
 
 	public void mover() {
 		Random r = new Random();		
-		int dir = r.nextInt(4);		
+		int dir = r.nextInt(3);		
 		int direccion = -1;
 		switch (dir) {
 			case 0 : //Arriba
@@ -31,13 +31,8 @@ public class Malo extends Personajes{
 			case 2 : //Izquierda
 				direccion = Celda.LEFT;
 				break;
-			case 3 : //Derecha
-				direccion = Celda.RIGHT;
-				break;
 		}
-		this.pos.removeEntidad(this);
 		super.mover(direccion);
-		this.pos.addEntidad(this);
 	}
 	
 	public Disparo disparar() {

@@ -21,7 +21,7 @@ public class ColliderMalo implements Collider {
 
 	@Override
 	public void collideWith(DisparoJugador d) {
-		d.eliminar();
+		d.morir();
 		
 	}
 

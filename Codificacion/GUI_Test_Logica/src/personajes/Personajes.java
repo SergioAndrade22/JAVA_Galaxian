@@ -1,7 +1,7 @@
 package personajes;
 import mapa.*;
 
-public abstract class Personajes extends EntidadMovimiento {
+public abstract class Personajes extends Entidad {
 	
 	protected int fuerza_kamikaze;
 	

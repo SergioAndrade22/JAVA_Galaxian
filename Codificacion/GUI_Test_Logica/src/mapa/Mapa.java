@@ -1,11 +1,16 @@
 package mapa;
 
+import gui.GUI;
+import personajes.Entidad;
+
 public class Mapa {
 	private Celda mapa[][];
 	private int width, height;
+	private GUI gui;
 	//añadir un atributo FileOpener para poder abrir el archivo y leerlo, hay que ver bien como hacer funcionar esto
 
-	public Mapa(int width, int height){ //habría que modificar esto para que según nuestra implementación el mapa reciba el int del nivel que tiene q crear
+	public Mapa(GUI gui, int width, int height){ //habría que modificar esto para que según nuestra implementación el mapa reciba el int del nivel que tiene q crear
+		this.gui = gui;
 		this.width = width;
 		this.height = height;
 		this.mapa = new Celda[width][height];
@@ -49,5 +54,9 @@ public class Mapa {
 		aux[0] = x;
 		aux[1] = y;						
 		return aux;
+	}
+	
+	public void remove(Entidad e) {
+		gui.remove(e.getGrafico());
 	}
 }

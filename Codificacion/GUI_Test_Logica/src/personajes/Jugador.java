@@ -10,13 +10,12 @@ public class Jugador extends Personajes{
 	public Jugador(Celda pos) {
 		super(pos);
 		this.grafico = new JugadorGrafico(velocidad, this.pos.getX(), this.pos.getY());
-		collider=new ColliderJugador();
+		collider = new ColliderJugador();
 		hp=100;
 		fuerza_kamikaze=50;
 	}
 
 	public void mover(int dir){
-		this.pos.removeEntidad(this);
 		switch (dir){
 		case KeyEvent.VK_UP : //Arriba
 			super.mover(KeyEvent.VK_UP);
@@ -25,10 +24,8 @@ public class Jugador extends Personajes{
 			super.mover(KeyEvent.VK_DOWN);
 			break;
 		}
-		this.pos.addEntidad(this);
 	}
 	
-	//añadir metodo para disparar
 	public Disparo disparar() {
 		Celda c = pos.getVecina(KeyEvent.VK_RIGHT);
 		Disparo d =new DisparoJugador(c, 100, 5);

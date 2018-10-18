@@ -22,7 +22,7 @@ public class ColliderJugador implements Collider {
 	@Override
 	public void collideWith(DisparoJugador d) {
 		// TODO Auto-generated method stub
-		d.eliminar();
+		d.morir();
 	}
 
 	@Override

@@ -10,6 +10,7 @@ public abstract class Entidad {
 	protected Celda pos;
 	protected EntidadGrafica grafico;
 	protected Collider collider;
+	protected int velocidad;
 	protected int hp; //Vida de la entidad.
 	//añadir arma
 	
@@ -40,7 +41,17 @@ public abstract class Entidad {
 		
 	}
 	
-	public void eliminar(){ //Cuando elimine una entidad, deberia ocurrir algo.
+	public void morir(){ //Cuando elimine una entidad, deberia ocurrir algo.
+		pos.eliminarEntidad(this);
 	}
-
+	
+	public void mover(int dir){
+		this.pos.removeEntidad(this);
+		Celda next = this.pos.getVecina(dir);
+		if(next != null){
+			this.pos = next;
+			this.grafico.mover(dir);
+		}
+		pos.addEntidad(this);
+	}
 }

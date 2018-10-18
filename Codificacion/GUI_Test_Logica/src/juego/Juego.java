@@ -16,10 +16,9 @@ public class Juego {
 	private GUI gui;
 	private Score score;
 	private ArrayList<Disparo> disparos;
-	//añadir score, hay que crear la clase y relacionarla con la GUI haciendo un metodo para modificarlo y un campo para mostrarlo
 	
 	public Juego(GUI gui){
-		this.mapa = new Mapa(gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
+		this.mapa = new Mapa(gui, gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
 		disparos= new ArrayList<Disparo>();
@@ -40,29 +39,29 @@ public class Juego {
 			this.gui.add(m.getGrafico());
 		}
 		gui.add(score);
-		gui.agregarFondo();
 	}
 	
 	public void removeEnemies() {
 		for(int i = 0; i < malos.length; i++) {
 			if(malos[i]!=null) {
-				/*gui.remove(malos[i].getGrafico());
-				malos[i].getPos().removeEntidad(malos[i]);  
-				malos[i] = null;
-				score.increase(10); //max 99999*/
-				malos[i].mover(malos[i].getPos().RIGHT);
+				malos[i].morir();
 			}
 		}
 	}
 	
-	public void mover(){
+	public void moverEnemigos(){
 		for(Malo en : malos){
 				en.mover();
-				disparoEnemigo(en);
+				Disparo d = en.disparar();
+				gui.addDisparo(d);
 		}
-		for(int i=0;i<disparos.size();i++){
-			Disparo d= (Disparo) this.disparos.get(i);
+	}
+	
+	public void moverDisparos() {
+		for (Disparo d : disparos) {
 			d.mover();
+			gui.getContentPane().repaint();
+			gui.getContentPane().revalidate();
 		}
 	}
 	
@@ -70,22 +69,9 @@ public class Juego {
 		jugador.mover(dir);
 	}
 	
-	public void moverd(int dir){
-		
-	}
-	
 	public void disparoJugador(){
 		Disparo d = jugador.disparar();
 		disparos.add(d);
-		this.gui.getContentPane().add(d.getGrafico());
-		gui.getContentPane().repaint();
-		gui.getContentPane().revalidate();
-	}
-	public void disparoEnemigo(Malo e) {
-		Disparo d = e.disparar();
-		disparos.add(d);
-		this.gui.getContentPane().add(d.getGrafico());
-		gui.getContentPane().repaint();
-		gui.getContentPane().revalidate();
+		gui.addDisparo(d);
 	}
 }

@@ -13,7 +13,7 @@ public class ColliderDisparoJugador implements Collider {
 	}
 
 	public void collideWith(Malo m) {
-		m.eliminar();
+		m.morir();
 		System.out.println("Matar enemigo");
 	}
 	public void collideWith(DisparoJugador d) {

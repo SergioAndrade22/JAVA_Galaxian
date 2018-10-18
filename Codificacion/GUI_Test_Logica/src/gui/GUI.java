@@ -1,14 +1,12 @@
 package gui;
 
 import java.awt.EventQueue;
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import juego.Juego;
+import personajes.Disparo;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -16,8 +14,9 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Juego j;
-	private ContadorTiempo tiempo;
+	private ContadorTiempoEnemigos tiempoEnemigos;
 	private ContadorTiempoJugador tiempoJugador;
+	private ContadorTiempoDisparos tiempoDisparos;
 	private boolean lock = false;
 	private int direction = -1;
 	
@@ -50,9 +49,11 @@ public class GUI extends JFrame {
 			public void keyPressed(KeyEvent arg0) {
 				switch(arg0.getKeyCode()) {
 					case KeyEvent.VK_D:
-						tiempo.stop();
+						tiempoEnemigos.stop();
 						j.removeEnemies();
 						contentPane.repaint();
+						contentPane.revalidate();
+						contentPane.updateUI();
 						break;
 					case KeyEvent.VK_SPACE :
 						j.disparoJugador();
@@ -66,7 +67,6 @@ public class GUI extends JFrame {
 				}
 			}
 		});
-		System.out.println("x");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0,1024,720);
@@ -74,12 +74,13 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		//agregarFondo();
 		j = new Juego(this);
-		tiempo = new ContadorTiempo(j);
+		tiempoEnemigos = new ContadorTiempoEnemigos(j);
 		tiempoJugador = new ContadorTiempoJugador(j, this);
-		tiempo.start();
+		tiempoDisparos = new ContadorTiempoDisparos(j);
+		tiempoEnemigos.start();
 		tiempoJugador.start();
+		tiempoDisparos.start();
 	}
 	
 	protected void mover(KeyEvent key){
@@ -100,16 +101,10 @@ public class GUI extends JFrame {
 	public int getDirection(){
 		return this.direction;
 	}
-	public void agregarFondo() {
-		/*JLabel f=new JLabel();
-		ImageIcon i=new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
-		Image img=i.getImage();
-		Image temp=img.getScaledInstance(500,600,Image.SCALE_SMOOTH);
-		i=new ImageIcon(temp);
-		f.setBounds(0,0,1124,820);
-		f.setIcon(i);
-		this.getContentPane().add(f);
-		this.getContentPane().revalidate();
-		this.getContentPane().repaint();*/
+	
+	public void addDisparo(Disparo d) {
+		getContentPane().add(d.getGrafico());
+		getContentPane().repaint();
+		getContentPane().revalidate();
 	}
 }

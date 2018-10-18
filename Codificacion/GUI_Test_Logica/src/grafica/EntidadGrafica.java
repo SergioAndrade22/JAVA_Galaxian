@@ -16,7 +16,7 @@ public abstract class EntidadGrafica {
 	protected EntidadGrafica(int velocidad, int x, int y) {
 		this.pos = new Point(x * this.width, y * this.height);
 		this.velocidad = velocidad;
-		this.image = new Icon[4];
+		this.image = new Icon[1];
 	}
 	
 	public int getVelocidad() {
@@ -27,28 +27,8 @@ public abstract class EntidadGrafica {
 		return pos;
 	}
 	
-	protected void changeIcon(int dir){
-		int direccion = -1;
-		switch (dir){
-			case Celda.UP : 
-				direccion = 0;
-				break;
-			case Celda.DOWN : 
-				direccion = 1;
-				break;
-			case Celda.LEFT : 
-				direccion = 2;
-				break;
-			case Celda.RIGHT : 
-				direccion = 3;
-				break;
-		}
-		this.grafico.setIcon(this.image[direccion]);
-	}
-	
 	public void mover(int dir){
 		if(this.grafico != null){
-			this.changeIcon(dir);
 			try {
 				switch (dir){
 					case Celda.UP : // Arriba

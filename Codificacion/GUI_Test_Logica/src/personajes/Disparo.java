@@ -3,21 +3,16 @@ package personajes;
 import grafica.DisparoGrafico;
 import mapa.Celda;
 
-public abstract class Disparo extends EntidadMovimiento{
+public abstract class Disparo extends Entidad{
+	protected int dir;
 	
 	public Disparo(Celda c, int velocidad, int fuerza){
 		super(c,velocidad);
-		fuerza_kamikaze=5;
 		this.grafico = new DisparoGrafico(velocidad, this.pos.getX(), this.pos.getY());
+		dir = -1;
 	}
 	
 	public void mover() {
-		int direccion;
-		direccion = Celda.RIGHT;
-		
-		this.pos.removeEntidad(this);
-		super.mover(direccion);
-		this.pos.addEntidad(this);
-		
+		super.mover(dir);
 	}
 }
