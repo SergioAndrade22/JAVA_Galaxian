@@ -1,13 +1,17 @@
 package personajes;
 import mapa.*;
 
-public abstract class Personajes extends Entidad {
+public abstract class Personaje extends Entidad {
 	
 	protected int fuerza_kamikaze;
 	
-	public Personajes(Celda c){
+	public Personaje(Celda c){
 		super(c);
 		velocidad=10;
+	}
+	
+	public Personaje() {
+		velocidad = 10;
 	}
 
 	public abstract Disparo disparar();

@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 
 import Colliders.*;
 import grafica.EntidadGrafica;
+import grafica.MaloGrafico;
 import mapa.Celda;
 
 public abstract class Entidad {
@@ -11,8 +12,11 @@ public abstract class Entidad {
 	protected EntidadGrafica grafico;
 	protected Collider collider;
 	protected int velocidad;
-	protected int hp; //Vida de la entidad.
-	//añadir arma
+	protected int hp;
+	
+	protected Entidad() {
+		this.grafico = null;
+	}
 	
 	protected Entidad(Celda pos) {
 		this.pos = pos;
@@ -34,14 +38,11 @@ public abstract class Entidad {
 		return this.grafico.getGrafico();
 	}
 	
-	public void colision(Entidad e) {
-		
-	}
-	public void aceptar(Collider c) {
-		
-	}
+	public abstract void colision(Entidad e); 
 	
-	public void morir(){ //Cuando elimine una entidad, deberia ocurrir algo.
+	public abstract void aceptar(Collider c);
+	
+	public void morir(){
 		pos.eliminarEntidad(this);
 	}
 	
@@ -53,5 +54,10 @@ public abstract class Entidad {
 			this.grafico.mover(dir);
 		}
 		pos.addEntidad(this);
+	}
+	
+	public void setPos(Celda c) {
+		pos = c;
+		grafico = new MaloGrafico(velocidad, this.pos.getX(), this.pos.getY());
 	}
 }

@@ -48,13 +48,6 @@ public class GUI extends JFrame {
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent arg0) {
 				switch(arg0.getKeyCode()) {
-					case KeyEvent.VK_D:
-						tiempoEnemigos.stop();
-						j.removeEnemies();
-						contentPane.repaint();
-						contentPane.revalidate();
-						contentPane.updateUI();
-						break;
 					case KeyEvent.VK_SPACE :
 						j.disparoJugador();
 						contentPane.repaint();

@@ -7,7 +7,13 @@ import Colliders.*;
 import grafica.MaloGrafico;
 import mapa.Celda;
 
-public class Malo extends Personajes{
+public class Malo extends Personaje{
+
+	public Malo() {
+		collider=new ColliderMalo();
+		hp=50;
+		fuerza_kamikaze=50;
+	}
 	
 	public Malo(Celda pos) {
 		super(pos);
@@ -36,9 +42,8 @@ public class Malo extends Personajes{
 	}
 	
 	public Disparo disparar() {
-		Celda c = pos.getVecina(KeyEvent.VK_RIGHT);
-		Disparo d = new DisparoEnemigo(c, 100, 5);
-		c.addEntidad(d);
+		Disparo d = new DisparoEnemigo(pos, 100, 5);
+		pos.addEntidad(d);
 		return d;
 		
 	}

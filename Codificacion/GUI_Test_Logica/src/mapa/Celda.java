@@ -50,7 +50,7 @@ public class Celda {
 					return this.mapa.getCelda(x, y);
 				}
 			case DOWN :
-				if (++y <= mapa.getHeight())
+				if (++y < mapa.getHeight())
 					return this.mapa.getCelda(x, y);
 				else {
 					y = 0;
@@ -64,7 +64,12 @@ public class Celda {
 					return this.mapa.getCelda(x, y);
 				}
 			case RIGHT :
-				return this.mapa.getCelda(x+1, y);
+				if (++x < mapa.getWidth())
+					return this.mapa.getCelda(x, y);
+				else {
+					x = mapa.getWidth()-1;
+					return this.mapa.getCelda(x, y);
+				}
 		}
 		return null;
 	}

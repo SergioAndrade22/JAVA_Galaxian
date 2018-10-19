@@ -5,7 +5,7 @@ import grafica.JugadorGrafico;
 import mapa.Celda;
 import Colliders.*;
 
-public class Jugador extends Personajes{
+public class Jugador extends Personaje{
 		
 	public Jugador(Celda pos) {
 		super(pos);

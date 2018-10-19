@@ -1,7 +1,10 @@
 package mapa;
 
+import java.util.ArrayList;
+import java.util.Random;
 import gui.GUI;
 import personajes.Entidad;
+import personajes.Malo;
 
 public class Mapa {
 	private Celda mapa[][];
@@ -22,9 +25,6 @@ public class Mapa {
 	}
 	
 	public Celda getCelda(int x, int y){
-		int[] aux = checkDirections(x, y);
-		x = aux[0];
-		y = aux[1];
 		return this.mapa[x][y];
 	}
 	
@@ -40,23 +40,19 @@ public class Mapa {
 		return height;
 	}
 	
-	//metodo auxiliar q verifica el valor correcto de las coordenadas
-	private int[] checkDirections(int x, int y){
-		if (x >= mapa.length)
-			x = this.width-1;
-		if (x < 0)
-			x = this.width-1;
-		if (y >= mapa[0].length)
-			y = 0;
-		if (y < 0)
-			y = this.height-1;
-		int[] aux = new int[2];
-		aux[0] = x;
-		aux[1] = y;						
-		return aux;
-	}
-	
 	public void remove(Entidad e) {
 		gui.remove(e.getGrafico());
+	}
+	
+	public void place(ArrayList<Malo> l) {
+		Random r = new Random();
+		for (Entidad m : l) {
+			int x = r.nextInt(getWidth());
+			int y = r.nextInt(getHeight());
+			Celda c = getCelda(x, y);
+			m.setPos(c);
+			c.addEntidad(m);
+			gui.add(m.getGrafico());
+		}
 	}
 }
