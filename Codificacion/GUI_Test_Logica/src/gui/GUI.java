@@ -1,7 +1,10 @@
 package gui;
 
 import java.awt.EventQueue;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import juego.Juego;
@@ -30,7 +33,7 @@ public class GUI extends JFrame {
 					GUI frame = new GUI();
 					frame.setVisible(true);
 					frame.setBounds(0, 0,1024,720);
-					frame.setSize(1124, 820);
+					frame.setSize(1024, 720);
 					frame.setTitle("Shoot the Zombies");
 					frame.setResizable(false);
 					frame.setLocationRelativeTo(null);
@@ -96,7 +99,7 @@ public class GUI extends JFrame {
 	}
 	
 	public void addDisparo(Disparo d) {
-		getContentPane().add(d.getGrafico());
+		contentPane.add(d.getGrafico());
 	}
 	
 	public void stopDisparos() {
@@ -105,5 +108,13 @@ public class GUI extends JFrame {
 	
 	public void restartDisparos() {
 		tiempoDisparos.restart();
+	}
+	
+	public void agregarFondo() {
+		JLabel f = new JLabel();
+		ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
+		f.setBounds(0, 0, 1200, 800);
+		f.setIcon(i);
+		contentPane.add(f);
 	}
 }
