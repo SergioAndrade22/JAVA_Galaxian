@@ -1,7 +1,6 @@
 package juego;
 
 import java.util.ArrayList;
-import java.util.Random;
 import gui.GUI;
 import mapa.Celda;
 import mapa.Mapa;
@@ -23,7 +22,7 @@ public class Juego {
 		this.mapa = new Mapa(gui, gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
-		disparos= new ArrayList<Disparo>();
+		disparos = new ArrayList<Disparo>();
 		this.malos = new ArrayList<Malo>();
 		score = new Score();
 		nivel = new NivelUnico();
@@ -45,7 +44,7 @@ public class Juego {
 	}
 	
 	public void moverDisparos() {
-		for (Disparo d : disparos)
+		for (Disparo d : disparos) 
 			d.mover();
 	}
 	

@@ -9,13 +9,10 @@ public class Celda {
 	public static final int RIGHT = KeyEvent.VK_RIGHT;
 	public static final int UP = KeyEvent.VK_UP;
 	public static final int DOWN = KeyEvent.VK_DOWN;
-	//private ArrayList<Malo> malos; COMENTO POR LAS DUDIS
 	private ArrayList<Entidad> entidades;
-	//private Jugador jugador;
 	private Mapa mapa;
 	private int x;
 	private int y;
-	//añadir una coleccion para los obstaculos
 	
 	public Celda(Mapa mapa, int x, int y){
 		entidades=new ArrayList<Entidad>();
@@ -80,5 +77,13 @@ public class Celda {
 
 	public int getY() {
 		return y;
+	}
+	
+	public boolean isEndX() {
+		return mapa.getCelda(mapa.getWidth()-1, y) == this;
+	}
+	
+	public boolean isStartX() {
+		return mapa.getCelda(0, y) == this;
 	}
 }
