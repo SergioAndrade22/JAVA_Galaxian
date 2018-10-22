@@ -70,6 +70,7 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		agregarObstaculo();
 		j = new Juego(this);
 		tiempoJugador = new ContadorTiempoJugador(j, this);
 		tiempoEnemigos = new ContadorTiempoEnemigos(j);
@@ -77,6 +78,7 @@ public class GUI extends JFrame {
 		tiempoJugador.start();
 		tiempoEnemigos.start();
 		tiempoDisparos.start();
+		
 	}
 	
 	protected void mover(KeyEvent key){
@@ -114,6 +116,13 @@ public class GUI extends JFrame {
 		JLabel f = new JLabel();
 		ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
 		f.setBounds(0, 0, 1200, 800);
+		f.setIcon(i);
+		contentPane.add(f);
+	}
+	public void agregarObstaculo() {
+		JLabel f=new JLabel();
+		ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/Obstaculos.png"));
+		f.setBounds(78, -2, 50,50);
 		f.setIcon(i);
 		contentPane.add(f);
 	}
