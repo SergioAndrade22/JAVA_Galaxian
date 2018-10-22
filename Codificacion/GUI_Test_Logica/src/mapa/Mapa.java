@@ -1,7 +1,6 @@
 package mapa;
 
 import java.util.ArrayList;
-import java.util.Random;
 import gui.GUI;
 import personajes.Entidad;
 import personajes.Malo;
@@ -45,11 +44,10 @@ public class Mapa {
 	}
 	
 	public void place(ArrayList<Malo> l) {
-		Random r = new Random();
+		int i = 4;
+		int j = this.getWidth()-1;
 		for (Entidad m : l) {
-			int x = r.nextInt(getWidth());
-			int y = r.nextInt(getHeight());
-			Celda c = getCelda(x, y);
+			Celda c = getCelda(j, i++);
 			m.setPos(c);
 			c.addEntidad(m);
 			gui.add(m.getGrafico());

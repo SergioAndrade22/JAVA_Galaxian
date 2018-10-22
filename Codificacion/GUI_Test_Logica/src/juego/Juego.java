@@ -37,15 +37,22 @@ public class Juego {
 	public void moverEnemigos(){
 		for(Malo en : malos){
 				en.mover();
+				/*
+				gui.stopDisparos();
 				Disparo d = en.disparar();
 				disparos.add(d);
 				gui.addDisparo(d);
+				gui.restartDisparos();
+				*/
 		}
 	}
 	
 	public void moverDisparos() {
-		for (Disparo d : disparos) 
+		for (Disparo d : disparos) {
+			gui.stopDisparos();
 			d.mover();
+			gui.restartDisparos();
+		}
 	}
 	
 	public void mover(int dir){
@@ -54,7 +61,9 @@ public class Juego {
 	
 	public void disparoJugador(){
 		Disparo d = jugador.disparar();
+		gui.stopDisparos();
 		disparos.add(d);
 		gui.addDisparo(d);
+		gui.restartDisparos();
 	}
 }
