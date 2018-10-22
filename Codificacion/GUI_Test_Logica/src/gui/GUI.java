@@ -68,11 +68,11 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		j = new Juego(this);
-		tiempoEnemigos = new ContadorTiempoEnemigos(j);
 		tiempoJugador = new ContadorTiempoJugador(j, this);
+		tiempoEnemigos = new ContadorTiempoEnemigos(j);
 		tiempoDisparos = new ContadorTiempoDisparos(j);
-		tiempoEnemigos.start();
 		tiempoJugador.start();
+		tiempoEnemigos.start();
 		tiempoDisparos.start();
 	}
 	
@@ -97,7 +97,13 @@ public class GUI extends JFrame {
 	
 	public void addDisparo(Disparo d) {
 		getContentPane().add(d.getGrafico());
-		getContentPane().repaint();
-		getContentPane().revalidate();
+	}
+	
+	public void stopDisparos() {
+		tiempoDisparos.pause();	
+	}
+	
+	public void restartDisparos() {
+		tiempoDisparos.restart();
 	}
 }
