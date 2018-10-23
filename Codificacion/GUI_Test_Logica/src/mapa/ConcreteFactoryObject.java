@@ -1,15 +1,15 @@
 package mapa;
 
 import java.util.ArrayList;
-
-import Objetos.Objeto;
+import Objetos.Barricada;
 
 public class ConcreteFactoryObject extends AbstractFactoryObject {
 
-	@Override
-	public ArrayList<Objeto> create(int cant) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Barricada> create(int cant) {
+		ArrayList<Barricada> toRet = new ArrayList<Barricada>();
+		for (int i = 0; i < cant; i++)
+			toRet.add(new Barricada());
+		return toRet;
 	}
 
 }

@@ -4,6 +4,10 @@ import mapa.*;
 
 public abstract class Objeto extends Entidad{
 
+	public Objeto() {
+		hp = 100;
+	}
+	
 	public Objeto(Celda c){
 		super(c);
 	}

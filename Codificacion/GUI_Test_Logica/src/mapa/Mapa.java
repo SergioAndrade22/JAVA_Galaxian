@@ -1,6 +1,9 @@
 package mapa;
 
 import java.util.ArrayList;
+import java.util.Random;
+
+import Objetos.Barricada;
 import gui.GUI;
 import personajes.Entidad;
 import personajes.Malo;
@@ -51,6 +54,21 @@ public class Mapa {
 			m.setPos(c);
 			c.addEntidad(m);
 			gui.add(m.getGrafico());
+		}
+	}
+	
+	public void placeB(ArrayList<Barricada> l) {
+		Random r = new Random();
+		for (Barricada b : l) {
+			int x = r.nextInt(getWidth());
+			int y = r.nextInt(getHeight());
+			if (x == 0)
+				x++;
+			Celda c = getCelda(x, y);
+			b.setPos(c);
+			c.addEntidad(b);
+			b.setGrafico();
+			gui.add(b.getGrafico());
 		}
 	}
 }

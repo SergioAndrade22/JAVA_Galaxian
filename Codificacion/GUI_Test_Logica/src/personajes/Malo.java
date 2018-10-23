@@ -1,8 +1,6 @@
 package personajes;
 
-import java.awt.event.KeyEvent;
 import java.util.Random;
-
 import Colliders.*;
 import grafica.MaloGrafico;
 import mapa.Celda;
@@ -10,6 +8,7 @@ import mapa.Celda;
 public class Malo extends Personaje{
 
 	public Malo() {
+		super();
 		collider=new ColliderMalo();
 		hp=50;
 		fuerza_kamikaze=50;

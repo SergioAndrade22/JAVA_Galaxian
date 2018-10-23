@@ -1,6 +1,8 @@
 package juego;
 
 import java.util.ArrayList;
+
+import Objetos.Barricada;
 import gui.GUI;
 import mapa.Celda;
 import mapa.Mapa;
@@ -12,6 +14,7 @@ public class Juego {
 	private Jugador jugador;
 	private ArrayList<Malo> malos;
 	private ArrayList<Disparo> disparos;
+	private ArrayList<Barricada> obst;
 	private Mapa mapa;
 	private int tamanioCelda = 50;
 	private GUI gui;
@@ -19,16 +22,20 @@ public class Juego {
 	private Nivel nivel;
 	
 	public Juego(GUI gui){
-		this.mapa = new Mapa(gui, gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
+		mapa = new Mapa(gui, gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
 		disparos = new ArrayList<Disparo>();
-		this.malos = new ArrayList<Malo>();
+		malos = new ArrayList<Malo>();
+		obst = new ArrayList<Barricada>();
 		score = new Score();
 		nivel = new NivelUnico();
 		nivel.createEnemies();
 		malos = nivel.getEnemies();
+		nivel.createObjects();
+		obst = nivel.getObjects();
 		mapa.place(malos);
+		mapa.placeB(obst);
 		this.gui = gui;
 		this.gui.add(jugador.getGrafico());
 		gui.add(score);

@@ -1,13 +1,19 @@
 package Objetos;
 
 import Colliders.Collider;
+import grafica.BarricadaGrafica;
 import mapa.Celda;
 import personajes.Entidad;
 
 public class Barricada extends Objeto{
 	
+	public Barricada() {
+		
+	}
+	
 	public Barricada(Celda c){
 		super(c);
+		this.grafico = new BarricadaGrafica(velocidad, c.getX(), c.getY());
 	}
 	
 	public Barricada(Celda c, int hp){
@@ -26,4 +32,7 @@ public class Barricada extends Objeto{
 		
 	}
 
+	public void setGrafico() {
+		this.grafico = new BarricadaGrafica(velocidad, pos.getX(), pos.getY());		
+	}
 }
