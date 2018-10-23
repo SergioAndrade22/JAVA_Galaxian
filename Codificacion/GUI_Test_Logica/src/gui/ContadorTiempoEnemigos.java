@@ -10,7 +10,14 @@ public class ContadorTiempoEnemigos extends Thread {
 	}
 
 	public void run() {
-		while(true)
-			juego.moverEnemigos();
+		while(true) {
+			try {
+				juego.moverEnemigos();
+				Thread.sleep((long)100);
+			}
+			catch (InterruptedException ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 }
