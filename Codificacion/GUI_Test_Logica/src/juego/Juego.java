@@ -1,6 +1,8 @@
 package juego;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import Objetos.Barricada;
 import gui.GUI;
@@ -13,7 +15,7 @@ import personajes.*;
 public class Juego {
 	private Jugador jugador;
 	private ArrayList<Malo> malos;
-	private ArrayList<Disparo> disparos;
+	private List<Disparo> disparos;
 	private ArrayList<Barricada> obst;
 	private Mapa mapa;
 	private int tamanioCelda = 50;
@@ -22,10 +24,10 @@ public class Juego {
 	private Nivel nivel;
 	
 	public Juego(GUI gui){
-		mapa = new Mapa(gui, gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
+		mapa = new Mapa(this, gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
-		disparos = new ArrayList<Disparo>();
+		disparos = Collections.synchronizedList(new ArrayList<Disparo>());
 		malos = new ArrayList<Malo>();
 		obst = new ArrayList<Barricada>();
 		score = new Score();
@@ -34,10 +36,14 @@ public class Juego {
 		malos = nivel.getEnemies();
 		nivel.createObjects();
 		obst = nivel.getObjects();
-		mapa.place(malos);
-		mapa.placeB(obst);
 		this.gui = gui;
 		this.gui.add(jugador.getGrafico());
+		mapa.place(malos);
+		for (Malo m : malos)
+			this.gui.add(m.getGrafico());
+		mapa.placeB(obst);
+		for (Barricada b : obst)
+			this.gui.add(b.getGrafico());
 		gui.add(score);
 	}
 	
@@ -45,20 +51,19 @@ public class Juego {
 		for(Malo en : malos){
 				en.mover();
 				/*
-				gui.stopDisparos();
-				Disparo d = en.disparar();
-				disparos.add(d);
-				gui.addDisparo(d);
-				gui.restartDisparos();
+				synchronized (disparos) {
+					Disparo d = en.disparar();
+					disparos.add(d);
+					gui.addDisparo(d);
+				}
 				*/
 		}
 	}
 	
 	public void moverDisparos() {
-		for (Disparo d : disparos) {
-			gui.stopDisparos();
-			d.mover();
-			gui.restartDisparos();
+		synchronized(disparos) {
+			for (Disparo d : disparos)
+				d.mover();
 		}
 	}
 	
@@ -66,11 +71,18 @@ public class Juego {
 		jugador.mover(dir);
 	}
 	
+	public void removerEntidad(Entidad e) {
+		synchronized (disparos) {
+			disparos.remove(e);
+			gui.remover(e.getGrafico());
+		}
+	}
+	
 	public void disparoJugador(){
-		Disparo d = jugador.disparar();
-		gui.stopDisparos();
-		disparos.add(d);
-		gui.addDisparo(d);
-		gui.restartDisparos();
+		synchronized(disparos) {
+			Disparo d = jugador.disparar();
+			disparos.add(d);
+			gui.addDisparo(d);
+		}
 	}
 }

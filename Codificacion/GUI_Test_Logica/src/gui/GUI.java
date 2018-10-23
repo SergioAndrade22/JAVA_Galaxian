@@ -21,6 +21,7 @@ public class GUI extends JFrame {
 	private ContadorTiempoDisparos tiempoDisparos;
 	private boolean lock = false;
 	private int direction = -1;
+	private JLabel f;
 	
 	/**
 	 * Launch the application.
@@ -64,7 +65,7 @@ public class GUI extends JFrame {
 		});
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0,1024,720);
+		setBounds(0, 0, 1000, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -76,7 +77,7 @@ public class GUI extends JFrame {
 		tiempoJugador.start();
 		tiempoEnemigos.start();
 		tiempoDisparos.start();
-		
+		agregarFondo();
 	}
 	
 	protected void mover(KeyEvent key){
@@ -99,19 +100,15 @@ public class GUI extends JFrame {
 	}
 	
 	public void addDisparo(Disparo d) {
-		contentPane.add(d.getGrafico());
+		f.add(d.getGrafico());
 	}
 	
-	public void stopDisparos() {
-		tiempoDisparos.pause();	
-	}
-	
-	public void restartDisparos() {
-		tiempoDisparos.restart();
+	public void remover(JLabel l) {
+		f.remove(l);
 	}
 	
 	public void agregarFondo() {
-		JLabel f = new JLabel();
+		f = new JLabel();
 		ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
 		f.setBounds(0, 0, 1200, 800);
 		f.setIcon(i);

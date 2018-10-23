@@ -5,17 +5,18 @@ import java.util.Random;
 
 import Objetos.Barricada;
 import gui.GUI;
+import juego.Juego;
 import personajes.Entidad;
 import personajes.Malo;
 
 public class Mapa {
 	private Celda mapa[][];
 	private int width, height;
-	private GUI gui;
+	private Juego juego;
 	//añadir un atributo FileOpener para poder abrir el archivo y leerlo, hay que ver bien como hacer funcionar esto
 
-	public Mapa(GUI gui, int width, int height){ //habría que modificar esto para que según nuestra implementación el mapa reciba el int del nivel que tiene q crear
-		this.gui = gui;
+	public Mapa(Juego juego, int width, int height){ //habría que modificar esto para que según nuestra implementación el mapa reciba el int del nivel que tiene q crear
+		this.juego = juego;
 		this.width = width;
 		this.height = height;
 		this.mapa = new Celda[width][height];
@@ -43,7 +44,7 @@ public class Mapa {
 	}
 	
 	public void remove(Entidad e) {
-		gui.remove(e.getGrafico());
+		juego.removerEntidad(e);
 	}
 	
 	public void place(ArrayList<Malo> l) {
@@ -53,7 +54,6 @@ public class Mapa {
 			Celda c = getCelda(j, i++);
 			m.setPos(c);
 			c.addEntidad(m);
-			gui.add(m.getGrafico());
 		}
 	}
 	
@@ -68,7 +68,6 @@ public class Mapa {
 			b.setPos(c);
 			c.addEntidad(b);
 			b.setGrafico();
-			gui.add(b.getGrafico());
 		}
 	}
 }

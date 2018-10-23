@@ -12,8 +12,7 @@ public class DisparoEnemigo extends Disparo{
 	}
 	
 	public void colision(Entidad e) {
-		e.aceptar(collider);
-		
+		e.aceptar(collider);	
 	}
 	
 	public void aceptar(Collider c) {
