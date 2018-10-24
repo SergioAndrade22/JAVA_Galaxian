@@ -1,9 +1,8 @@
 package juego;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
+import java.util.concurrent.CopyOnWriteArrayList;
 import Objetos.Barricada;
 import gui.GUI;
 import mapa.Celda;
@@ -27,7 +26,7 @@ public class Juego {
 		mapa = new Mapa(this, gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
-		disparos = Collections.synchronizedList(new ArrayList<Disparo>());
+		disparos = new CopyOnWriteArrayList<Disparo>();
 		malos = new ArrayList<Malo>();
 		obst = new ArrayList<Barricada>();
 		score = new Score();
@@ -37,14 +36,14 @@ public class Juego {
 		nivel.createObjects();
 		obst = nivel.getObjects();
 		this.gui = gui;
-		this.gui.add(jugador.getGrafico());
+		this.gui.addItem(jugador.getGrafico());
 		mapa.place(malos);
 		for (Malo m : malos)
-			this.gui.add(m.getGrafico());
+			this.gui.addItem(m.getGrafico());
 		mapa.placeB(obst);
 		for (Barricada b : obst)
-			this.gui.add(b.getGrafico());
-		gui.add(score);
+			this.gui.addItem(b.getGrafico());
+		this.gui.addItem(score);
 	}
 	
 	public void moverEnemigos(){
@@ -74,6 +73,7 @@ public class Juego {
 	public void removerEntidad(Entidad e) {
 		synchronized (disparos) {
 			disparos.remove(e);
+			System.out.println(disparos.size());
 			gui.remover(e.getGrafico());
 		}
 	}
@@ -82,7 +82,7 @@ public class Juego {
 		synchronized(disparos) {
 			Disparo d = jugador.disparar();
 			disparos.add(d);
-			gui.addDisparo(d);
+			gui.addItem(d.getGrafico());
 		}
 	}
 }

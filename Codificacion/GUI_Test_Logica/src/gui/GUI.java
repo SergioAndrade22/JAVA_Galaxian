@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import juego.Juego;
+import juego.Score;
 import personajes.Disparo;
 
 import java.awt.event.KeyAdapter;
@@ -32,8 +33,8 @@ public class GUI extends JFrame {
 				try {
 					GUI frame = new GUI();
 					frame.setVisible(true);
-					frame.setBounds(0, 0,1024,720);
-					frame.setSize(1024, 720);
+					frame.setBounds(0, 0, 1000, 650);
+					frame.setSize(1000, 650);					
 					frame.setTitle("Shoot the Zombies");
 					frame.setResizable(false);
 					frame.setLocationRelativeTo(null);
@@ -65,11 +66,12 @@ public class GUI extends JFrame {
 		});
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1000, 700);
+		setBounds(0, 0, 1000, 650);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		agregarFondo();
 		j = new Juego(this);
 		tiempoJugador = new ContadorTiempoJugador(j, this);
 		tiempoEnemigos = new ContadorTiempoEnemigos(j);
@@ -77,7 +79,6 @@ public class GUI extends JFrame {
 		tiempoJugador.start();
 		tiempoEnemigos.start();
 		tiempoDisparos.start();
-		agregarFondo();
 	}
 	
 	protected void mover(KeyEvent key){
@@ -99,8 +100,8 @@ public class GUI extends JFrame {
 		return this.direction;
 	}
 	
-	public void addDisparo(Disparo d) {
-		f.add(d.getGrafico());
+	public void addItem(JLabel s) {
+		f.add(s);
 	}
 	
 	public void remover(JLabel l) {
@@ -110,7 +111,7 @@ public class GUI extends JFrame {
 	public void agregarFondo() {
 		f = new JLabel();
 		ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
-		f.setBounds(0, 0, 1200, 800);
+		f.setBounds(0, 0, 1000, 650);
 		f.setIcon(i);
 		contentPane.add(f);
 	}
