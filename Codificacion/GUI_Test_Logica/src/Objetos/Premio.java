@@ -1,5 +1,8 @@
 package Objetos;
 
+import Colliders.Collider;
+import Colliders.ColliderPremio;
+import grafica.BonusGrafico;
 import mapa.Celda;
 import personajes.*;
 
@@ -9,10 +12,22 @@ public abstract class Premio extends Objeto { //Sirve para diferenciar de los ob
 	
 	public Premio(Celda c){
 		super(c);
+		this.grafico=new BonusGrafico(velocidad,c.getX(),c.getY());
+		collider=new ColliderPremio();
 	}
 	
 	public Premio(Celda c, int hp){
 		super(c,hp);
 	}
 
+	public void colision(Entidad e) {
+		e.aceptar(collider);
+		
+	}
+
+	@Override
+	public void aceptar(Collider c) {
+		c.collideWith(this);
+		
+	}
 }

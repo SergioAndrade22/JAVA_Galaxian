@@ -27,8 +27,9 @@ public class Celda {
 		if(entidades.size()>1)
 			for(Entidad a:entidades) {
 				a.colision(e);
+				e.colision(a);
 			}
-			*/
+	*/	
 	}
 	public void removeEntidad(Entidad e) {
 		entidades.remove(e);

@@ -2,28 +2,39 @@ package Colliders;
 
 import Objetos.Obstaculo;
 import Objetos.Premio;
-import personajes.*;
+import personajes.DisparoEnemigo;
+import personajes.DisparoJugador;
+import personajes.Jugador;
+import personajes.Malo;
 
-public class ColliderJugador implements Collider {
+public class ColliderObstaculo implements Collider {
 
-	public ColliderJugador() {
+	public ColliderObstaculo() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void collideWith(Jugador j) {}
-
-	@Override
-	public void collideWith(Malo m) {
-		m.morir();
+	public void collideWith(Jugador j) {
+		
+		
 	}
 
 	@Override
-	public void collideWith(DisparoJugador d) {}
+	public void collideWith(Malo m) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void collideWith(DisparoJugador d) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public void collideWith(DisparoEnemigo de) {
-		de.morir();		
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

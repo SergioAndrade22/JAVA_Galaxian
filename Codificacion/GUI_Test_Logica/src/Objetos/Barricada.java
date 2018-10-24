@@ -22,7 +22,6 @@ public class Barricada extends Objeto{
 
 	@Override
 	public void colision(Entidad e) {
-		// TODO Auto-generated method stub
 		
 	}
 

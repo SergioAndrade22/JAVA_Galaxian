@@ -44,11 +44,13 @@ public class Juego {
 		for (Barricada b : obst)
 			this.gui.addItem(b.getGrafico());
 		this.gui.addItem(score);
+		
 	}
 	
 	public void moverEnemigos(){
+		int y=jugador.getPos().getY();
 		for(Malo en : malos){
-				en.mover();
+				en.mover(y);
 				/*
 				synchronized (disparos) {
 					Disparo d = en.disparar();
@@ -84,5 +86,5 @@ public class Juego {
 			disparos.add(d);
 			gui.addItem(d.getGrafico());
 		}
-	}
+	}	
 }

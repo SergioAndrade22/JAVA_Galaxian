@@ -43,5 +43,7 @@ public class Jugador extends Personaje{
 
 	public void disminuirHP(int i) {
 		hp-=i;		
+		if(hp==0)
+			System.out.println("Fin de Juego. Perdiste");
 	}
 }

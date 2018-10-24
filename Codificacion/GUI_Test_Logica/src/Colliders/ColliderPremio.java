@@ -7,38 +7,41 @@ import personajes.DisparoJugador;
 import personajes.Jugador;
 import personajes.Malo;
 
-public class ColliderDisparoEnemigo implements Collider {
+public class ColliderPremio implements Collider {
 
-	public ColliderDisparoEnemigo() {
+	public ColliderPremio() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void collideWith(Jugador j) {
-		j.disminuirHP(10);
+		// TODO Auto-generated method stub
+		
+
 	}
 
 	@Override
 	public void collideWith(Malo m) {
-		//NADA
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void collideWith(DisparoJugador d) {
-		// Nada
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void collideWith(DisparoEnemigo de) {
-		// Nada
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void collideWith(Obstaculo o) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

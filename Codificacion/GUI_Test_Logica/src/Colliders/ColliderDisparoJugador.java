@@ -1,5 +1,7 @@
 package Colliders;
 
+import Objetos.Obstaculo;
+import Objetos.Premio;
 import personajes.*;
 public class ColliderDisparoJugador implements Collider {
 
@@ -7,22 +9,25 @@ public class ColliderDisparoJugador implements Collider {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void collideWith(Jugador j) {
-		//Nada
-
-	}
+	public void collideWith(Jugador j) {}
 
 	public void collideWith(Malo m) {
 		m.morir();
-		System.out.println("Matar enemigo");
 	}
-	public void collideWith(DisparoJugador d) {
-		//Nada
+	public void collideWith(DisparoJugador d) {}
+
+	
+	public void collideWith(DisparoEnemigo de) {}
+
+	@Override
+	public void collideWith(Obstaculo o) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void collideWith(DisparoEnemigo de) {
-		// Supongo que nada pero preguntar
+	public void collideWith(Premio p) {
+		// TODO Auto-generated method stub
 		
 	}
 

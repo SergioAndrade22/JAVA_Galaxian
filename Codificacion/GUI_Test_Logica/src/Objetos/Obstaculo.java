@@ -1,5 +1,6 @@
 package Objetos;
 import Colliders.Collider;
+import Colliders.ColliderObstaculo;
 import mapa.*;
 import personajes.Entidad;
 
@@ -7,6 +8,7 @@ public class Obstaculo extends Objeto{
 	
 	public Obstaculo(Celda c){
 		super(c);
+		collider=new ColliderObstaculo();
 	}
 	
 	public Obstaculo(Celda c, int hp){
@@ -16,13 +18,13 @@ public class Obstaculo extends Objeto{
 
 	@Override
 	public void colision(Entidad e) {
-		// TODO Auto-generated method stub
+		e.aceptar(collider);
 		
 	}
 
 	@Override
 	public void aceptar(Collider c) {
-		// TODO Auto-generated method stub
+		c.collideWith(this);
 		
 	}
 
