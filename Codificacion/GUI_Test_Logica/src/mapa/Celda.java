@@ -1,7 +1,6 @@
 package mapa;
 
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -56,32 +55,32 @@ public class Celda {
 
 	public Celda getVecina(int dir){
 		switch (dir){
-		case UP :
-			if (y - 1 >= 0) {
-				return this.mapa.getCelda(x, y - 1);
-			}
-			else {
-				return this.mapa.getCelda(x, mapa.getHeight()-1);
-			}
-		case DOWN :
-			if (y + 1 < mapa.getHeight())
-				return this.mapa.getCelda(x, y + 1);
-			else {
-				return this.mapa.getCelda(x, 0);
-			}
-		case LEFT :
-			if (x - 1 >= 0)
-				return this.mapa.getCelda(x - 1, y);
-			else {
-				return this.mapa.getCelda(mapa.getWidth()-1, y);
-			}
-		case RIGHT :
-			if (x + 1 < mapa.getWidth())
-				return this.mapa.getCelda(x + 1, y);
-			else {
-				return this.mapa.getCelda(mapa.getWidth()-1, y);
-			}
-	}
+			case UP :
+				if (y - 1 >= 0) {
+					return this.mapa.getCelda(x, y - 1);
+				}
+				else {
+					return this.mapa.getCelda(x, mapa.getHeight()-1);
+				}
+			case DOWN :
+				if (y + 1 < mapa.getHeight())
+					return this.mapa.getCelda(x, y + 1);
+				else {
+					return this.mapa.getCelda(x, 0);
+				}
+			case LEFT :
+				if (x - 1 >= 0)
+					return this.mapa.getCelda(x - 1, y);
+				else {
+					return this.mapa.getCelda(mapa.getWidth()-1, y);
+				}
+			case RIGHT :
+				if (x + 1 < mapa.getWidth())
+					return this.mapa.getCelda(x + 1, y);
+				else {
+					return this.mapa.getCelda(mapa.getWidth()-1, y);
+				}
+		}
 		return null;
 	}
 

@@ -34,8 +34,8 @@ public abstract class EntidadGrafica {
 					case Celda.UP : // Arriba
 						for(int i = 0; i < this.height; i += this.velocidad){
 							if (this.pos.y - this.velocidad < 0) {
-								this.grafico.setBounds(this.pos.x, 600, width, height);
-								this.pos.setLocation(pos.x, 600);
+								this.grafico.setBounds(this.pos.x, 545, width, height);
+								this.pos.setLocation(pos.x, 545);
 							}
 							else
 								this.grafico.setBounds(this.pos.x, this.pos.y -= this.velocidad, width, height);
@@ -44,9 +44,9 @@ public abstract class EntidadGrafica {
 						break;
 					case Celda.DOWN : // Abajo
 						for(int i = 0; i < this.height; i += this.velocidad){
-							if (this.pos.y + this.velocidad > 600) {
+							if (this.pos.y + this.velocidad > 515) {
 								this.grafico.setBounds(this.pos.x, 0, width, height);
-								this.pos.setLocation(pos.x, 0);
+								this.pos.setLocation(pos.x, -30);
 							}
 							else
 								this.grafico.setBounds(this.pos.x, this.pos.y += this.velocidad, width, height);
@@ -55,7 +55,7 @@ public abstract class EntidadGrafica {
 						break;
 					case Celda.RIGHT : // Derecha
 						for(int i = 0; i < this.width; i += this.velocidad){
-							if (this.pos.x + this.velocidad > 1000) {
+							if (this.pos.x + this.velocidad > 955) {
 								this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
 								this.pos.setLocation(pos);
 							}
@@ -67,8 +67,8 @@ public abstract class EntidadGrafica {
 					case Celda.LEFT : // Izquierda
 						for(int i = 0; i < this.width; i += this.velocidad){
 							if (this.pos.x - this.velocidad < 0) {
-								this.grafico.setBounds(1000, this.pos.y, width, height);
-								this.pos.setLocation(1000, this.pos.y);
+								this.grafico.setBounds(955, this.pos.y, width, height);
+								this.pos.setLocation(955, this.pos.y);
 							}
 							else
 								this.grafico.setBounds(this.pos.x -= this.velocidad, this.pos.y, width, height);

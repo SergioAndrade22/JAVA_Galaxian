@@ -23,7 +23,7 @@ public class Juego {
 	private Nivel nivel;
 	
 	public Juego(GUI gui){
-		mapa = new Mapa(this, gui.getWidth()/tamanioCelda, gui.getHeight()/tamanioCelda); //hay que modificarlo para poder hacerlo con el archivo
+		mapa = new Mapa(this, (gui.getWidth()/tamanioCelda)-1, (gui.getHeight()/tamanioCelda)-1); //hay que modificarlo para poder hacerlo con el archivo
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
 		disparos = new CopyOnWriteArrayList<Disparo>();
@@ -50,11 +50,11 @@ public class Juego {
 	public void moverEnemigos(){
 		synchronized(malos) {
 			int y=jugador.getPos().getY();
-			for(Malo en : malos){
-					en.mover(y);
-			}
+			if (malos.size() != 0)
+				for(Malo en : malos){
+						en.mover(y);
+				}
 		}
-		
 	}
 	
 	public void moverDisparos() {
@@ -66,13 +66,16 @@ public class Juego {
 	
 	public void mover(int dir){
 		jugador.mover(dir);
+		System.out.printf("Posicion del jugador x:%d y:%d \n", jugador.getPos().getX(), jugador.getPos().getY());
 	}
 	
 	public void removeDisparo(Disparo e) {
 		synchronized (disparos) {
+			System.out.printf("Hay %d disparos. \n", disparos.size());
 			disparos.remove(e);
 			//System.out.println(disparos.size());
 			gui.remover(e.getGrafico());
+			System.out.printf("Quedan %d disparos. \n", disparos.size());
 		}
 	}
 	

@@ -7,8 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import juego.Juego;
-import juego.Score;
-import personajes.Disparo;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -33,8 +31,8 @@ public class GUI extends JFrame {
 				try {
 					GUI frame = new GUI();
 					frame.setVisible(true);
-					frame.setBounds(0, 0, 1000, 650);
-					frame.setSize(1000, 650);					
+					frame.setBounds(0, 0, 1000, 600);
+					frame.setSize(1000, 600);					
 					frame.setTitle("Shoot the Zombies");
 					frame.setResizable(false);
 					frame.setLocationRelativeTo(null);
@@ -66,7 +64,7 @@ public class GUI extends JFrame {
 		});
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1000, 650);
+		setBounds(0, 0, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -111,7 +109,7 @@ public class GUI extends JFrame {
 	public void agregarFondo() {
 		f = new JLabel();
 		ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/Desert.jpg"));
-		f.setBounds(0, 0, 1000, 650);
+		f.setBounds(0, 0, 1000, 600);
 		f.setIcon(i);
 		contentPane.add(f);
 	}
