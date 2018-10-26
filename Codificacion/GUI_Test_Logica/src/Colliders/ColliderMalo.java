@@ -6,12 +6,14 @@ import personajes.*;
 
 public class ColliderMalo implements Collider {
 
-	public ColliderMalo() {
+	protected Malo malo;
+	public ColliderMalo(Malo m) {
+		malo=m;
 	}
 
 	public void collideWith(Jugador j) {
 		j.disminuirHP(10);
-
+		//malo.morir();
 	}
 
 	public void collideWith(Malo m) {}
@@ -19,6 +21,7 @@ public class ColliderMalo implements Collider {
 	@Override
 	public void collideWith(DisparoJugador d) {
 		d.morir();
+		malo.disminuirHP(10);
 	}
 
 	@Override

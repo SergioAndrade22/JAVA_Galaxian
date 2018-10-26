@@ -9,8 +9,10 @@ import personajes.Malo;
 
 public class ColliderPremio implements Collider {
 
-	public ColliderPremio() {
-		// TODO Auto-generated constructor stub
+	protected Premio premio;
+	
+	public ColliderPremio(Premio p) {
+		premio=p;
 	}
 
 	@Override

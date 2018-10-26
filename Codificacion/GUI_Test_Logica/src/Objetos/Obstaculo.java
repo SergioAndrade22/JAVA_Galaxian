@@ -8,7 +8,7 @@ public class Obstaculo extends Objeto{
 	
 	public Obstaculo(Celda c){
 		super(c);
-		collider=new ColliderObstaculo();
+		collider=new ColliderObstaculo(this);
 	}
 	
 	public Obstaculo(Celda c, int hp){

@@ -2,75 +2,86 @@ package mapa;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import personajes.Entidad;
+import personajes.Malo;
+import personajes.Disparo;
 
 public class Celda {
 	public static final int LEFT = KeyEvent.VK_LEFT;
 	public static final int RIGHT = KeyEvent.VK_RIGHT;
 	public static final int UP = KeyEvent.VK_UP;
 	public static final int DOWN = KeyEvent.VK_DOWN;
-	private ArrayList<Entidad> entidades;
+	private List<Entidad> entidades;
 	private Mapa mapa;
 	private int x;
 	private int y;
-	
+	protected boolean hayObs;
+
 	public Celda(Mapa mapa, int x, int y){
-		entidades=new ArrayList<Entidad>();
+		entidades=new CopyOnWriteArrayList<Entidad>();
 		this.mapa = mapa;
 		this.x = x;
 		this.y = y;
+		hayObs=false;
 	}
-	
+
 	public void addEntidad(Entidad e) {
-		entidades.add(e);
-		/*
-		if(entidades.size()>1)
-			for(Entidad a:entidades) {
-				a.colision(e);
-				e.colision(a);
-			}
-	*/	
+		if(!hayObs) {
+			entidades.add(e);
+			if(entidades.size()>1)
+				for(Entidad a:entidades) {
+					a.colision(e);
+				}
+		}
 	}
 	public void removeEntidad(Entidad e) {
 		entidades.remove(e);
 	}
-	
+
 	public void eliminarEntidad(Entidad e) {
 		entidades.remove(e);
 		mapa.remove(e);
 	}
-	
+	public void eliminarDisparo(Disparo d) {
+		entidades.remove(d);
+		mapa.removeDisparo(d);
+	}
+	public void eliminarMalo(Malo m) {
+		entidades.remove(m);
+		mapa.removeMalo(m);
+	}
+
 	public Celda getVecina(int dir){
 		switch (dir){
-			case UP :
-				if (--y >= 0)
-					return this.mapa.getCelda(x, y);
-				else {
-					y = mapa.getHeight()-1;
-					return this.mapa.getCelda(x, y);
-				}
-			case DOWN :
-				if (++y < mapa.getHeight())
-					return this.mapa.getCelda(x, y);
-				else {
-					y = 0;
-					return this.mapa.getCelda(x, y);
-				}
-			case LEFT :
-				if (--x >= 0)
-					return this.mapa.getCelda(x, y);
-				else {
-					x = mapa.getWidth()-1;
-					return this.mapa.getCelda(x, y);
-				}
-			case RIGHT :
-				if (++x < mapa.getWidth())
-					return this.mapa.getCelda(x, y);
-				else {
-					x = mapa.getWidth()-1;
-					return this.mapa.getCelda(x, y);
-				}
-		}
+		case UP :
+			if (y - 1 >= 0) {
+				return this.mapa.getCelda(x, y - 1);
+			}
+			else {
+				return this.mapa.getCelda(x, mapa.getHeight()-1);
+			}
+		case DOWN :
+			if (y + 1 < mapa.getHeight())
+				return this.mapa.getCelda(x, y + 1);
+			else {
+				return this.mapa.getCelda(x, 0);
+			}
+		case LEFT :
+			if (x - 1 >= 0)
+				return this.mapa.getCelda(x - 1, y);
+			else {
+				return this.mapa.getCelda(mapa.getWidth()-1, y);
+			}
+		case RIGHT :
+			if (x + 1 < mapa.getWidth())
+				return this.mapa.getCelda(x + 1, y);
+			else {
+				return this.mapa.getCelda(mapa.getWidth()-1, y);
+			}
+	}
 		return null;
 	}
 
@@ -81,12 +92,18 @@ public class Celda {
 	public int getY() {
 		return y;
 	}
-	
+
 	public boolean isEndX() {
 		return mapa.getCelda(mapa.getWidth()-1, y) == this;
 	}
-	
+
 	public boolean isStartX() {
 		return mapa.getCelda(0, y) == this;
+	}
+	public void setObstaculo() {
+		hayObs=true;
+	}
+	public boolean esObstaculo() {
+		return hayObs;
 	}
 }

@@ -13,7 +13,7 @@ import personajes.*;
 
 public class Juego {
 	private Jugador jugador;
-	private ArrayList<Malo> malos;
+	private List<Malo> malos;
 	private List<Disparo> disparos;
 	private ArrayList<Barricada> obst;
 	private Mapa mapa;
@@ -27,7 +27,7 @@ public class Juego {
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
 		disparos = new CopyOnWriteArrayList<Disparo>();
-		malos = new ArrayList<Malo>();
+		malos = new CopyOnWriteArrayList<Malo>();
 		obst = new ArrayList<Barricada>();
 		score = new Score();
 		nivel = new NivelUnico();
@@ -48,17 +48,13 @@ public class Juego {
 	}
 	
 	public void moverEnemigos(){
-		int y=jugador.getPos().getY();
-		for(Malo en : malos){
-				en.mover(y);
-				/*
-				synchronized (disparos) {
-					Disparo d = en.disparar();
-					disparos.add(d);
-					gui.addDisparo(d);
-				}
-				*/
+		synchronized(malos) {
+			int y=jugador.getPos().getY();
+			for(Malo en : malos){
+					en.mover(y);
+			}
 		}
+		
 	}
 	
 	public void moverDisparos() {
@@ -72,10 +68,18 @@ public class Juego {
 		jugador.mover(dir);
 	}
 	
-	public void removerEntidad(Entidad e) {
+	public void removeDisparo(Disparo e) {
 		synchronized (disparos) {
 			disparos.remove(e);
-			System.out.println(disparos.size());
+			//System.out.println(disparos.size());
+			gui.remover(e.getGrafico());
+		}
+	}
+	
+	public void removeMalo(Malo e) {
+		synchronized (malos) {
+			malos.remove(e);
+			//System.out.println(disparos.size());
 			gui.remover(e.getGrafico());
 		}
 	}
@@ -87,4 +91,5 @@ public class Juego {
 			gui.addItem(d.getGrafico());
 		}
 	}	
+	public void removerEntidad(Entidad e) {}
 }

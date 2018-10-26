@@ -5,17 +5,18 @@ import Objetos.Premio;
 import personajes.*;
 
 public class ColliderJugador implements Collider {
+	protected Jugador jugador;
 
-	public ColliderJugador() {
-		// TODO Auto-generated constructor stub
+	public ColliderJugador(Jugador j) {
+		jugador=j;
 	}
 
-	@Override
 	public void collideWith(Jugador j) {}
 
 	@Override
 	public void collideWith(Malo m) {
-		m.morir();
+		//m.morir();
+		jugador.disminuirHP(10);
 	}
 
 	@Override
@@ -23,7 +24,8 @@ public class ColliderJugador implements Collider {
 
 	@Override
 	public void collideWith(DisparoEnemigo de) {
-		de.morir();		
+		de.morir();
+		jugador.disminuirHP(10);
 	}
 
 	@Override
@@ -34,8 +36,7 @@ public class ColliderJugador implements Collider {
 
 	@Override
 	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
-		
+		jugador.aumentarHP(10);
 	}
 
 }

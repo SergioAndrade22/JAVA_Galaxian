@@ -9,7 +9,7 @@ public class Malo extends Personaje{
 
 	public Malo() {
 		super();
-		collider=new ColliderMalo();
+		collider=new ColliderMalo(this);
 		hp=50;
 		fuerza_kamikaze=50;
 		strat=new Buscador(this);
@@ -18,12 +18,12 @@ public class Malo extends Personaje{
 	public Malo(Celda pos) {
 		super(pos);
 		this.grafico = new MaloGrafico(velocidad, this.pos.getX(), this.pos.getY());
-		collider=new ColliderMalo();
+		collider=new ColliderMalo(this);
 		hp=50;
 		fuerza_kamikaze=50;
 		strat=new Paseador(this);
 	}
-
+	
 	public void mover(int y) {
 		strat.mover(y);
 	}
@@ -44,5 +44,13 @@ public class Malo extends Personaje{
 	}
 	public void aceptar(Collider c) {
 		c.collideWith(this);
+	}
+	public void morir() {
+		pos.eliminarMalo(this);
+	}
+	public void disminuirHP(int i) {
+		hp-=10;
+		if(hp<=0)
+			morir();
 	}
 }

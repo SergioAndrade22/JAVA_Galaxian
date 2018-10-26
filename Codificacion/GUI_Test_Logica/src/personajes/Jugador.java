@@ -10,7 +10,7 @@ public class Jugador extends Personaje{
 	public Jugador(Celda pos) {
 		super(pos);
 		this.grafico = new JugadorGrafico(velocidad, this.pos.getX(), this.pos.getY());
-		collider = new ColliderJugador();
+		collider = new ColliderJugador(this);
 		hp=100;
 		fuerza_kamikaze=50;
 	}
@@ -24,6 +24,7 @@ public class Jugador extends Personaje{
 			super.mover(KeyEvent.VK_DOWN);
 			break;
 		}
+		
 	}
 	
 	public Disparo disparar() {
@@ -45,5 +46,8 @@ public class Jugador extends Personaje{
 		hp-=i;		
 		if(hp==0)
 			System.out.println("Fin de Juego. Perdiste");
+	}
+	public void aumentarHP(int i) {
+		hp+=i;
 	}
 }

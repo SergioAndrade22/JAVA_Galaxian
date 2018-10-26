@@ -15,4 +15,7 @@ public abstract class Disparo extends Entidad{
 	public void mover() {
 		super.mover(dir);
 	}
+	public void morir() {
+		pos.eliminarDisparo(this);
+	}
 }

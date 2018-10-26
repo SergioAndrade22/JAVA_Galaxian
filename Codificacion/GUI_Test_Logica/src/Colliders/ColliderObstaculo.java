@@ -8,9 +8,11 @@ import personajes.Jugador;
 import personajes.Malo;
 
 public class ColliderObstaculo implements Collider {
+	
+	protected Obstaculo obstaculo;
 
-	public ColliderObstaculo() {
-		// TODO Auto-generated constructor stub
+	public ColliderObstaculo(Obstaculo o) {
+		obstaculo=o;
 	}
 
 	@Override

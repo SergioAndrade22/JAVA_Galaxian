@@ -4,15 +4,19 @@ import Objetos.Obstaculo;
 import Objetos.Premio;
 import personajes.*;
 public class ColliderDisparoJugador implements Collider {
+	protected Disparo disparo;
 
-	public ColliderDisparoJugador() {
-		// TODO Auto-generated constructor stub
+	public ColliderDisparoJugador(Disparo d) {
+		disparo=d;
 	}
 
-	public void collideWith(Jugador j) {}
+	public void collideWith(Jugador j) {
+		disparo.morir();
+	}
 
 	public void collideWith(Malo m) {
 		m.morir();
+		disparo.morir();
 	}
 	public void collideWith(DisparoJugador d) {}
 

@@ -1,11 +1,13 @@
 package mapa;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import Objetos.Barricada;
 import gui.GUI;
 import juego.Juego;
+import personajes.Disparo;
 import personajes.Entidad;
 import personajes.Malo;
 
@@ -46,8 +48,15 @@ public class Mapa {
 	public void remove(Entidad e) {
 		juego.removerEntidad(e);
 	}
+	public void removeDisparo(Disparo d) {
+		juego.removeDisparo(d);
+	}
 	
-	public void place(ArrayList<Malo> l) {
+	public void removeMalo(Malo m) {
+		juego.removeMalo(m);
+	}
+	
+	public void place(List<Malo> l) {
 		int i = 4;
 		int j = this.getWidth()-1;
 		for (Entidad m : l) {
@@ -68,6 +77,7 @@ public class Mapa {
 			b.setPos(c);
 			c.addEntidad(b);
 			b.setGrafico();
+			c.setObstaculo();
 		}
 	}
 }

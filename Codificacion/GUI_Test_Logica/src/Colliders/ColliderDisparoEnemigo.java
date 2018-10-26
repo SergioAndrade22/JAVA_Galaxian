@@ -2,20 +2,19 @@ package Colliders;
 
 import Objetos.Obstaculo;
 import Objetos.Premio;
-import personajes.DisparoEnemigo;
-import personajes.DisparoJugador;
-import personajes.Jugador;
-import personajes.Malo;
+import personajes.*;
 
 public class ColliderDisparoEnemigo implements Collider {
+	protected Disparo disparo;
 
-	public ColliderDisparoEnemigo() {
-		// TODO Auto-generated constructor stub
+	public ColliderDisparoEnemigo(Disparo d) {
+		disparo=d;
 	}
 
 	@Override
 	public void collideWith(Jugador j) {
 		j.disminuirHP(10);
+		disparo.morir();
 	}
 
 	@Override

@@ -7,7 +7,7 @@ public class DisparoEnemigo extends Disparo{
 
 	public DisparoEnemigo(Celda c, int velocidad, int fuerza){
 		super(c,velocidad,5);
-		collider=new ColliderDisparoEnemigo();
+		collider=new ColliderDisparoEnemigo(this);
 		dir = Celda.LEFT;
 	}
 	
