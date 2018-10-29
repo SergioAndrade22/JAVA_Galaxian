@@ -1,5 +1,7 @@
 package personajes;
 
+import java.util.Random;
+
 import Colliders.*;
 import grafica.MaloGrafico;
 import mapa.Celda;
@@ -12,7 +14,11 @@ public class Malo extends Personaje{
 		collider=new ColliderMalo(this);
 		hp=50;
 		fuerza_kamikaze=50;
-		strat=new Buscador(this);
+		Random r=new Random();
+		if(r.nextInt(2)==1)
+			strat=new Paseador(this);
+		else 
+			strat=new Buscador(this);
 	}
 	
 	public Malo(Celda pos) {
@@ -21,7 +27,11 @@ public class Malo extends Personaje{
 		collider=new ColliderMalo(this);
 		hp=50;
 		fuerza_kamikaze=50;
-		strat=new Paseador(this);
+		Random r=new Random();
+		if(r.nextInt(2)==1)
+			strat=new Paseador(this);
+		else 
+			strat=new Buscador(this);
 	}
 	
 	public void mover(int y) {
@@ -47,6 +57,7 @@ public class Malo extends Personaje{
 	}
 	public void morir() {
 		pos.eliminarMalo(this);
+		
 	}
 	public void disminuirHP(int i) {
 		hp-=10;

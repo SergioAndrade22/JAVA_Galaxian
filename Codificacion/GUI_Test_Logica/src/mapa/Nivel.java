@@ -27,4 +27,9 @@ public abstract class Nivel {
 	public ArrayList<Malo> getEnemies(){
 		return enemies;
 	}
+	public Nivel getSiguiente() {
+		return next;
+		
+	}
+	
 }

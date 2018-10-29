@@ -30,29 +30,39 @@ public class Juego {
 		malos = new CopyOnWriteArrayList<Malo>();
 		obst = new ArrayList<Barricada>();
 		score = new Score();
-		nivel = new NivelUnico();
-		nivel.createEnemies();
-		malos = nivel.getEnemies();
-		nivel.createObjects();
-		obst = nivel.getObjects();
 		this.gui = gui;
-		this.gui.addItem(jugador.getGrafico());
-		mapa.place(malos);
-		for (Malo m : malos)
-			this.gui.addItem(m.getGrafico());
-		mapa.placeB(obst);
-		for (Barricada b : obst)
-			this.gui.addItem(b.getGrafico());
+		nivelNuevo(new NivelUnico());
 		this.gui.addItem(score);
-		
+		this.gui.addItem(jugador.getGrafico());
 	}
+	public void nivelNuevo(Nivel n) {
+		if(n!=null) {
+			nivel = n;
+			nivel.createEnemies();
+			malos = nivel.getEnemies();
+			nivel.createObjects();
+			obst = nivel.getObjects();
+			
+			
+			mapa.place(malos);
+			for (Malo m : malos)
+				this.gui.addItem(m.getGrafico());
+			mapa.placeB(obst);
+			for (Barricada b : obst)
+				this.gui.addItem(b.getGrafico());
+			
+		}
+		else 
+			System.out.println("Fin de Juego!");
+	}
+	
 	
 	public void moverEnemigos(){
 		synchronized(malos) {
-			int y=jugador.getPos().getY();
-			if (malos.size() != 0)
+			//if (malos.size() != 0)
 				for(Malo en : malos){
-						en.mover(y);
+					int y=jugador.getPos().getY();
+					en.mover(y);
 				}
 		}
 	}
@@ -67,6 +77,11 @@ public class Juego {
 	public void mover(int dir){
 		jugador.mover(dir);
 		System.out.printf("Posicion del jugador x:%d y:%d \n", jugador.getPos().getX(), jugador.getPos().getY());
+		if(malos.isEmpty()) {
+			System.out.println("Ganaste");
+			//nivelNuevo(nivel.getSiguiente());
+		}
+			
 	}
 	
 	public void removeDisparo(Disparo e) {

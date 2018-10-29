@@ -1,6 +1,11 @@
 package gui;
 
 import java.awt.EventQueue;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,6 +15,8 @@ import juego.Juego;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
 
 public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -55,6 +62,8 @@ public class GUI extends JFrame {
 						contentPane.repaint();
 						contentPane.revalidate();
 						contentPane.updateUI();
+						Clip bang=cargarSonido();
+						bang.start();
 						break;
 					default:
 						mover(arg0);
@@ -112,5 +121,19 @@ public class GUI extends JFrame {
 		f.setBounds(0, 0, 1000, 600);
 		f.setIcon(i);
 		contentPane.add(f);
+	}
+	public static Clip cargarSonido() {
+		Clip clip=null;
+		String ruta="/BattleCity/shoot.wav";
+		try {
+			InputStream is=ClassLoader.class.getResourceAsStream(ruta);
+			AudioInputStream ais=AudioSystem.getAudioInputStream(new BufferedInputStream(is));
+			DataLine.Info info= new DataLine.Info(Clip.class, ais.getFormat());
+			clip=(Clip) AudioSystem.getLine(info);
+			clip.open(ais);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return clip;
 	}
 }
