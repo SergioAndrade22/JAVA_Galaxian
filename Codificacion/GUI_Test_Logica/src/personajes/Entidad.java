@@ -46,13 +46,13 @@ public abstract class Entidad {
 		pos.eliminarEntidad(this);
 	}
 	
+	public abstract void mover();
+	
 	public void mover(int dir){
 		this.pos.removeEntidad(this);
 		Celda next = this.pos.getVecina(dir);
-	//	if(next != null){
-			this.pos = next;
-			this.grafico.mover(dir);
-	//	}
+		this.pos = next;
+		this.grafico.mover(dir);
 		pos.addEntidad(this);
 	}
 	

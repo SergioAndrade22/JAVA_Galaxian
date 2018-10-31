@@ -3,10 +3,7 @@ package mapa;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-
 import personajes.Entidad;
-import personajes.Malo;
-import personajes.Disparo;
 
 public class Celda {
 	public static final int LEFT = KeyEvent.VK_LEFT;
@@ -29,13 +26,12 @@ public class Celda {
 
 	public void addEntidad(Entidad e) {
 		if(!hayObs) {
+			for (Entidad en : entidades) 
+				en.colision(e);
 			entidades.add(e);
-			if(entidades.size()>1)
-				for(Entidad a:entidades) {
-					a.colision(e);
-				}
 		}
 	}
+	
 	public void removeEntidad(Entidad e) {
 		entidades.remove(e);
 	}
@@ -43,14 +39,6 @@ public class Celda {
 	public void eliminarEntidad(Entidad e) {
 		entidades.remove(e);
 		mapa.remove(e);
-	}
-	public void eliminarDisparo(Disparo d) {
-		entidades.remove(d);
-		mapa.removeDisparo(d);
-	}
-	public void eliminarMalo(Malo m) {
-		entidades.remove(m);
-		mapa.removeMalo(m);
 	}
 
 	public Celda getVecina(int dir){
@@ -99,9 +87,11 @@ public class Celda {
 	public boolean isStartX() {
 		return mapa.getCelda(0, y) == this;
 	}
+	
 	public void setObstaculo() {
 		hayObs=true;
 	}
+	
 	public boolean esObstaculo() {
 		return hayObs;
 	}

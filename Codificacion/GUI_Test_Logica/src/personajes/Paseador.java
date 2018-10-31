@@ -6,11 +6,11 @@ import mapa.Celda;
 
 public class Paseador extends Strategy{
 
-	public Paseador(Malo m) {
-		super(m);
+	public Paseador(Entidad e, Mediator med) {
+		super(e, med);
 	}
 
-	public void mover(int y) {
+	public void mover() {
 		Random r = new Random();		
 		int dir = r.nextInt(3);		
 		int direccion = -1;
@@ -25,6 +25,6 @@ public class Paseador extends Strategy{
 				direccion = Celda.LEFT;
 				break;
 		}
-		m.moverA(direccion);
+		en.mover(direccion);
 	}
 }

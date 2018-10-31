@@ -34,4 +34,6 @@ public class Barricada extends Objeto{
 	public void setGrafico() {
 		this.grafico = new BarricadaGrafica(velocidad, pos.getX(), pos.getY());		
 	}
+	
+	public void mover() {}
 }

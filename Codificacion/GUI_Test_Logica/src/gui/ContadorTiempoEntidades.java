@@ -2,17 +2,17 @@ package gui;
 
 import juego.Juego;
 
-public class ContadorTiempoEnemigos extends Thread {
+public class ContadorTiempoEntidades extends Thread {
 	private Juego juego;
 
-	ContadorTiempoEnemigos(Juego j) {
+	ContadorTiempoEntidades(Juego j) {
 		this.juego = j;
 	}
 
 	public void run() {
 		while(true) {
 			try {
-				juego.moverEnemigos();
+				juego.moverEntidades();
 				Thread.sleep((long)100);
 			}
 			catch (InterruptedException ex) {

@@ -1,15 +1,10 @@
 package mapa;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import Objetos.Barricada;
-import gui.GUI;
 import juego.Juego;
-import personajes.Disparo;
 import personajes.Entidad;
-import personajes.Malo;
 
 public class Mapa {
 	private Celda mapa[][];
@@ -48,15 +43,8 @@ public class Mapa {
 	public void remove(Entidad e) {
 		juego.removerEntidad(e);
 	}
-	public void removeDisparo(Disparo d) {
-		juego.removeDisparo(d);
-	}
 	
-	public void removeMalo(Malo m) {
-		juego.removeMalo(m);
-	}
-	
-	public void place(List<Malo> l) {
+	public void place(List<Entidad> l) {
 		int i = 4;
 		int j = this.getWidth()-1;
 		for (Entidad m : l) {
@@ -66,7 +54,7 @@ public class Mapa {
 		}
 	}
 	
-	public void placeB(ArrayList<Barricada> l) {
+	public void placeB(List<Barricada> l) {
 		Random r = new Random();
 		for (Barricada b : l) {
 			int x = r.nextInt(getWidth());

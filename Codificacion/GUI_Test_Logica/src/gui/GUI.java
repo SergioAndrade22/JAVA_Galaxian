@@ -15,9 +15,8 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Juego j;
-	private ContadorTiempoEnemigos tiempoEnemigos;
 	private ContadorTiempoJugador tiempoJugador;
-	private ContadorTiempoDisparos tiempoDisparos;
+	private ContadorTiempoEntidades tiempoEntidades;
 	private boolean lock = false;
 	private int direction = -1;
 	private JLabel f;
@@ -72,11 +71,9 @@ public class GUI extends JFrame {
 		agregarFondo();
 		j = new Juego(this);
 		tiempoJugador = new ContadorTiempoJugador(j, this);
-		tiempoEnemigos = new ContadorTiempoEnemigos(j);
-		tiempoDisparos = new ContadorTiempoDisparos(j);
+		tiempoEntidades = new ContadorTiempoEntidades(j);
 		tiempoJugador.start();
-		tiempoEnemigos.start();
-		tiempoDisparos.start();
+		tiempoEntidades.start();
 	}
 	
 	protected void mover(KeyEvent key){

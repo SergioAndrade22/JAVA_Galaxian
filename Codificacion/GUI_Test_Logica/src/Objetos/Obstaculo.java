@@ -28,5 +28,5 @@ public class Obstaculo extends Objeto{
 		
 	}
 
-
+	public void mover() {}
 }

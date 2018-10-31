@@ -3,6 +3,7 @@ package mapa;
 import java.util.ArrayList;
 import Objetos.Barricada;
 import personajes.Malo;
+import personajes.Mediator;
 
 public abstract class Nivel {
 	protected AbstractFactoryEnemy enemyFac;
@@ -12,8 +13,8 @@ public abstract class Nivel {
 	protected ArrayList<Barricada> objects;
 	protected int cant;
 	
-	public void createEnemies() {
-		enemies = enemyFac.create(cant);
+	public void createEnemies(Mediator med) {
+		enemies = enemyFac.create(cant, med);
 	}
 	
 	public void createObjects() {

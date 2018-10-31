@@ -5,23 +5,21 @@ import personajes.Jugador;
 public class Buscador extends Strategy{
 	protected Jugador j;
 	
-	public Buscador(Malo m) {
-		super(m);
+	public Buscador(Entidad e, Mediator med) {
+		super(e, med);
 	}
-	public void mover(int y) {
-		
-		int yJug=y;
-		int yMalo=m.getPos().getY();
-		if(yJug<yMalo) { //Deberia moverse de forma diagonal peeero
-			m.moverA(Celda.UP);
-			//m.moverA(Celda.LEFT);
+	
+	public void mover() {		
+		Celda posJug = mediator.getPosJ();
+		int yMalo=en.getPos().getY();
+		if(posJug.getY()<yMalo) {
+			en.mover(Celda.UP);
 		}
 		else
-			if(yJug>yMalo) {
-				m.moverA(Celda.DOWN);
-				//m.moverA(Celda.LEFT);
+			if(posJug.getY()>yMalo) {
+				en.mover(Celda.DOWN);
 			}
 			else
-				m.moverA(Celda.LEFT);
+				en.mover(Celda.LEFT);
 	}
 }

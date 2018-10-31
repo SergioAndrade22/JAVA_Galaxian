@@ -15,6 +15,8 @@ public class Jugador extends Personaje{
 		fuerza_kamikaze=50;
 	}
 
+	public void mover() {}
+	
 	public void mover(int dir){
 		switch (dir){
 		case KeyEvent.VK_UP : //Arriba

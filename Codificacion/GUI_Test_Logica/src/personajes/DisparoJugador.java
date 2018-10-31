@@ -21,7 +21,7 @@ public class DisparoJugador extends Disparo{
 	
 	public void mover() {
 		if (pos.isEndX())
-			pos.eliminarDisparo(this);
+			pos.eliminarEntidad(this);
 		super.mover(dir);
 	}
 }
