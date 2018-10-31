@@ -6,5 +6,6 @@ public class NivelUnico extends Nivel {
 		cant = 5;
 		enemyFac = new ConcreteFactoryEnemy();
 		objectFac = new ConcreteFactoryObject();
+		next=new NivelDos(cant*3);
 	}
 }
