@@ -10,9 +10,8 @@ public class Mapa {
 	private Celda mapa[][];
 	private int width, height;
 	private Juego juego;
-	//añadir un atributo FileOpener para poder abrir el archivo y leerlo, hay que ver bien como hacer funcionar esto
 
-	public Mapa(Juego juego, int width, int height){ //habría que modificar esto para que según nuestra implementación el mapa reciba el int del nivel que tiene q crear
+	public Mapa(Juego juego, int width, int height){
 		this.juego = juego;
 		this.width = width;
 		this.height = height;
@@ -47,8 +46,13 @@ public class Mapa {
 	public void place(List<Entidad> l) {
 		int i = 4;
 		int j = this.getWidth()-1;
+		Celda c;
 		for (Entidad m : l) {
-			Celda c = getCelda(j, i++);
+			if (i+1 < this.getHeight())
+				c = getCelda(j, i++);
+			else {
+				c = getCelda(j, 0);
+			}
 			m.setPos(c);
 			c.addEntidad(m);
 		}

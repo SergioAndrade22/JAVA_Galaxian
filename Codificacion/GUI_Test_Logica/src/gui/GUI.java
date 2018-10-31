@@ -61,7 +61,7 @@ public class GUI extends JFrame {
 						contentPane.repaint();
 						contentPane.revalidate();
 						contentPane.updateUI();
-						Clip bang=cargarSonido();
+						Clip bang = cargarSonido();
 						bang.start();
 						break;
 					default:
@@ -110,6 +110,8 @@ public class GUI extends JFrame {
 	
 	public void remover(JLabel l) {
 		f.remove(l);
+		f.repaint();
+		f.revalidate();
 	}
 	
 	public void agregarFondo() {
@@ -120,13 +122,13 @@ public class GUI extends JFrame {
 		contentPane.add(f);
 	}
 	public static Clip cargarSonido() {
-		Clip clip=null;
-		String ruta="/BattleCity/shoot.wav";
+		Clip clip = null;
+		String ruta = "/BattleCity/Disparo.wav";
 		try {
-			InputStream is=ClassLoader.class.getResourceAsStream(ruta);
-			AudioInputStream ais=AudioSystem.getAudioInputStream(new BufferedInputStream(is));
-			DataLine.Info info= new DataLine.Info(Clip.class, ais.getFormat());
-			clip=(Clip) AudioSystem.getLine(info);
+			InputStream is = ClassLoader.class.getResourceAsStream(ruta);
+			AudioInputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(is));
+			DataLine.Info info = new DataLine.Info(Clip.class, ais.getFormat());
+			clip = (Clip) AudioSystem.getLine(info);
 			clip.open(ais);
 		}catch(Exception e) {
 			e.printStackTrace();

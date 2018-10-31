@@ -1,9 +1,5 @@
+/juego/
 /personajes/
+/mapa/
 /gui/
-<<<<<<< HEAD
-/mapa/
-/juego/
-=======
-/juego/
-/mapa/
->>>>>>> 1e8c94a9be4456db3667584cb2549e62cd19c2a0
+/BattleCity/
