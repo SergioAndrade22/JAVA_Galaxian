@@ -125,7 +125,7 @@ public class GUI extends JFrame {
 		Clip clip = null;
 		String ruta = "/BattleCity/Disparo.wav";
 		try {
-			InputStream is = ClassLoader.class.getResourceAsStream(ruta);
+			InputStream is = GUI.class.getResourceAsStream(ruta);
 			AudioInputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(is));
 			DataLine.Info info = new DataLine.Info(Clip.class, ais.getFormat());
 			clip = (Clip) AudioSystem.getLine(info);
