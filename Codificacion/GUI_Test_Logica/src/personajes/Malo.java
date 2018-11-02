@@ -1,18 +1,18 @@
 package personajes;
 
-import java.util.Random;
+import java.awt.event.KeyEvent;
 
 import Colliders.*;
+import mapa.Celda;
 
 public class Malo extends Personaje{
 	protected Strategy strat;
 
-	public Malo(Mediator med) {
+	public Malo() {
 		super();
 		collider=new ColliderMalo(this);
 		hp=50;
 		fuerza_kamikaze=50;
-		strat=new Buscador(this, med);
 	}
 	
 	public void mover() {
@@ -20,8 +20,9 @@ public class Malo extends Personaje{
 	}
 	
 	public Disparo disparar() {
-		Disparo d = new DisparoEnemigo(pos, 100, 5);
-		pos.addEntidad(d);
+		Celda c = pos.getVecina(KeyEvent.VK_RIGHT);
+		Disparo d = new DisparoEnemigo(c, 50, 5);
+		c.addEntidad(d);
 		return d;
 		
 	}

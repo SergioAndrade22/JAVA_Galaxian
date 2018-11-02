@@ -1,13 +1,17 @@
 package personajes;
 
 public abstract class Strategy {
-	protected Entidad en;
+	protected Malo en;
 	protected Mediator mediator;
 
-	public Strategy(Entidad e, Mediator med) {
+	public Strategy(Malo e, Mediator med) {
 		en = e;
 		mediator = med;
 	}
 	
 	public abstract void mover();
+	
+	public Mediator getMed() {
+		return mediator;
+	}
 }

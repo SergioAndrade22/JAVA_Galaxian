@@ -1,13 +1,5 @@
 package personajes;
 
-import java.io.BufferedInputStream;
-import java.io.InputStream;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
-
 import grafica.DisparoGrafico;
 import mapa.Celda;
 

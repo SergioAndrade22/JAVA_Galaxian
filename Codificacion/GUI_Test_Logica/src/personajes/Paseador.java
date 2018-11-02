@@ -6,7 +6,7 @@ import mapa.Celda;
 
 public class Paseador extends Strategy{
 
-	public Paseador(Entidad e, Mediator med) {
+	public Paseador(Malo e, Mediator med) {
 		super(e, med);
 	}
 

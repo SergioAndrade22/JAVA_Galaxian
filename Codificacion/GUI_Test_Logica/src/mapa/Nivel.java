@@ -6,16 +6,20 @@ import personajes.Malo;
 import personajes.Mediator;
 
 public abstract class Nivel {
-	protected AbstractFactoryEnemy enemyFac;
+	protected AbstractFactoryKamikaze kamikazeFac;
+	protected AbstractFactoryDisparador disparadorFac;
 	protected AbstractFactoryObject objectFac;
 	protected Nivel next;
 	protected ArrayList<Malo> enemies;
 	protected ArrayList<Barricada> objects;
 	protected int cant;
 	
-	public void createEnemies(Mediator med) {
-		enemies = enemyFac.create(cant, med);
+	public Nivel() {
+		enemies = new ArrayList<Malo>();
+		objects = new ArrayList<Barricada>();
 	}
+	
+	public abstract void createEnemies(Mediator med);
 	
 	public void createObjects() {
 		objects = objectFac.create(cant);
@@ -28,9 +32,9 @@ public abstract class Nivel {
 	public ArrayList<Malo> getEnemies(){
 		return enemies;
 	}
+	
 	public Nivel getSiguiente() {
 		return next;
-		
 	}
 	
 }

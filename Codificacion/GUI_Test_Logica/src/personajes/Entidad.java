@@ -33,20 +33,13 @@ public abstract class Entidad {
 		return pos;
 	}
 	
-	
 	public JLabel getGrafico(){
 		return this.grafico.getGrafico();
 	}
 	
-	public abstract void colision(Entidad e); 
-	
-	public abstract void aceptar(Collider c);
-	
 	public void morir(){
 		pos.eliminarEntidad(this);
 	}
-	
-	public abstract void mover();
 	
 	public void mover(int dir){
 		this.pos.removeEntidad(this);
@@ -60,4 +53,11 @@ public abstract class Entidad {
 		pos = c;
 		grafico = new MaloGrafico(velocidad, this.pos.getX(), this.pos.getY());
 	}
+	
+	public abstract void colision(Entidad e); 
+	
+	public abstract void aceptar(Collider c);
+	
+	public abstract void mover();
+	
 }
