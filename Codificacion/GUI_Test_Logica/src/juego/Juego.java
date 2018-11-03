@@ -2,8 +2,10 @@ package juego;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import Objetos.Barricada;
+import Objetos.Premio;
 import gui.GUI;
 import mapa.Celda;
 import mapa.Mapa;
@@ -15,6 +17,7 @@ public class Juego {
 	private Jugador jugador;
 	private List<Entidad> entidades;
 	private List<Barricada> obst;
+	private List<Premio> premios;
 	private Mapa mapa;
 	private int tamanioCelda = 50;
 	private GUI gui;
@@ -44,6 +47,7 @@ public class Juego {
 		mapa.placeB(obst);
 		for (Barricada b : obst)
 			this.gui.addItem(b.getGrafico());
+		nivel.createPremios();
 		this.gui.addItem(score);
 		this.gui = gui;
 		//nivelNuevo(new NivelUnico());
@@ -72,8 +76,15 @@ public class Juego {
 	
 	public void moverEntidades(){
 		synchronized(entidades) {
-			for(Entidad en : entidades)
-					en.mover();
+			for(Entidad en : entidades) {
+				en.mover();
+				Disparo d=en.disparar();
+				if(d!=null) //Asi logro que solo enemigo dispare.
+					synchronized(entidades) {
+						entidades.add(d);
+						gui.addItem(d.getGrafico());
+					}	
+			}
 		}
 	}
 	
@@ -84,6 +95,9 @@ public class Juego {
 	
 	public void removerEntidad(Entidad e) {
 		synchronized (entidades) {
+			Random r=new Random();
+			if(r.nextInt(5)==3)
+				insertarPremio(e.getPos());
 			entidades.remove(e);
 			gui.remover(e.getGrafico());
 		}
@@ -96,4 +110,14 @@ public class Juego {
 			gui.addItem(d.getGrafico());
 		}
 	}	
+	public void insertarPremio(Celda c) {
+		Premio p=nivel.getPremio();
+		if(p!=null)
+			synchronized (entidades) {
+				entidades.add(p);
+				gui.addItem(p.getGrafico());
+				p.setPos(c);
+			}
+		
+	}
 }

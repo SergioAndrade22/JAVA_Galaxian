@@ -2,6 +2,7 @@ package mapa;
 
 import java.util.ArrayList;
 import Objetos.Barricada;
+import Objetos.Premio;
 import personajes.Malo;
 import personajes.Mediator;
 
@@ -12,6 +13,7 @@ public abstract class Nivel {
 	protected Nivel next;
 	protected ArrayList<Malo> enemies;
 	protected ArrayList<Barricada> objects;
+	protected ArrayList<Premio> premios;
 	protected int cant;
 	
 	public Nivel() {
@@ -36,5 +38,13 @@ public abstract class Nivel {
 	public Nivel getSiguiente() {
 		return next;
 	}
-	
+	public void createPremios(){
+		premios=objectFac.createPremio(4);
+	}
+	public Premio getPremio() {
+		if(!premios.isEmpty())
+			return premios.remove(0);
+		else
+			return null;
+	}
 }
