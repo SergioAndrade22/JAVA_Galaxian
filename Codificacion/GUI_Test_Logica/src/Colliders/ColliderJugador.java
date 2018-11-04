@@ -30,13 +30,14 @@ public class ColliderJugador implements Collider {
 
 	@Override
 	public void collideWith(Obstaculo o) {
-		// TODO Auto-generated method stub
+		o.morir();
 		
 	}
 
 	@Override
 	public void collideWith(Premio p) {
-		jugador.aumentarHP(10);
+		p.morir();
+		jugador.aumentarHP(50);
 	}
 
 }

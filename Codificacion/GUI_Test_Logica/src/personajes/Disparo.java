@@ -13,8 +13,12 @@ public abstract class Disparo extends Entidad{
 		
 	}
 	
-	public void mover() {
-		super.mover(dir);
+	public void mover(int dir) {
+		//super.mover(dir);
+		this.pos.removeEntidad(this);
+		this.pos =  this.pos.getVecina(dir);
+		this.grafico.mover(dir);
+		pos.addEntidad(this);
 	}
 	public void morir() {
 		pos.eliminarEntidad(this);

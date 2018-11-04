@@ -13,20 +13,23 @@ public class Obstaculo extends Objeto{
 	
 	public Obstaculo(Celda c, int hp){
 		super(c,hp);
-
+		collider=new ColliderObstaculo(this);
 	}
-
-	@Override
+	
 	public void colision(Entidad e) {
 		e.aceptar(collider);
 		
 	}
 
-	@Override
+	
 	public void aceptar(Collider c) {
 		c.collideWith(this);
 		
 	}
 
 	public void mover() {}
+	public void morir() {
+		super.morir();
+		pos.setObstaculo(false);
+	}
 }

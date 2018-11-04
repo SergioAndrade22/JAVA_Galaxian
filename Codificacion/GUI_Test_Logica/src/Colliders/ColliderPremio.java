@@ -17,8 +17,9 @@ public class ColliderPremio implements Collider {
 
 	@Override
 	public void collideWith(Jugador j) {
-		// TODO Auto-generated method stub
-		
+		j.aumentarHP(50);
+		premio.morir();
+		//Puede ser otra cosa, capaz tener un collider por bonus
 
 	}
 

@@ -69,7 +69,7 @@ public class Mapa {
 			b.setPos(c);
 			c.addEntidad(b);
 			b.setGrafico();
-			c.setObstaculo();
+			c.setObstaculo(true);
 		}
 	}
 }

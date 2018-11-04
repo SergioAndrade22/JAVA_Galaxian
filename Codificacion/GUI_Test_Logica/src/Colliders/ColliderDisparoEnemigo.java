@@ -36,7 +36,9 @@ public class ColliderDisparoEnemigo implements Collider {
 
 	@Override
 	public void collideWith(Obstaculo o) {
-		// TODO Auto-generated method stub
+		o.morir();
+		System.out.println("Quitar obstaculo");
+		disparo.morir();
 		
 	}
 
