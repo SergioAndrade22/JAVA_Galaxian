@@ -61,8 +61,8 @@ public class GUI extends JFrame {
 						contentPane.repaint();
 						contentPane.revalidate();
 						contentPane.updateUI();
-						Clip bang = cargarSonido();
-						bang.start();
+						//Clip bang = cargarSonido();
+						//bang.start();
 						break;
 					default:
 						mover(arg0);

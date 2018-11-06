@@ -17,7 +17,6 @@ public class Juego {
 	private Jugador jugador;
 	private List<Entidad> entidades;
 	private List<Barricada> obst;
-	private List<Premio> premios;
 	private Mapa mapa;
 	private int tamanioCelda = 50;
 	private GUI gui;
@@ -78,12 +77,7 @@ public class Juego {
 		synchronized(entidades) {
 			for(Entidad en : entidades) {
 				en.mover();
-				Disparo d=en.disparar();
-				if(d!=null) //Asi logro que solo enemigo dispare.
-					synchronized(entidades) {
-						entidades.add(d);
-						gui.addItem(d.getGrafico());
-					}	
+				
 			}
 		}
 	}

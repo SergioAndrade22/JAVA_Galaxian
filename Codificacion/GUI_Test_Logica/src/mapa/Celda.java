@@ -95,4 +95,6 @@ public class Celda {
 	public boolean esObstaculo() {
 		return hayObstaculo;
 	}
+	
 }
+	

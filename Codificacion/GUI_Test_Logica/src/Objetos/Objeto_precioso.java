@@ -9,6 +9,7 @@ public class Objeto_precioso extends Premio {
 	public Objeto_precioso(Celda c){
 		super(c);
 		collider=new ColliderPremio(this);
+		
 	}
 	
 	public Objeto_precioso(Celda c, int hp){

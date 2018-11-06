@@ -4,12 +4,13 @@ import java.util.Random;
 
 import mapa.Celda;
 
-public class Paseador extends Strategy{
+public class PaseadorArmado extends Strategy {
 
-	public Paseador(Malo e, Mediator med) {
-		super(e, med);
+	public PaseadorArmado(Malo e, Mediator med) {
+		super(e,med);
 	}
 
+	@Override
 	public void mover() {
 		Random r = new Random();		
 		int dir = r.nextInt(3);		
@@ -26,5 +27,9 @@ public class Paseador extends Strategy{
 				break;
 		}
 		en.mover(direccion);
+		disparar();	
+	}
+	private void disparar() {
+		
 	}
 }
