@@ -69,8 +69,5 @@ public abstract class Entidad {
 	
 	public abstract void mover();
 	
-	public Disparo disparar() {
-		return null;
-	}
 	
 }

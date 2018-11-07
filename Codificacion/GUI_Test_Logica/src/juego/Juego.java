@@ -30,7 +30,7 @@ public class Juego {
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
 		this.gui.addItem(jugador.getGrafico());
-		med = new Mediator(jugador);
+		med = new Mediator(jugador,this);
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		obst = new ArrayList<Barricada>();
 		score = new Score();
@@ -113,5 +113,9 @@ public class Juego {
 				p.setPos(c);
 			}
 		
+	}
+	public void agregarDisparo(Disparo d) {
+		entidades.add(d);
+		gui.addItem(d.getGrafico());
 	}
 }

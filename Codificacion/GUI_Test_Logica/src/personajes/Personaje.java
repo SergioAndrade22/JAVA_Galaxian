@@ -14,5 +14,5 @@ public abstract class Personaje extends Entidad {
 		velocidad = 10;
 	}
 
-	public abstract Disparo disparar();
+	//public abstract Disparo disparar();
 }

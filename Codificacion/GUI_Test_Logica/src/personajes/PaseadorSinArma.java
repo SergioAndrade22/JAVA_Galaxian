@@ -9,6 +9,7 @@ public class PaseadorSinArma extends Strategy{
 	public PaseadorSinArma(Malo e, Mediator med) {
 		super(e, med);
 	}
+	
 
 	public void mover() {
 		Random r = new Random();		

@@ -1,13 +1,17 @@
 package personajes;
 
+
+import juego.Juego;
 import mapa.Celda;
-import personajes.Jugador;
 public class BuscadorArmado extends Strategy{
 
-	protected Jugador j;
+	
+	protected Arma miArma;
+	protected Juego juego;
 	
 	public BuscadorArmado(Malo e, Mediator med) {
 		super(e, med);
+		miArma=new Arma(e,10);
 	}
 
 	
@@ -26,6 +30,8 @@ public class BuscadorArmado extends Strategy{
 		disparar();
 	}
 	private void disparar(){
+		Disparo d=miArma.createDisparo();
+		mediator.getJuego().agregarDisparo(d);
 		
 	}
 }
