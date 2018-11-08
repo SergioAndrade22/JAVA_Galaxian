@@ -1,12 +1,10 @@
 package personajes;
 
-
-
 import java.util.Random;
-
 import Colliders.*;
 import grafica.MaloGrafico;
 import juego.Juego;
+import Objetos.PocionMagica;
 
 public class Malo extends Personaje{
 	protected Strategy strat;
@@ -33,17 +31,8 @@ public class Malo extends Personaje{
 		strat.mover();
 	}
 	
-	/*public Disparo disparar() {
-		Celda c = pos.getVecina(KeyEvent.VK_RIGHT);
-		Disparo d = new DisparoEnemigo(c, 50, 5);
-		c.addEntidad(d);
-		return d;
-		
-	}*/
-	
 	public void colision(Entidad e) {
 		e.aceptar(collider);
-		
 	}
 	
 	public void aceptar(Collider c) {
@@ -54,7 +43,7 @@ public class Malo extends Personaje{
 		pos.eliminarEntidad(this);
 		Random r=new Random();
 		if(r.nextInt(5)>3)
-			juego.insertarPremio(pos);
+			juego.insertarPremio(pos, new PocionMagica());
 	}
 	
 	public void disminuirHP(int i) {

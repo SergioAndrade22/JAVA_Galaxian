@@ -99,17 +99,14 @@ public class Juego {
 			gui.addItem(d.getGrafico());
 		}
 	}	
-	public void insertarPremio(Celda c) {
-		Premio p=nivel.getPremio();
-		if(p!=null)
-			synchronized (entidades) {
-				entidades.add(p);
-				p.setPos(c);
-				gui.addItem(p.getGrafico());
-				
-			}
-		
+	public void insertarPremio(Celda c, Premio p) {
+		synchronized (entidades) {
+			entidades.add(p);
+			p.setPos(c);
+			gui.addItem(p.getGrafico());
+		}
 	}
+	
 	public void agregarDisparo(Disparo d) {
 		entidades.add(d);
 		gui.addItem(d.getGrafico());

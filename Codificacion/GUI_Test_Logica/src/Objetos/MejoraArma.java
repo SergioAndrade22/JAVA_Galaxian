@@ -11,5 +11,4 @@ public class MejoraArma extends Premio{
 	public void actuar(Jugador jugador) {
 		jugador.getArma().aumentarDaño(20);
 	}
-
 }
