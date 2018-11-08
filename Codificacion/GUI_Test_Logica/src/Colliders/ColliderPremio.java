@@ -17,40 +17,18 @@ public class ColliderPremio implements Collider {
 
 	@Override
 	public void collideWith(Jugador j) {
-		j.aumentarHP(50);
+		premio.actuar(j);
 		premio.morir();
-		//Puede ser otra cosa, capaz tener un collider por bonus
-
 	}
 
-	@Override
-	public void collideWith(Malo m) {
-		// TODO Auto-generated method stub
+	public void collideWith(Malo m) {}
 
-	}
+	public void collideWith(DisparoJugador d) {}
 
-	@Override
-	public void collideWith(DisparoJugador d) {
-		// TODO Auto-generated method stub
+	public void collideWith(DisparoEnemigo de) {}
 
-	}
+	public void collideWith(Obstaculo o) {}
 
-	@Override
-	public void collideWith(DisparoEnemigo de) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void collideWith(Obstaculo o) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(Premio p) {}
 
 }

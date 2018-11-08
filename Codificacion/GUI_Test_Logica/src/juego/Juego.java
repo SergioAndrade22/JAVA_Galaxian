@@ -84,14 +84,11 @@ public class Juego {
 	
 	public void mover(int dir){
 		jugador.mover(dir);
-		System.out.printf("Posicion del jugador x:%d y:%d \n", jugador.getPos().getX(), jugador.getPos().getY());
+		
 	}
 	
 	public void removerEntidad(Entidad e) {
 		synchronized (entidades) {
-			Random r=new Random();
-			if(r.nextInt(5)==3)
-				insertarPremio(e.getPos());
 			entidades.remove(e);
 			gui.remover(e.getGrafico());
 		}
@@ -109,8 +106,9 @@ public class Juego {
 		if(p!=null)
 			synchronized (entidades) {
 				entidades.add(p);
-				gui.addItem(p.getGrafico());
 				p.setPos(c);
+				gui.addItem(p.getGrafico());
+				
 			}
 		
 	}

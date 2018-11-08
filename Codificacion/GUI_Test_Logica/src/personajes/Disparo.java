@@ -5,11 +5,13 @@ import mapa.Celda;
 
 public abstract class Disparo extends Entidad{
 	protected int dir;
+	protected int daño;
 	
-	public Disparo(Celda c, int velocidad, int fuerza){
+	public Disparo(Celda c, int velocidad, int daño){
 		super(c,velocidad);
 		this.grafico = new DisparoGrafico(velocidad, this.pos.getX(), this.pos.getY());
 		dir = -1;
+		this.daño=daño;
 		
 	}
 	
@@ -24,4 +26,7 @@ public abstract class Disparo extends Entidad{
 		pos.eliminarEntidad(this);
 	}
 	
+	public int getDaño() {
+		return daño;
+	}
 }

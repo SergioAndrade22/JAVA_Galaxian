@@ -13,39 +13,22 @@ public class ColliderDisparoEnemigo implements Collider {
 
 	@Override
 	public void collideWith(Jugador j) {
-		j.disminuirHP(10);
+		j.disminuirHP(disparo.getDaño());
 		disparo.morir();
 	}
+	
+	public void collideWith(Malo m) {}
 
-	@Override
-	public void collideWith(Malo m) {
-		//NADA
-	}
+	public void collideWith(DisparoJugador d) {}
 
-	@Override
-	public void collideWith(DisparoJugador d) {
-		// Nada
+	public void collideWith(DisparoEnemigo de) {}
 
-	}
-
-	@Override
-	public void collideWith(DisparoEnemigo de) {
-		// Nada
-
-	}
-
-	@Override
 	public void collideWith(Obstaculo o) {
 		o.morir();
 		System.out.println("Quitar obstaculo");
 		disparo.morir();
-		
 	}
-
-	@Override
-	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	public void collideWith(Premio p) {}
 
 }

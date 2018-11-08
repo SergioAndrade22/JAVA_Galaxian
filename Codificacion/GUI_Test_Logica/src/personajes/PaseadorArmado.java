@@ -7,11 +7,11 @@ import mapa.Celda;
 
 public class PaseadorArmado extends Strategy {
 
-	protected Arma miArma;
+	protected ArmaEnemigo miArma;
 	
 	public PaseadorArmado(Malo e, Mediator med) {
 		super(e,med);
-		miArma=new Arma(e,10);
+		miArma=new ArmaEnemigo(e,10);
 	}
 
 	@Override

@@ -2,17 +2,17 @@ package personajes;
 
 import mapa.Celda;
 
-public class Arma {
+public class ArmaEnemigo {
 
 	protected int daño;
 	protected Malo malo;
 	
-	public Arma(Malo m, int d) {
+	public ArmaEnemigo(Malo m, int d) {
 		malo=m;
 		daño=d;
 	}
 	public Disparo createDisparo() {
-		return new DisparoEnemigo(malo.getPos().getVecina(Celda.LEFT),daño,10);
+		return new DisparoEnemigo(malo.getPos().getVecina(Celda.LEFT),10,daño);
 	}
 
 }

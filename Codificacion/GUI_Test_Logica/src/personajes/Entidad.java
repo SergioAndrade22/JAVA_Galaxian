@@ -60,7 +60,8 @@ public abstract class Entidad {
 	
 	public void setPos(Celda c) {
 		pos = c;
-		grafico = new MaloGrafico(velocidad, this.pos.getX(), this.pos.getY());
+		grafico.setPos(c.getX(),c.getY());
+		c.addEntidad(this);
 	}
 	
 	public abstract void colision(Entidad e); 
@@ -68,6 +69,5 @@ public abstract class Entidad {
 	public abstract void aceptar(Collider c);
 	
 	public abstract void mover();
-	
 	
 }

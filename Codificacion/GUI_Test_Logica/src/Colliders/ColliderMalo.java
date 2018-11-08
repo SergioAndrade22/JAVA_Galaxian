@@ -12,31 +12,21 @@ public class ColliderMalo implements Collider {
 	}
 
 	public void collideWith(Jugador j) {
-		j.disminuirHP(10);
-		//malo.morir();
+		malo.morir();
+		j.recibirGolpe();
 	}
 
 	public void collideWith(Malo m) {}
 
-	@Override
 	public void collideWith(DisparoJugador d) {
+		malo.disminuirHP(d.getDaño());
 		d.morir();
-		malo.disminuirHP(10);
 	}
 
-	@Override
 	public void collideWith(DisparoEnemigo de) {}
 
-	@Override
-	public void collideWith(Obstaculo o) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(Obstaculo o) {}
 
-	@Override
-	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(Premio p) {}
 
 }

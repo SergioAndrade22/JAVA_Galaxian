@@ -19,6 +19,7 @@ public abstract class Nivel {
 	public Nivel() {
 		enemies = new ArrayList<Malo>();
 		objects = new ArrayList<Barricada>();
+		premios=new ArrayList<Premio>();
 	}
 	
 	public abstract void createEnemies(Mediator med);

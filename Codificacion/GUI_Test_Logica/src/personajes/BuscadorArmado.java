@@ -6,12 +6,12 @@ import mapa.Celda;
 public class BuscadorArmado extends Strategy{
 
 	
-	protected Arma miArma;
+	protected ArmaEnemigo miArma;
 	protected Juego juego;
 	
 	public BuscadorArmado(Malo e, Mediator med) {
 		super(e, med);
-		miArma=new Arma(e,10);
+		miArma=new ArmaEnemigo(e,10);
 	}
 
 	

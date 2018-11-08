@@ -8,16 +8,17 @@ import personajes.Entidad;
 public class Barricada extends Objeto{
 	
 	public Barricada() {
-		
+		grafico=new BarricadaGrafica(velocidad,0,0);
 	}
 	
 	public Barricada(Celda c){
 		super(c);
-		this.grafico = new BarricadaGrafica(velocidad, c.getX(), c.getY());
+		grafico = new BarricadaGrafica(velocidad, c.getX(), c.getY());
 	}
 	
 	public Barricada(Celda c, int hp){
 		super(c,hp);
+		grafico=new BarricadaGrafica(velocidad, c.getX(),c.getY());
 	}
 
 	@Override

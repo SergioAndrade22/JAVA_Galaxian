@@ -3,6 +3,7 @@ package Objetos;
 import Colliders.ColliderPremio;
 import grafica.BonusGrafico;
 import mapa.Celda;
+import personajes.Jugador;
 
 public class Objeto_precioso extends Premio {
 	
@@ -28,5 +29,10 @@ public class Objeto_precioso extends Premio {
 		super.mover(Celda.LEFT);
 		
 	}
+	public void actuar(Jugador j) {
+		j.aumentarHP(10); //Provisorio
+		
+	}
+
 	
 }

@@ -37,4 +37,6 @@ public abstract class Premio extends Objeto { //Sirve para diferenciar de los ob
 	public void setGrafico() {
 		this.grafico = new BarricadaGrafica(velocidad, pos.getX(), pos.getY());		
 	}
+	public abstract void actuar(Jugador jugador);
+	
 }

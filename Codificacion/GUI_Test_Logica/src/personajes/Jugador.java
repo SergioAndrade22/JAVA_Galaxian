@@ -6,6 +6,7 @@ import mapa.Celda;
 import Colliders.*;
 
 public class Jugador extends Personaje{
+	boolean escudo;
 		
 	public Jugador(Celda pos) {
 		super(pos);
@@ -13,6 +14,7 @@ public class Jugador extends Personaje{
 		collider = new ColliderJugador(this);
 		hp=100;
 		fuerza_kamikaze=50;
+		escudo=false;
 	}
 
 	public void mover() {}
@@ -51,5 +53,17 @@ public class Jugador extends Personaje{
 	}
 	public void aumentarHP(int i) {
 		hp+=i;
+	}
+
+	public void setEscudo(boolean b) {
+		escudo=b;
+	}
+
+	public void recibirGolpe() {
+		if(escudo)
+			escudo=false;
+		else 
+			disminuirHP(10);
+		
 	}
 }

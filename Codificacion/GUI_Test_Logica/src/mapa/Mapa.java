@@ -55,6 +55,7 @@ public class Mapa {
 			}
 			m.setPos(c);
 			c.addEntidad(m);
+			
 		}
 	}
 	

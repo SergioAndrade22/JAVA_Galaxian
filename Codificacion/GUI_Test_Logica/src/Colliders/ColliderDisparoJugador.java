@@ -15,24 +15,15 @@ public class ColliderDisparoJugador implements Collider {
 	}
 
 	public void collideWith(Malo m) {
-		m.morir();
-		disparo.morir();
+		m.disminuirHP(disparo.getDaño());
 	}
+	
 	public void collideWith(DisparoJugador d) {}
 
-	
 	public void collideWith(DisparoEnemigo de) {}
 
-	@Override
-	public void collideWith(Obstaculo o) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(Obstaculo o) {}
 
-	@Override
-	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(Premio p) {}
 
 }

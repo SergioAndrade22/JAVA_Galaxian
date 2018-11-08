@@ -15,42 +15,20 @@ public class ColliderObstaculo implements Collider {
 		obstaculo=o;
 	}
 
-	@Override
-	public void collideWith(Jugador j) {
-		
-		
-	}
+	public void collideWith(Jugador j) {}
 
-	@Override
-	public void collideWith(Malo m) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(Malo m) {}
 
-	@Override
-	public void collideWith(DisparoJugador d) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(DisparoJugador d) {}
 
-	@Override
 	public void collideWith(DisparoEnemigo de) {
 		obstaculo.morir();
 		System.out.println("Quitar obstaculo");
-		de.morir();
-		
+		de.morir();		
 	}
 
-	@Override
-	public void collideWith(Obstaculo o) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(Obstaculo o) {}
+	
+	public void collideWith(Premio p) {}
 
 }

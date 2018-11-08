@@ -39,6 +39,7 @@ public class Celda {
 	public void eliminarEntidad(Entidad e) {
 		entidades.remove(e);
 		mapa.remove(e);
+		
 	}
 
 	public Celda getVecina(int dir){

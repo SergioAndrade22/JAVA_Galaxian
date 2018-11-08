@@ -15,8 +15,8 @@ public class ColliderJugador implements Collider {
 
 	@Override
 	public void collideWith(Malo m) {
-		//m.morir();
-		jugador.disminuirHP(10);
+		m.morir();
+		jugador.recibirGolpe();
 	}
 
 	@Override
@@ -36,8 +36,7 @@ public class ColliderJugador implements Collider {
 
 	@Override
 	public void collideWith(Premio p) {
-		p.morir();
-		jugador.aumentarHP(50);
+		p.actuar(jugador);
 	}
 
 }
