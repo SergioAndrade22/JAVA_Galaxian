@@ -19,16 +19,11 @@ public class Objeto_precioso extends Premio {
 	}
 
 	public Objeto_precioso() {
-		collider=new ColliderPremio(this);
-		this.grafico = new BonusGrafico(velocidad,10, 0);
-		
+		super();
 	}
 
 	@Override
-	public void mover() {
-		super.mover(Celda.LEFT);
-		
-	}
+	
 	public void actuar(Jugador j) {
 		j.aumentarHP(10); //Provisorio
 		

@@ -2,6 +2,8 @@ package personajes;
 
 import java.util.Random;
 
+import Disparo.ArmaEnemigo;
+import Disparo.Disparo;
 import juego.Juego;
 import mapa.Celda;
 

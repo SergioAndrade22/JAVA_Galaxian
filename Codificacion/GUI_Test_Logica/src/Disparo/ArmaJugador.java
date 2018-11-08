@@ -1,6 +1,8 @@
-package personajes;
+package Disparo;
 
 import java.awt.event.KeyEvent;
+
+import personajes.Jugador;
 
 public class ArmaJugador {
 	

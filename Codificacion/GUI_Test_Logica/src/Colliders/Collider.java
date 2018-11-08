@@ -1,6 +1,8 @@
 package Colliders;
 
 import personajes.*;
+import Disparo.DisparoEnemigo;
+import Disparo.DisparoJugador;
 import Objetos.*;
 
 public interface Collider {

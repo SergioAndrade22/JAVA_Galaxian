@@ -1,6 +1,7 @@
-package personajes;
+package Disparo;
 
 import mapa.Celda;
+import personajes.Malo;
 
 public class ArmaEnemigo {
 

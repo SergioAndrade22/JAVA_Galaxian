@@ -1,6 +1,7 @@
-package personajes;
+package Disparo;
 
 import mapa.*;
+import personajes.Entidad;
 import Colliders.*;
 import grafica.DisparoEnemigoGrafico;
 

@@ -1,6 +1,8 @@
 package personajes;
 
 
+import Disparo.ArmaEnemigo;
+import Disparo.Disparo;
 import juego.Juego;
 import mapa.Celda;
 public class BuscadorArmado extends Strategy{

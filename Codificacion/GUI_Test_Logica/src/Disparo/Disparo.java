@@ -1,7 +1,8 @@
-package personajes;
+package Disparo;
 
 import grafica.DisparoGrafico;
 import mapa.Celda;
+import personajes.Entidad;
 
 public abstract class Disparo extends Entidad{
 	protected int dir;

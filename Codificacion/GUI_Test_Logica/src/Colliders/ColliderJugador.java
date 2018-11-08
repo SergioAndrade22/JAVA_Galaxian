@@ -1,5 +1,7 @@
 package Colliders;
 
+import Disparo.DisparoEnemigo;
+import Disparo.DisparoJugador;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import personajes.*;
