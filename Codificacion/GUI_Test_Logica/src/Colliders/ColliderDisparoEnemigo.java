@@ -14,17 +14,10 @@ public class ColliderDisparoEnemigo implements Collider {
 		disparo=d;
 	}
 
-	@Override
 	public void collideWith(Jugador j) {
 		j.disminuirHP(disparo.getDaño());
 		disparo.morir();
 	}
-	
-	public void collideWith(Malo m) {}
-
-	public void collideWith(DisparoJugador d) {}
-
-	public void collideWith(DisparoEnemigo de) {}
 
 	public void collideWith(Obstaculo o) {
 		o.morir();
@@ -32,6 +25,11 @@ public class ColliderDisparoEnemigo implements Collider {
 		disparo.morir();
 	}
 	
-	public void collideWith(Premio p) {}
+	public void collideWith(Malo m) { /*NADA*/ }
 
+	public void collideWith(DisparoJugador d) { /*NADA*/ }
+
+	public void collideWith(DisparoEnemigo de) { /*NADA*/ }
+
+	public void collideWith(Premio p) { /*NADA*/ }
 }

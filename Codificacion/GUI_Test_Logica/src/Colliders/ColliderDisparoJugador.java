@@ -13,20 +13,21 @@ public class ColliderDisparoJugador implements Collider {
 		disparo=d;
 	}
 
-	public void collideWith(Jugador j) {
-		disparo.morir();
-	}
-
 	public void collideWith(Malo m) {
 		m.disminuirHP(disparo.getDaño());
 	}
+
+	public void collideWith(Obstaculo o) {
+		o.morir();
+		System.out.println("Eliminamos obstaculos");
+		disparo.morir();
+	}
 	
-	public void collideWith(DisparoJugador d) {}
+	public void collideWith(Jugador j) { /*NADA*/ }
 
-	public void collideWith(DisparoEnemigo de) {}
+	public void collideWith(DisparoJugador d) { /*NADA*/ }
 
-	public void collideWith(Obstaculo o) {}
+	public void collideWith(DisparoEnemigo de) { /*NADA*/ }
 
-	public void collideWith(Premio p) {}
-
+	public void collideWith(Premio p) { /*NADA*/ }
 }

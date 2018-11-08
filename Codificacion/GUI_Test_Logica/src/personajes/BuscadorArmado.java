@@ -1,10 +1,11 @@
 package personajes;
 
-
 import Disparo.ArmaEnemigo;
 import Disparo.Disparo;
 import juego.Juego;
 import mapa.Celda;
+import java.util.Random;
+
 public class BuscadorArmado extends Strategy{
 
 	
@@ -29,8 +30,11 @@ public class BuscadorArmado extends Strategy{
 			else
 				en.mover(Celda.LEFT);
 		}
-		disparar();
+		Random r = new Random();
+		if (r.nextInt(10) < 5)
+			disparar();
 	}
+	
 	private void disparar(){
 		Disparo d=miArma.createDisparo();
 		mediator.getJuego().agregarDisparo(d);

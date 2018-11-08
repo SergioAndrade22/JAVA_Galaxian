@@ -2,9 +2,7 @@ package juego;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
-
 import Disparo.Disparo;
 import Objetos.Barricada;
 import Objetos.Premio;
@@ -77,10 +75,8 @@ public class Juego {
 	
 	public void moverEntidades(){
 		synchronized(entidades) {
-			for(Entidad en : entidades) {
+			for(Entidad en : entidades) 
 				en.mover();
-				
-			}
 		}
 	}
 	

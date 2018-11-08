@@ -6,7 +6,6 @@ import mapa.Celda;
 import Colliders.*;
 import Disparo.ArmaJugador;
 import Disparo.Disparo;
-import Disparo.DisparoJugador;
 
 public class Jugador extends Personaje{
 	protected boolean escudo;

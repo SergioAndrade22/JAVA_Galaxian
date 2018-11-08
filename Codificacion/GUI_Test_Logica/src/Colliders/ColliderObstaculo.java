@@ -19,12 +19,16 @@ public class ColliderObstaculo implements Collider {
 
 	public void collideWith(Malo m) {}
 
-	public void collideWith(DisparoJugador d) {}
-
-	public void collideWith(DisparoEnemigo de) {
+	public void collideWith(DisparoJugador d) {
 		obstaculo.morir();
 		System.out.println("Quitar obstaculo");
-		de.morir();		
+		d.morir();		
+}
+
+	public void collideWith(DisparoEnemigo d) {
+		obstaculo.morir();
+		System.out.println("Quitar obstaculo");
+		d.morir();		
 	}
 
 	public void collideWith(Obstaculo o) {}

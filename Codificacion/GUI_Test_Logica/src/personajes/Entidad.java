@@ -1,10 +1,8 @@
 package personajes;
 
 import javax.swing.JLabel;
-
 import Colliders.*;
 import grafica.EntidadGrafica;
-import grafica.MaloGrafico;
 import mapa.Celda;
 
 public abstract class Entidad {
@@ -44,15 +42,6 @@ public abstract class Entidad {
 	public void mover(int dir){
 		this.pos.removeEntidad(this);
 		Celda next = this.pos.getVecina(dir);
-		while(next.esObstaculo()) {
-			switch (dir) {
-				case Celda.UP: dir=Celda.LEFT; break;
-				case Celda.DOWN: dir= Celda.LEFT; break;
-				case Celda.RIGHT: dir= Celda.UP; break;
-				case Celda.LEFT: dir=Celda.UP; break;
-			}
-			next=this.pos.getVecina(dir);
-		}
 		this.pos = next;
 		this.grafico.mover(dir);
 		pos.addEntidad(this);

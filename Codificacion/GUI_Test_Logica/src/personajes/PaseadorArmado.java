@@ -1,10 +1,8 @@
 package personajes;
 
 import java.util.Random;
-
 import Disparo.ArmaEnemigo;
 import Disparo.Disparo;
-import juego.Juego;
 import mapa.Celda;
 
 public class PaseadorArmado extends Strategy {
@@ -33,8 +31,10 @@ public class PaseadorArmado extends Strategy {
 				break;
 		}
 		en.mover(direccion);
-		disparar();	
+		if (r.nextInt(10) < 5)
+			disparar();
 	}
+	
 	private void disparar(){
 		Disparo d=miArma.createDisparo();
 		mediator.getJuego().agregarDisparo(d);
