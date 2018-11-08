@@ -2,18 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Objeto_precioso" key="selection"/>
+		<item value="MolestiaGrafica" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="ObstaculoGrafica"/>
+			<item value="ObstaculoGrafico"/>
+			<item value="Barricada"/>
 			<item value="Magia_temporal"/>
 			<item value="Obstaculo"/>
 			<item value="velocidad"/>
 			<item value="agregarFondo"/>
 		</list>
 		<list key="replacehistory">
+			<item value="MolestiaGrafica"/>
+			<item value="Obstaculo"/>
 			<item value="Objeto_precioso"/>
 			<item value="Magia_temporal"/>
 		</list>

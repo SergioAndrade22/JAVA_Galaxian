@@ -35,6 +35,6 @@ public abstract class Premio extends Objeto { //Sirve para diferenciar de los ob
 		c.collideWith(this);
 	}
 	public void setGrafico() {
-		this.grafico = new BarricadaGrafica(velocidad, pos.getX(), pos.getY());		
+		this.grafico = new BonusGrafico(velocidad, pos.getX(), pos.getY());		
 	}
 }

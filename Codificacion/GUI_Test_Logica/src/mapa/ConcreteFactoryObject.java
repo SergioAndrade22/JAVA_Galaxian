@@ -1,6 +1,7 @@
 package mapa;
 
 import java.util.ArrayList;
+import Objetos.Obstaculo;
 import Objetos.Barricada;
 import Objetos.Objeto_precioso;
 import Objetos.Premio;
@@ -18,6 +19,13 @@ public class ConcreteFactoryObject extends AbstractFactoryObject {
 		ArrayList<Premio> toRet=new ArrayList<Premio>();
 		for (int i = 0; i < cant; i++)
 			toRet.add(new Objeto_precioso());
+		return toRet;
+	}
+	
+	public ArrayList<Obstaculo> createObstaculo(int cant){
+		ArrayList<Obstaculo> toRet = new ArrayList<Obstaculo>();
+		for (int i = 0; i < cant; i++)
+			toRet.add(new Obstaculo());
 		return toRet;
 	}
 

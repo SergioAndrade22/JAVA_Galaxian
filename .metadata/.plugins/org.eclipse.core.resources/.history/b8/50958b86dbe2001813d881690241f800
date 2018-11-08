@@ -1,0 +1,18 @@
+package personajes;
+import mapa.*;
+
+public abstract class Personaje extends Entidad {
+	
+	protected int fuerza_kamikaze;
+	
+	public Personaje(Celda c){
+		super(c);
+		velocidad=0;
+	}
+	
+	public Personaje() {
+		velocidad = 0;
+	}
+
+	//public abstract Disparo disparar();
+}

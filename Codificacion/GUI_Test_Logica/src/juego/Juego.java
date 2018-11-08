@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import Objetos.Barricada;
+import Objetos.Obstaculo;
 import Objetos.Premio;
 import gui.GUI;
 import mapa.Celda;
@@ -17,6 +18,7 @@ public class Juego {
 	private Jugador jugador;
 	private List<Entidad> entidades;
 	private List<Barricada> obst;
+	private List<Obstaculo> molestias;
 	private Mapa mapa;
 	private int tamanioCelda = 50;
 	private GUI gui;
@@ -33,6 +35,7 @@ public class Juego {
 		med = new Mediator(jugador,this);
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		obst = new ArrayList<Barricada>();
+		molestias= new ArrayList<Obstaculo>();
 		score = new Score();
 		nivel = new NivelUnico();
 		nivel.createEnemies(med);
@@ -43,9 +46,13 @@ public class Juego {
 			this.gui.addItem(en.getGrafico());
 		nivel.createObjects();
 		obst = nivel.getObjects();
+		molestias = nivel.getMolestias();
 		mapa.placeB(obst);
+		mapa.placeC(molestias);
 		for (Barricada b : obst)
 			this.gui.addItem(b.getGrafico());
+		for (Obstaculo o: molestias)
+			this.gui.addItem(o.getGrafico());
 		nivel.createPremios();
 		this.gui.addItem(score);
 		this.gui = gui;
@@ -68,6 +75,8 @@ public class Juego {
 			mapa.placeB(obst);
 			for (Barricada b : obst)
 				this.gui.addItem(b.getGrafico());
+			for (Obstaculo o: molestias)
+				this.gui.addItem(o.getGrafico());
 		}
 		else 
 			System.out.println("Fin de Juego!");

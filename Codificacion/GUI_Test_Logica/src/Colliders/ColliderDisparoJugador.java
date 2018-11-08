@@ -18,10 +18,14 @@ public class ColliderDisparoJugador implements Collider {
 		m.morir();
 		disparo.morir();
 	}
-	public void collideWith(DisparoJugador d) {}
+	public void collideWith(DisparoJugador d) {
+		//disparo.morir();
+	}
 
 	
-	public void collideWith(DisparoEnemigo de) {}
+	public void collideWith(DisparoEnemigo de) {
+	//	disparo.morir();
+	}
 
 	@Override
 	public void collideWith(Obstaculo o) {
@@ -31,7 +35,8 @@ public class ColliderDisparoJugador implements Collider {
 
 	@Override
 	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
+		p.morir();
+		System.out.println("Rompi el premio");
 		
 	}
 

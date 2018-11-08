@@ -39,7 +39,7 @@ public abstract class EntidadGrafica {
 							}
 							else
 								this.grafico.setBounds(this.pos.x, this.pos.y -= this.velocidad, width, height);
-							Thread.sleep(10); //original t:100
+							Thread.sleep(1); //original t:100
 						}
 						break;
 					case Celda.DOWN : // Abajo
@@ -50,7 +50,7 @@ public abstract class EntidadGrafica {
 							}
 							else
 								this.grafico.setBounds(this.pos.x, this.pos.y += this.velocidad, width, height);
-							Thread.sleep(10); //original t:100
+							Thread.sleep(1); //original t:100
 						}
 						break;
 					case Celda.RIGHT : // Derecha
@@ -61,7 +61,7 @@ public abstract class EntidadGrafica {
 							}
 							else
 								this.grafico.setBounds(this.pos.x += this.velocidad, this.pos.y, width, height);
-							Thread.sleep(10); //original t:100
+							Thread.sleep(1); //original t:100
 						}
 						break;
 					case Celda.LEFT : // Izquierda
@@ -72,7 +72,7 @@ public abstract class EntidadGrafica {
 							}
 							else
 								this.grafico.setBounds(this.pos.x -= this.velocidad, this.pos.y, width, height);
-							Thread.sleep(10); //original t:100
+							Thread.sleep(1); //original t:100
 						}
 						break;
 				}

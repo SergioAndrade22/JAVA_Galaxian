@@ -1,7 +1,5 @@
 package personajes;
 
-
-
 import Colliders.*;
 
 public class Malo extends Personaje{

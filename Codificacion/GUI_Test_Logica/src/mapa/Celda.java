@@ -33,12 +33,15 @@ public class Celda {
 	}
 	
 	public void removeEntidad(Entidad e) {
-		entidades.remove(e);
+		synchronized(entidades) {
+		entidades.remove(e);}
 	}
 
 	public void eliminarEntidad(Entidad e) {
-		entidades.remove(e);
-		mapa.remove(e);
+		synchronized(entidades) {
+		entidades.clear();
+		System.out.println(entidades.size());
+		mapa.remove(e);}
 	}
 
 	public Celda getVecina(int dir){
