@@ -1,39 +1,35 @@
 package Objetos;
-
 import Colliders.Collider;
-import grafica.MolestiaGrafica;
-import mapa.Celda;
+import Colliders.ColliderObstaculo;
+import mapa.*;
 import personajes.Entidad;
 
 public class Obstaculo extends Objeto{
 	
-	public Obstaculo() {
-		
-	}
-	
 	public Obstaculo(Celda c){
 		super(c);
-		this.grafico = new MolestiaGrafica(velocidad, c.getX(), c.getY());
+		collider=new ColliderObstaculo(this);
 	}
 	
 	public Obstaculo(Celda c, int hp){
 		super(c,hp);
-	}
-
-	@Override
-	public void colision(Entidad e) {
-		
-	}
-
-	@Override
-	public void aceptar(Collider c) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setGrafico() {
-		this.grafico = new MolestiaGrafica(velocidad, pos.getX(), pos.getY());		
+		collider=new ColliderObstaculo(this);
 	}
 	
+	public void colision(Entidad e) {
+		e.aceptar(collider);
+		
+	}
+
+	
+	public void aceptar(Collider c) {
+		c.collideWith(this);
+		
+	}
+
 	public void mover() {}
+	public void morir() {
+		super.morir();
+		pos.setObstaculo(false);
+	}
 }

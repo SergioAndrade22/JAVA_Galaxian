@@ -3,7 +3,6 @@ package mapa;
 import java.util.List;
 import java.util.Random;
 import Objetos.Barricada;
-import Objetos.Obstaculo;
 import juego.Juego;
 import personajes.Entidad;
 
@@ -73,21 +72,4 @@ public class Mapa {
 			c.setObstaculo(true);
 		}
 	}
-	
-	public void placeC(List<Obstaculo> l) {
-		Random r = new Random();
-		for (Obstaculo b : l) {
-			int x = r.nextInt(getWidth());
-			int y = r.nextInt(getHeight());
-			if (x == 0)
-				x++;
-			Celda c = getCelda(x, y);
-			b.setPos(c);
-			c.addEntidad(b);
-			b.setGrafico();
-			c.setObstaculo(true);
-		}
-	}
-	
-	
 }

@@ -1,0 +1,11 @@
+package Objetos;
+import personajes.*;
+import mapa.*;
+
+public abstract class Objeto extends Entidad{
+	
+	public Objecto(Celda c){
+		super(c);
+	}
+	
+}

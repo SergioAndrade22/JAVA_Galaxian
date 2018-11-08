@@ -19,7 +19,7 @@ public class Objeto_precioso extends Premio {
 
 	public Objeto_precioso() {
 		collider=new ColliderPremio(this);
-		this.grafico = new BonusGrafico(velocidad,15, 0);
+		this.grafico = new BonusGrafico(velocidad,10, 0);
 		
 	}
 

@@ -1,0 +1,17 @@
+package Objetos;
+
+import mapa.Celda;
+
+public class Magia_temporal extends Premio {
+	
+	protected int duración;
+	
+	public Magia_temporal(Celda c){
+		super(c);
+	}
+	
+	public Magia_temporal(Celda c, int hp){
+		super(c,hp);
+	}
+
+}
