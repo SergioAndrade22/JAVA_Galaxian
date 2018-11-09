@@ -1,6 +1,8 @@
 package Colliders;
 
 import personajes.*;
+import Disparo.DisparoEnemigo;
+import Disparo.DisparoJugador;
 import Objetos.*;
 
 public interface Collider {
@@ -11,5 +13,6 @@ public interface Collider {
 	public void collideWith(DisparoJugador d);
 	public void collideWith(DisparoEnemigo de);
 	public void collideWith(Obstaculo o);
+	public void collideWith(Barricada b);
 }
 

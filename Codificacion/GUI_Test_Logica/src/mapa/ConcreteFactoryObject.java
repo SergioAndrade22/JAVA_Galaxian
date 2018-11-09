@@ -13,12 +13,4 @@ public class ConcreteFactoryObject extends AbstractFactoryObject {
 			toRet.add(new Barricada());
 		return toRet;
 	}
-
-	public ArrayList<Premio> createPremio(int cant) {
-		ArrayList<Premio> toRet=new ArrayList<Premio>();
-		for (int i = 0; i < cant; i++)
-			toRet.add(new Objeto_precioso());
-		return toRet;
-	}
-
 }

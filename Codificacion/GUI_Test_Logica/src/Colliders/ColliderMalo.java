@@ -1,5 +1,8 @@
 package Colliders;
 
+import Disparo.DisparoEnemigo;
+import Disparo.DisparoJugador;
+import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import personajes.*;
@@ -12,31 +15,22 @@ public class ColliderMalo implements Collider {
 	}
 
 	public void collideWith(Jugador j) {
-		j.disminuirHP(10);
-		//malo.morir();
+		j.recibirGolpe();
+		malo.disminuirHP(100);
 	}
 
-	public void collideWith(Malo m) {}
-
-	@Override
 	public void collideWith(DisparoJugador d) {
+		malo.disminuirHP(d.getDaño());
 		d.morir();
-		malo.disminuirHP(10);
 	}
 
-	@Override
-	public void collideWith(DisparoEnemigo de) {}
+	public void collideWith(Malo m) { /*NADA*/ }
 
-	@Override
-	public void collideWith(Obstaculo o) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(DisparoEnemigo de) { /*NADA*/ }
 
-	@Override
-	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(Obstaculo o) { /*NADA*/ }
 
+	public void collideWith(Premio p) { /*NADA*/ }
+
+	public void collideWith(Barricada b) { /*NADA*/ }
 }

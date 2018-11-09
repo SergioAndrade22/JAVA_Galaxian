@@ -1,5 +1,9 @@
 package Colliders;
 
+import Disparo.Disparo;
+import Disparo.DisparoEnemigo;
+import Disparo.DisparoJugador;
+import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import personajes.*;
@@ -10,29 +14,26 @@ public class ColliderDisparoJugador implements Collider {
 		disparo=d;
 	}
 
-	public void collideWith(Jugador j) {
-		disparo.morir();
-	}
-
 	public void collideWith(Malo m) {
-		m.morir();
+		m.disminuirHP(disparo.getDaño());
+	}
+
+	public void collideWith(Obstaculo o) {
+		o.morir();
 		disparo.morir();
 	}
-	public void collideWith(DisparoJugador d) {}
 
+	public void collideWith(Barricada b) {
+		b.recibirDaño(25);
+		disparo.morir();
+	}
 	
-	public void collideWith(DisparoEnemigo de) {}
+	public void collideWith(Jugador j) { /*NADA*/ }
 
-	@Override
-	public void collideWith(Obstaculo o) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(DisparoJugador d) { /*NADA*/ }
 
-	@Override
-	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void collideWith(DisparoEnemigo de) { /*NADA*/ }
+
+	public void collideWith(Premio p) { /*NADA*/ }
 
 }

@@ -19,6 +19,7 @@ public abstract class Nivel {
 	public Nivel() {
 		enemies = new ArrayList<Malo>();
 		objects = new ArrayList<Barricada>();
+		premios=new ArrayList<Premio>();
 	}
 	
 	public abstract void createEnemies(Mediator med);
@@ -37,14 +38,5 @@ public abstract class Nivel {
 	
 	public Nivel getSiguiente() {
 		return next;
-	}
-	public void createPremios(){
-		premios=objectFac.createPremio(4);
-	}
-	public Premio getPremio() {
-		if(!premios.isEmpty())
-			return premios.remove(0);
-		else
-			return null;
 	}
 }

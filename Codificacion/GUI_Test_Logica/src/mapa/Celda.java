@@ -25,11 +25,9 @@ public class Celda {
 	}
 
 	public void addEntidad(Entidad e) {
-		//if(!hayObstaculo) {
-			for (Entidad en : entidades) 
-				en.colision(e);
-			entidades.add(e);
-		//}
+		for (Entidad en : entidades) 
+			en.colision(e);
+		entidades.add(e);
 	}
 	
 	public void removeEntidad(Entidad e) {
@@ -39,6 +37,7 @@ public class Celda {
 	public void eliminarEntidad(Entidad e) {
 		entidades.remove(e);
 		mapa.remove(e);
+		
 	}
 
 	public Celda getVecina(int dir){
@@ -89,12 +88,10 @@ public class Celda {
 	}
 	
 	public void setObstaculo(boolean es) {
-		hayObstaculo=es;
+		hayObstaculo = es;
 	}
 	
 	public boolean esObstaculo() {
 		return hayObstaculo;
-	}
-	
+	}	
 }
-	

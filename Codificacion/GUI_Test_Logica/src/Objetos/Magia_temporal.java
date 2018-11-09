@@ -18,7 +18,4 @@ public abstract class Magia_temporal extends Premio {
 		super(c,hp);
 		this.duracion=duracion;
 	}
-	
-	
-
 }

@@ -53,6 +53,8 @@ public class GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI() {
+		Clip ambiente = musicaAmbiente();
+		ambiente.start();
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent arg0) {
 				switch(arg0.getKeyCode()) {
@@ -61,8 +63,8 @@ public class GUI extends JFrame {
 						contentPane.repaint();
 						contentPane.revalidate();
 						contentPane.updateUI();
-						//Clip bang = cargarSonido();
-						//bang.start();
+						Clip bang = cargarSonido();
+						bang.start();
 						break;
 					default:
 						mover(arg0);
@@ -121,9 +123,25 @@ public class GUI extends JFrame {
 		f.setIcon(i);
 		contentPane.add(f);
 	}
+	
 	public static Clip cargarSonido() {
 		Clip clip = null;
 		String ruta = "/BattleCity/Disparo.wav";
+		try {
+			InputStream is = GUI.class.getResourceAsStream(ruta);
+			AudioInputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(is));
+			DataLine.Info info = new DataLine.Info(Clip.class, ais.getFormat());
+			clip = (Clip) AudioSystem.getLine(info);
+			clip.open(ais);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return clip;
+	}
+	
+	public static Clip musicaAmbiente() {
+		Clip clip = null;
+		String ruta = "/BattleCity/Ambiente.wav";
 		try {
 			InputStream is = GUI.class.getResourceAsStream(ruta);
 			AudioInputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(is));

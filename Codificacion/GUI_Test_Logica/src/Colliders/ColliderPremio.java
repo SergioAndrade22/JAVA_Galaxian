@@ -1,9 +1,10 @@
 package Colliders;
 
+import Disparo.DisparoEnemigo;
+import Disparo.DisparoJugador;
+import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
-import personajes.DisparoEnemigo;
-import personajes.DisparoJugador;
 import personajes.Jugador;
 import personajes.Malo;
 
@@ -17,40 +18,19 @@ public class ColliderPremio implements Collider {
 
 	@Override
 	public void collideWith(Jugador j) {
-		j.aumentarHP(50);
+		premio.actuar(j);
 		premio.morir();
-		//Puede ser otra cosa, capaz tener un collider por bonus
-
 	}
 
-	@Override
-	public void collideWith(Malo m) {
-		// TODO Auto-generated method stub
+	public void collideWith(Malo m) { /*NADA*/ }
 
-	}
+	public void collideWith(DisparoJugador d) { /*NADA*/ }
 
-	@Override
-	public void collideWith(DisparoJugador d) {
-		// TODO Auto-generated method stub
+	public void collideWith(DisparoEnemigo de) { /*NADA*/ }
 
-	}
+	public void collideWith(Obstaculo o) { /*NADA*/ }
 
-	@Override
-	public void collideWith(DisparoEnemigo de) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void collideWith(Obstaculo o) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void collideWith(Premio p) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void collideWith(Premio p) { /*NADA*/ }
+	
+	public void collideWith(Barricada b) { /*NADA*/ }
 }

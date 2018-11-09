@@ -22,6 +22,9 @@ public abstract class EntidadGrafica {
 	public int getVelocidad() {
 		return velocidad;
 	}
+	public void setPos(int x,int y) {
+		pos=new Point(x*width, y*height);
+	}
 
 	public Point getPos() {
 		return pos;

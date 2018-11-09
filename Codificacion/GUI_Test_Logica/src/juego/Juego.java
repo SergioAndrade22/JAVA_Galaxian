@@ -2,8 +2,8 @@ package juego;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
+import Disparo.Disparo;
 import Objetos.Barricada;
 import Objetos.Premio;
 import gui.GUI;
@@ -46,7 +46,6 @@ public class Juego {
 		mapa.placeB(obst);
 		for (Barricada b : obst)
 			this.gui.addItem(b.getGrafico());
-		nivel.createPremios();
 		this.gui.addItem(score);
 		this.gui = gui;
 		//nivelNuevo(new NivelUnico());
@@ -75,23 +74,18 @@ public class Juego {
 	
 	public void moverEntidades(){
 		synchronized(entidades) {
-			for(Entidad en : entidades) {
+			for(Entidad en : entidades) 
 				en.mover();
-				
-			}
 		}
 	}
 	
 	public void mover(int dir){
 		jugador.mover(dir);
-		System.out.printf("Posicion del jugador x:%d y:%d \n", jugador.getPos().getX(), jugador.getPos().getY());
+		
 	}
 	
 	public void removerEntidad(Entidad e) {
 		synchronized (entidades) {
-			Random r=new Random();
-			if(r.nextInt(5)==3)
-				insertarPremio(e.getPos());
 			entidades.remove(e);
 			gui.remover(e.getGrafico());
 		}
@@ -104,16 +98,14 @@ public class Juego {
 			gui.addItem(d.getGrafico());
 		}
 	}	
-	public void insertarPremio(Celda c) {
-		Premio p=nivel.getPremio();
-		if(p!=null)
-			synchronized (entidades) {
-				entidades.add(p);
-				gui.addItem(p.getGrafico());
-				p.setPos(c);
-			}
-		
+	public void insertarPremio(Celda c, Premio p) {
+		synchronized (entidades) {
+			entidades.add(p);
+			p.setPos(c);
+			gui.addItem(p.getGrafico());
+		}
 	}
+	
 	public void agregarDisparo(Disparo d) {
 		entidades.add(d);
 		gui.addItem(d.getGrafico());

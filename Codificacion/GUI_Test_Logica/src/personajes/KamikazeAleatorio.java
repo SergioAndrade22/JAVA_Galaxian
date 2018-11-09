@@ -5,7 +5,7 @@ public class KamikazeAleatorio extends Malo {
 	protected Mediator med;
 
 	public KamikazeAleatorio(Mediator m){
-		super();
+		super(m);
 		strat=new BuscadorSinArma(this,m);
 	}
 	public void disminuirHP(int i) {

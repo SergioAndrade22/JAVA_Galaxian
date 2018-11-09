@@ -1,17 +1,17 @@
 package personajes;
 
 import java.util.Random;
-
-import juego.Juego;
+import Disparo.ArmaEnemigo;
+import Disparo.Disparo;
 import mapa.Celda;
 
 public class PaseadorArmado extends Strategy {
 
-	protected Arma miArma;
+	protected ArmaEnemigo miArma;
 	
 	public PaseadorArmado(Malo e, Mediator med) {
 		super(e,med);
-		miArma=new Arma(e,10);
+		miArma=new ArmaEnemigo(e,10);
 	}
 
 	@Override
@@ -31,8 +31,10 @@ public class PaseadorArmado extends Strategy {
 				break;
 		}
 		en.mover(direccion);
-		disparar();	
+		if (r.nextInt(10) < 5)
+			disparar();
 	}
+	
 	private void disparar(){
 		Disparo d=miArma.createDisparo();
 		mediator.getJuego().agregarDisparo(d);

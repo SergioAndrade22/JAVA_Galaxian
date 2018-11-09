@@ -5,7 +5,7 @@ public class PerdedorArma extends Malo{
 	protected Mediator med;
 	
 	public PerdedorArma(Mediator m) {
-		super();
+		super(m);
 		strat=new BuscadorArmado(this,m);
 		med=m;
 	}

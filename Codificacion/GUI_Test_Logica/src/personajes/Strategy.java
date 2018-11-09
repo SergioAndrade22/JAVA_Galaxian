@@ -1,7 +1,5 @@
 package personajes;
 
-import juego.Juego;
-
 public abstract class Strategy {
 	protected Malo en;
 	protected Mediator mediator;
