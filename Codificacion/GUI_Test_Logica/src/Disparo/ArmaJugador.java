@@ -14,7 +14,7 @@ public class ArmaJugador {
 		jugador=j;
 	}
 	public Disparo createDisparo() {
-		return new DisparoJugador(jugador.getPos().getVecina(KeyEvent.VK_RIGHT), 50, daño);
+		return new DisparoJugador(jugador.getPos(), 50, daño);
 	}
 	
 	public void aumentarDaño(int i) {
