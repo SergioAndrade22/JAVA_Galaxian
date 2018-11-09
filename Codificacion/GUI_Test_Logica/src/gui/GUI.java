@@ -30,6 +30,7 @@ public class GUI extends JFrame {
 	private boolean lock = false;
 	private int direction = -1;
 	private JLabel f;
+	private Clip ambiente;
 	
 	/**
 	 * Launch the application.
@@ -56,8 +57,6 @@ public class GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI() {
-		Clip ambiente = musicaAmbiente();
-		ambiente.start();
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1000, 600);
@@ -65,17 +64,6 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		MouseListener ml = new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				contentPane.remove(f);
-				contentPane.repaint();
-				contentPane.revalidate();
-				contentPane.updateUI();
-				startGame();
-				removeMouseListener(this);
-			}
-		};
-		addMouseListener(ml);
 		mainScreen();
 	}
 	
@@ -85,9 +73,22 @@ public class GUI extends JFrame {
 		f.setBounds(0, 0, 1000, 600);
 		f.setIcon(i);
 		contentPane.add(f);
+		MouseListener ml = new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				contentPane.remove(f);
+				contentPane.repaint();
+				contentPane.revalidate();
+				contentPane.updateUI();
+				removeMouseListener(this);
+				startGame();
+			}
+		};
+		addMouseListener(ml);
 	}
 	
 	public void startGame() {
+		ambiente = musicaAmbienteJuego();
+		ambiente.start();
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent arg0) {
 				switch(arg0.getKeyCode()) {
@@ -112,6 +113,34 @@ public class GUI extends JFrame {
 		tiempoJugador.start();
 		tiempoEntidades.start();
 		
+	}
+	
+	public void gameOver() {
+		ambiente.stop();
+		ambiente = musicaAmbienteDerrota();
+		ambiente.start();
+		contentPane.removeAll();
+		f = new JLabel();
+		ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/GameOver.png"));
+		f.setBounds(0, 0, 1000, 600);
+		f.setIcon(i);
+		contentPane.add(f);
+		contentPane.repaint();
+		contentPane.revalidate();
+		contentPane.updateUI();
+		MouseListener ml = new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				contentPane.remove(f);
+				contentPane.repaint();
+				contentPane.revalidate();
+				contentPane.updateUI();
+				removeMouseListener(this);
+				mainScreen();
+			}
+		};
+		addMouseListener(ml);
+		tiempoEntidades.stop();
+		tiempoJugador.stop();
 	}
 	
 	protected void mover(KeyEvent key){
@@ -166,9 +195,24 @@ public class GUI extends JFrame {
 		return clip;
 	}
 	
-	public static Clip musicaAmbiente() {
+	public static Clip musicaAmbienteJuego() {
 		Clip clip = null;
 		String ruta = "/BattleCity/Ambiente.wav";
+		try {
+			InputStream is = GUI.class.getResourceAsStream(ruta);
+			AudioInputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(is));
+			DataLine.Info info = new DataLine.Info(Clip.class, ais.getFormat());
+			clip = (Clip) AudioSystem.getLine(info);
+			clip.open(ais);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return clip;
+	}
+	
+	public static Clip musicaAmbienteDerrota() {
+		Clip clip = null;
+		String ruta = "/BattleCity/Defeat.wav";
 		try {
 			InputStream is = GUI.class.getResourceAsStream(ruta);
 			AudioInputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(is));

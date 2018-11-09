@@ -28,7 +28,7 @@ public class Juego {
 		this.gui = gui;
 		mapa = new Mapa(this, (gui.getWidth()/tamanioCelda)-1, (gui.getHeight()/tamanioCelda)-1); 
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
-		jugador = new Jugador(c);
+		jugador = new Jugador(c, this);
 		this.gui.addItem(jugador.getGrafico());
 		med = new Mediator(jugador,this);
 		entidades = new CopyOnWriteArrayList<Entidad>();
@@ -109,5 +109,9 @@ public class Juego {
 	public void agregarDisparo(Disparo d) {
 		entidades.add(d);
 		gui.addItem(d.getGrafico());
+	}
+	
+	public void loss() {
+		gui.gameOver();
 	}
 }

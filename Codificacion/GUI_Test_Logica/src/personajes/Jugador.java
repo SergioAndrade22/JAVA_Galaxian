@@ -2,6 +2,7 @@ package personajes;
 
 import java.awt.event.KeyEvent;
 import grafica.JugadorGrafico;
+import juego.Juego;
 import mapa.Celda;
 import Colliders.*;
 import Disparo.ArmaJugador;
@@ -11,8 +12,9 @@ public class Jugador extends Personaje{
 	protected boolean escudo;
 	protected ArmaJugador arma;
 	protected final int  hp_max=100;
+	protected Juego juego;
 		
-	public Jugador(Celda pos) {
+	public Jugador(Celda pos, Juego j) {
 		super(pos);
 		this.grafico = new JugadorGrafico(velocidad, this.pos.getX(), this.pos.getY());
 		collider = new ColliderJugador(this);
@@ -20,10 +22,9 @@ public class Jugador extends Personaje{
 		fuerza_kamikaze=50;
 		escudo=false;
 		arma=new ArmaJugador(this,10);
+		juego = j;
 	}
 
-	public void mover() {}
-	
 	public void mover(int dir){
 		switch (dir){
 		case KeyEvent.VK_UP : //Arriba
@@ -35,6 +36,8 @@ public class Jugador extends Personaje{
 		}
 		
 	}
+
+	public void mover() {}
 	
 	public Disparo disparar() {
 		Disparo d=arma.createDisparo();
@@ -46,15 +49,19 @@ public class Jugador extends Personaje{
 		e.aceptar(collider);
 		
 	}
+	
 	public void aceptar(Collider c) {
 		c.collideWith(this);
 	}
 
 	public void disminuirHP(int i) {
 		hp-=i;		
-		if(hp==0)
-			System.out.println("Fin de Juego. Perdiste");
+		if(hp==0) {
+			juego.loss();
+			System.out.printf("El jugador murio.");
+		}
 	}
+	
 	public void aumentarHP(int i) {
 		hp+=i;
 	}
@@ -70,9 +77,11 @@ public class Jugador extends Personaje{
 			disminuirHP(10);
 		
 	}
+	
 	public void completarHP() {
 		hp=hp_max;
 	}
+	
 	public ArmaJugador getArma() {
 		return arma;
 	}
