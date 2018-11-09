@@ -14,6 +14,9 @@ public class PocionMagica extends Premio{
 	}
 	
 	public void mover() {
-		super.mover(Celda.LEFT);
+		if (!pos.isStartX())
+			super.mover(Celda.LEFT);
+		else
+			morir();
 	}
 }

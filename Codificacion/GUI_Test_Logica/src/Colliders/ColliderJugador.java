@@ -21,24 +21,20 @@ public class ColliderJugador implements Collider {
 		jugador.recibirGolpe();
 	}
 
-	@Override
 	public void collideWith(DisparoJugador d) {}
 
-	@Override
 	public void collideWith(DisparoEnemigo de) {
 		de.morir();
 		jugador.disminuirHP(10);
 	}
 
-	@Override
 	public void collideWith(Obstaculo o) {
 		o.morir();
 		
 	}
 
-	@Override
 	public void collideWith(Premio p) {
 		p.actuar(jugador);
+		p.morir();
 	}
-
 }
