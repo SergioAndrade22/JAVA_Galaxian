@@ -23,6 +23,10 @@ public class Celda {
 		this.y = y;
 		hayObstaculo=false;
 	}
+	
+	public List<Entidad> entidades(){
+		return entidades;
+	}
 
 	public void addEntidad(Entidad e) {
 		for (Entidad en : entidades) 

@@ -7,7 +7,7 @@ public class NivelUnico extends Nivel {
 	
 	public NivelUnico() {
 		super();
-		cant = 10;
+		cant = 5;
 		disparadorFac = new ConcreteFactoryDisparador();
 		kamikazeFac = new ConcreteFactoryKamikaze();
 		objectFac = new ConcreteFactoryObject();

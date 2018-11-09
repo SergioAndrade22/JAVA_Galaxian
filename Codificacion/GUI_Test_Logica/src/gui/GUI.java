@@ -100,6 +100,8 @@ public class GUI extends JFrame {
 						Clip bang = cargarSonido();
 						bang.start();
 						break;
+					case KeyEvent.VK_Q:
+						j.cantEntidades();
 					default:
 						mover(arg0);
 						break;

@@ -5,4 +5,5 @@
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
 <fullyQualifiedTypeName name="java.awt.Dimension"/>
 <fullyQualifiedTypeName name="gui.ContadorTiempoJugador"/>
+<fullyQualifiedTypeName name="Objetos.Obstaculo"/>
 </qualifiedTypeNameHistroy>

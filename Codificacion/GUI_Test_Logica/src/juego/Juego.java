@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import Disparo.Disparo;
 import Objetos.Barricada;
+import Objetos.Obstaculo;
 import Objetos.Premio;
 import gui.GUI;
 import mapa.Celda;
@@ -16,7 +17,8 @@ import personajes.*;
 public class Juego {
 	private Jugador jugador;
 	private List<Entidad> entidades;
-	private List<Barricada> obst;
+	private List<Barricada> barricadas;
+	private List<Obstaculo> obstaculos;
 	private Mapa mapa;
 	private int tamanioCelda = 50;
 	private GUI gui;
@@ -32,7 +34,6 @@ public class Juego {
 		this.gui.addItem(jugador.getGrafico());
 		med = new Mediator(jugador,this);
 		entidades = new CopyOnWriteArrayList<Entidad>();
-		obst = new ArrayList<Barricada>();
 		score = new Score();
 		nivel = new NivelUnico();
 		nivel.createEnemies(med);
@@ -41,11 +42,16 @@ public class Juego {
 		mapa.place(entidades);
 		for (Entidad en : entidades)
 			this.gui.addItem(en.getGrafico());
-		nivel.createObjects();
-		obst = nivel.getObjects();
-		mapa.placeB(obst);
-		for (Barricada b : obst)
+		nivel.createBarricadas();
+		nivel.createObstaculos();
+		barricadas = nivel.getBarricadas();
+		obstaculos = nivel.getObstaculos();
+		mapa.placeB(barricadas);
+		mapa.placeO(obstaculos);
+		for (Barricada b : barricadas)
 			this.gui.addItem(b.getGrafico());
+		for (Obstaculo o: obstaculos)
+			this.gui.addItem(o.getGrafico());
 		this.gui.addItem(score);
 		this.gui = gui;
 		//nivelNuevo(new NivelUnico());
@@ -59,13 +65,13 @@ public class Juego {
 			nivel.createEnemies(med);
 			for (Entidad e: nivel.getEnemies())
 				entidades.add(e);
-			nivel.createObjects();
-			obst = nivel.getObjects();
+			nivel.createBarricadas();
+			barricadas = nivel.getBarricadas();
 			mapa.place(entidades);
 			for (Entidad e : entidades)
 				gui.addItem(e.getGrafico());
-			mapa.placeB(obst);
-			for (Barricada b : obst)
+			mapa.placeB(barricadas);
+			for (Barricada b : barricadas)
 				this.gui.addItem(b.getGrafico());
 		}
 		else 
@@ -82,6 +88,17 @@ public class Juego {
 	public void mover(int dir){
 		jugador.mover(dir);
 		
+	}
+	
+	public void cantEntidades() {
+		int contador=0;
+		Celda[][] aux= mapa.getMapa();
+		for (int i=0 ; i < aux[0].length ; i++)
+			for (int j=0; j < aux.length ; j++) {
+				if (!aux[j][i].entidades().isEmpty())
+					contador++;
+			}
+		System.out.println(contador);
 	}
 	
 	public void removerEntidad(Entidad e) {
