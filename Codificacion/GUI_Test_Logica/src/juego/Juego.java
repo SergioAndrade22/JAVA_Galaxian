@@ -97,6 +97,8 @@ public class Juego {
 			for (int j=0; j < aux.length ; j++) {
 				if (!aux[j][i].entidades().isEmpty())
 					contador++;
+				for (Entidad en : aux[j][i].entidades())
+					System.out.println(en.getClass());
 			}
 		System.out.println(contador);
 	}

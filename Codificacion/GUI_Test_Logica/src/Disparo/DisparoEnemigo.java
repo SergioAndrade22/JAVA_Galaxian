@@ -24,7 +24,8 @@ public class DisparoEnemigo extends Disparo{
 	
 	public void mover() {
 		if (pos.isStartX())
-			pos.eliminarEntidad(this);
-		super.mover(dir);
+			morir();
+		else
+			super.mover(dir);
 	}
 }

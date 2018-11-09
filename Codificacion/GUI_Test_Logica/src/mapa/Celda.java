@@ -29,9 +29,9 @@ public class Celda {
 	}
 
 	public void addEntidad(Entidad e) {
+		entidades.add(e);
 		for (Entidad en : entidades) 
 			en.colision(e);
-		entidades.add(e);
 	}
 	
 	public void removeEntidad(Entidad e) {
