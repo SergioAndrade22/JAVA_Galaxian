@@ -43,7 +43,7 @@ public class Malo extends Personaje{
 		pos.eliminarEntidad(this);
 		Random r=new Random();
 		if(r.nextInt(5)>3)
-			juego.insertarPremio(pos, new PocionMagica());
+			juego.insertarPremio(pos, new PocionMagica(pos));
 	}
 	
 	public void disminuirHP(int i) {

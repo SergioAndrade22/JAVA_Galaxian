@@ -46,7 +46,6 @@ public class Juego {
 		mapa.placeB(obst);
 		for (Barricada b : obst)
 			this.gui.addItem(b.getGrafico());
-		nivel.createPremios();
 		this.gui.addItem(score);
 		this.gui = gui;
 		//nivelNuevo(new NivelUnico());

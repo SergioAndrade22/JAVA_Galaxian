@@ -39,13 +39,4 @@ public abstract class Nivel {
 	public Nivel getSiguiente() {
 		return next;
 	}
-	public void createPremios(){
-		premios=objectFac.createPremio(4);
-	}
-	public Premio getPremio() {
-		if(!premios.isEmpty())
-			return premios.remove(0);
-		else
-			return null;
-	}
 }

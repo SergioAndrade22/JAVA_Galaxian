@@ -1,11 +1,12 @@
 package Objetos;
 
+import mapa.Celda;
 import personajes.Jugador;
 
 public class PocionMagica extends Premio{
 
-	public PocionMagica() {
-		super();
+	public PocionMagica(Celda c) {
+		super(c);
 	}
 	
 	public void actuar(Jugador jug) {
@@ -13,6 +14,6 @@ public class PocionMagica extends Premio{
 	}
 	
 	public void mover() {
-		// TODO Auto-generated method stub
+		super.mover(Celda.LEFT);
 	}
 }
