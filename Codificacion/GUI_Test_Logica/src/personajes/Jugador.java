@@ -40,8 +40,8 @@ public class Jugador extends Personaje{
 	public void mover() {}
 	
 	public Disparo disparar() {
-		Disparo d=arma.createDisparo();
-		pos.getVecina(KeyEvent.VK_RIGHT).addEntidad(d);
+		Disparo d = arma.createDisparo();
+		pos.addEntidad(d);
 		return d;
 	}
 	
