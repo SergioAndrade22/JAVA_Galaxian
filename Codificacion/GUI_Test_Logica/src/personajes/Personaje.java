@@ -9,11 +9,11 @@ public abstract class Personaje extends Entidad {
 	
 	public Personaje(Celda c){
 		super(c);
-		velocidad=1;
+		velocidad = 10;
 	}
 	
 	public Personaje() {
-		velocidad = 1;
+		velocidad = 10;
 	}
 	
 	public void mover(int dir){
