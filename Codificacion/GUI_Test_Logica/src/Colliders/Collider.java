@@ -13,5 +13,6 @@ public interface Collider {
 	public void collideWith(DisparoJugador d);
 	public void collideWith(DisparoEnemigo de);
 	public void collideWith(Obstaculo o);
+	public void collideWith(Barricada b);
 }
 

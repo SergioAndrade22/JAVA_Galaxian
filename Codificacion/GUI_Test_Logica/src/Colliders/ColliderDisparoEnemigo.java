@@ -3,6 +3,7 @@ package Colliders;
 import Disparo.Disparo;
 import Disparo.DisparoEnemigo;
 import Disparo.DisparoJugador;
+import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import personajes.*;
@@ -21,9 +22,10 @@ public class ColliderDisparoEnemigo implements Collider {
 
 	public void collideWith(Obstaculo o) {
 		o.morir();
-		System.out.println("Quitar obstaculo");
 		disparo.morir();
 	}
+	
+	public void collideWith(Barricada b) { /*NADA*/ }
 	
 	public void collideWith(Malo m) { /*NADA*/ }
 

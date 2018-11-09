@@ -3,6 +3,7 @@ package Colliders;
 import Disparo.Disparo;
 import Disparo.DisparoEnemigo;
 import Disparo.DisparoJugador;
+import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import personajes.*;
@@ -19,7 +20,11 @@ public class ColliderDisparoJugador implements Collider {
 
 	public void collideWith(Obstaculo o) {
 		o.morir();
-		System.out.println("Eliminamos obstaculos");
+		disparo.morir();
+	}
+
+	public void collideWith(Barricada b) {
+		b.recibirDaño(25);
 		disparo.morir();
 	}
 	
@@ -30,4 +35,5 @@ public class ColliderDisparoJugador implements Collider {
 	public void collideWith(DisparoEnemigo de) { /*NADA*/ }
 
 	public void collideWith(Premio p) { /*NADA*/ }
+
 }
