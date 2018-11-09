@@ -23,7 +23,6 @@ public class DisparoJugador extends Disparo{
 	public void mover() {
 		if (pos.isEndX())
 			morir();
-		else
-			super.mover(dir);
+		super.mover(dir);
 	}
 }

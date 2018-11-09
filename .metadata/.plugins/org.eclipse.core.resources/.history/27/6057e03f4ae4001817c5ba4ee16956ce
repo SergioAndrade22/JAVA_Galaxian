@@ -19,11 +19,11 @@ public class NivelUnico extends Nivel {
 			enemies.add(m);
 		for (Malo m : disparadorFac.createPerdedorArma(2, med))
 			enemies.add(m);
-		for (Malo m : kamikazeFac.createBuscador(0, med))
+		for (Malo m : kamikazeFac.createBuscador(2, med))
 			enemies.add(m);
-		for (Malo m : kamikazeFac.createPaseador(0, med))
+		for (Malo m : kamikazeFac.createPaseador(2, med))
 			enemies.add(m);
-		for (Malo m : kamikazeFac.createVariante(0, med))
+		for (Malo m : kamikazeFac.createVariante(2, med))
 			enemies.add(m);
 	}
 }

@@ -40,7 +40,6 @@ public class Celda {
 
 	public void eliminarEntidad(Entidad e) {
 		entidades.remove(e);
-		entidades.clear();
 		mapa.remove(e);
 		
 	}

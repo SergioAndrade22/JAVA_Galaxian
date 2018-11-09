@@ -23,9 +23,9 @@ public abstract class Disparo extends Entidad{
 		this.grafico.mover(dir);
 		pos.addEntidad(this);
 	}
-	/*public void morir() {
+	public void morir() {
 		pos.eliminarEntidad(this);
-	}*/
+	}
 	
 	public int getDaño() {
 		return daño;
