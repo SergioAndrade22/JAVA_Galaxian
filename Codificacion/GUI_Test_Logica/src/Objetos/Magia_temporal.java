@@ -1,10 +1,10 @@
 package Objetos;
 
 import mapa.Celda;
-
 public abstract class Magia_temporal extends Premio {
 	
-	protected int duracion; //Tiempo que está activo el bonus.
+	protected static int duracion; //Tiempo que está activo el bonus.
+	
 	
 	public Magia_temporal(Celda c){
 		super(c);
@@ -18,4 +18,5 @@ public abstract class Magia_temporal extends Premio {
 		super(c,hp);
 		this.duracion=duracion;
 	}
+	
 }
