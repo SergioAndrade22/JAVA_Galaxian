@@ -56,8 +56,6 @@ public class Juego {
 		this.gui = gui;
 		this.gui.addItem(score);
 		this.gui.addItem(jugador.getGrafico());
-		SuperMisil premio=new SuperMisil(c);
-		premio.actuar(jugador);
 	}
 	
 	public void nivelNuevo(Nivel n) {
