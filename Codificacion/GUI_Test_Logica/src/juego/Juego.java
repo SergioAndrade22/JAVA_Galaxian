@@ -1,12 +1,12 @@
 package juego;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import Disparo.Disparo;
 import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
+import Objetos.SuperMisil;
 import gui.GUI;
 import mapa.Celda;
 import mapa.Mapa;
@@ -57,6 +57,8 @@ public class Juego {
 		//nivelNuevo(new NivelUnico());
 		this.gui.addItem(score);
 		this.gui.addItem(jugador.getGrafico());
+		SuperMisil premio=new SuperMisil(c);
+		premio.actuar(jugador);
 	}
 	
 	public void nivelNuevo(Nivel n) {

@@ -5,14 +5,17 @@ import grafica.JugadorGrafico;
 import juego.Juego;
 import mapa.Celda;
 import Colliders.*;
+import Disparo.Arma;
 import Disparo.ArmaJugador;
+import Disparo.ArmaMisil;
 import Disparo.Disparo;
 
 public class Jugador extends Personaje{
 	protected boolean escudo;
-	protected ArmaJugador arma;
+	protected Arma arma;
 	protected final int  hp_max=100;
 	protected Juego juego;
+	protected Arma provisoria;
 		
 	public Jugador(Celda pos, Juego j) {
 		super(pos);
@@ -82,7 +85,14 @@ public class Jugador extends Personaje{
 		hp=hp_max;
 	}
 	
-	public ArmaJugador getArma() {
+	public Arma getArma() {
 		return arma;
+	}
+	public void enableMisil() {
+		provisoria=arma;
+		arma=new ArmaMisil(this,100);
+	}
+	public void disableMisil() {
+		arma=provisoria;
 	}
 }

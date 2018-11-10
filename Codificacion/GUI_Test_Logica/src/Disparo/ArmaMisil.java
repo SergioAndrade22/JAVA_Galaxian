@@ -1,15 +1,13 @@
 package Disparo;
 
-import java.awt.event.KeyEvent;
-
 import personajes.Jugador;
 
-public class ArmaJugador extends Arma{
-	
+public class ArmaMisil extends Arma{
+
 	protected int daño;
 	protected Jugador jugador;
 
-	public ArmaJugador(Jugador j, int d){
+	public ArmaMisil(Jugador j, int d){
 		daño=d;
 		jugador=j;
 	}
