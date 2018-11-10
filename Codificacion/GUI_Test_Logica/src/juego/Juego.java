@@ -54,7 +54,6 @@ public class Juego {
 			this.gui.addItem(o.getGrafico());
 		this.gui.addItem(score);
 		this.gui = gui;
-		//nivelNuevo(new NivelUnico());
 		this.gui.addItem(score);
 		this.gui.addItem(jugador.getGrafico());
 		SuperMisil premio=new SuperMisil(c);
@@ -90,19 +89,6 @@ public class Juego {
 	public void mover(int dir){
 		jugador.mover(dir);
 		
-	}
-	
-	public void cantEntidades() {
-		int contador=0;
-		Celda[][] aux= mapa.getMapa();
-		for (int i=0 ; i < aux[0].length ; i++)
-			for (int j=0; j < aux.length ; j++) {
-				if (!aux[j][i].entidades().isEmpty())
-					contador++;
-				for (Entidad en : aux[j][i].entidades())
-					System.out.println(en.getClass());
-			}
-		System.out.println(contador);
 	}
 	
 	public void removerEntidad(Entidad e) {

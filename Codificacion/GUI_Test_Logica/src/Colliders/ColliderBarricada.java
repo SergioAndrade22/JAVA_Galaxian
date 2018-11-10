@@ -17,7 +17,6 @@ public class ColliderBarricada implements Collider {
 
 	public void collideWith(DisparoJugador d) {
 		bar.recibirDaño(100);
-		bar.morir();
 		d.morir();
 	}
 	
