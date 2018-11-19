@@ -6,13 +6,12 @@ import java.util.TimerTask;
 import mapa.Celda;
 import personajes.Jugador;
 
-public class SuperMisil extends Magia_temporal{
+public class Congelar extends Magia_temporal{
 	protected static Timer timer=new Timer();
 	private static int seconds=0;
 	
 
-	
-	public SuperMisil(Celda c) {
+	public Congelar(Celda c) {
 		super(c);
 	}
 
@@ -26,14 +25,15 @@ public class SuperMisil extends Magia_temporal{
 		task=new TimerTask() {
 			public void run() {
 				 if (seconds < duracion) {
-		                j.enableMisil();
+		                j.congelar();
 		                seconds++;
 		            } else {
-		            	j.disableMisil();
+		            	j.descongelar();
 		                cancel();
 		            }
 		        }
 		    };
-		    timer.schedule(task,0,1000);
+		    timer.schedule(task,1,1000);
 	}
+
 }

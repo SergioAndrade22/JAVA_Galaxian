@@ -67,5 +67,10 @@ public abstract class Entidad {
 	public abstract void aceptar(Collider c);
 
 	public abstract void mover();
+	
+	public abstract void congelar();
+	
+	public abstract void descongelar();
+	
 
 }

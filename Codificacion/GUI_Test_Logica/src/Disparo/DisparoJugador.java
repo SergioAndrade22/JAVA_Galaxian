@@ -26,4 +26,9 @@ public class DisparoJugador extends Disparo{
 		else
 			super.mover(dir);
 	}
+	
+
+	public void congelar() {}
+	
+	public void descongelar() {}
 }

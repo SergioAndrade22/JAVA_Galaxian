@@ -10,7 +10,7 @@ public abstract class Disparo extends Entidad{
 	
 	public Disparo(Celda c, int velocidad, int daño){
 		super(c,velocidad);
-		this.grafico = new DisparoGrafico(velocidad, this.pos.getX(), this.pos.getY());
+		this.grafico = new DisparoGrafico(velocidad, c.getX(), c.getY());
 		dir = -1;
 		this.daño=daño;
 		

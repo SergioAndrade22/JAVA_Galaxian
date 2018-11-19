@@ -18,6 +18,7 @@ public class Obstaculo extends Objeto{
 		super(c);
 		grafico = new ObstaculoGrafico(velocidad, c.getX(), c.getY());
 		collider = new ColliderObstaculo(this);
+		c.setObstaculo(true);
 		hp = 100;
 	}
 	
@@ -26,6 +27,7 @@ public class Obstaculo extends Objeto{
 		grafico=new ObstaculoGrafico(velocidad, c.getX(),c.getY());
 		collider = new ColliderObstaculo(this);
 		hp = 100;
+		
 	}
 
 	public void colision(Entidad e) {

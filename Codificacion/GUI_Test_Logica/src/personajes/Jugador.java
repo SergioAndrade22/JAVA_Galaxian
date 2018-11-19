@@ -95,4 +95,11 @@ public class Jugador extends Personaje{
 	public void disableMisil() {
 		arma=provisoria;
 	}
+	public void congelar() {
+		juego.congelar();
+	}
+	
+	public void descongelar() {
+		juego.descongelar();
+	}
 }

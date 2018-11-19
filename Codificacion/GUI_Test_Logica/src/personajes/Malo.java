@@ -4,12 +4,14 @@ import java.util.Random;
 import Colliders.*;
 import grafica.MaloGrafico;
 import juego.Juego;
+import mapa.Celda;
 import Objetos.PocionMagica;
 
 public class Malo extends Personaje{
 	protected Strategy strat;
 	protected Juego juego;
-
+	protected Strategy anterior;
+	
 	public Malo(Mediator m) {
 		super();
 		collider=new ColliderMalo(this);
@@ -55,5 +57,33 @@ public class Malo extends Personaje{
 		strat=s;
 	}
 
+	public void congelar() {
+		anterior=strat;
+		strat=new Congelado();
+	}
+	public void descongelar() {
+		if(anterior!=null) {
+			strat=anterior;
+			anterior=null;
+		}
+	}
+	public void mover(int dir) {
+		synchronized (pos) {
+			Celda next = this.pos.getVecina(dir);
+			while(next.esObstaculo()) {
+				switch(dir) {
+					case Celda.DOWN: dir=Celda.LEFT;break;
+					case Celda.LEFT: dir=Celda.UP;break;
+					case Celda.RIGHT: dir=Celda.DOWN;break;
+					case Celda.UP: dir=Celda.RIGHT;break;
+				}
+				next=pos.getVecina(dir);
+			}
+			this.pos.removeEntidad(this);
+			this.pos = next;
+			this.grafico.mover(dir);
+			pos.addEntidad(this);
+		}
+	}
 	
 }

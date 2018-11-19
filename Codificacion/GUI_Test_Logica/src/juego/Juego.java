@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import Disparo.Disparo;
 import Objetos.Barricada;
+import Objetos.Congelar;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import Objetos.SuperMisil;
@@ -52,9 +53,10 @@ public class Juego {
 			this.gui.addItem(b.getGrafico());
 		for (Obstaculo o: obstaculos)
 			this.gui.addItem(o.getGrafico());
+		insertarPremio(c,new Congelar(c));
 		this.gui.addItem(score);
 		this.gui = gui;
-		this.gui.addItem(score);
+		//this.gui.addItem(score);
 		this.gui.addItem(jugador.getGrafico());
 	}
 	
@@ -118,5 +120,14 @@ public class Juego {
 	
 	public void loss() {
 		gui.gameOver();
+	}
+	public void congelar() {
+		for (Entidad a:entidades) {
+			a.congelar();
+		}
+	}
+	public void descongelar() {
+		for(Entidad a:entidades)
+			a.descongelar();
 	}
 }

@@ -3,6 +3,8 @@ package personajes;
 public abstract class Strategy {
 	protected Malo en;
 	protected Mediator mediator;
+	
+	public Strategy() {}
 
 	public Strategy(Malo e, Mediator med) {
 		en = e;
