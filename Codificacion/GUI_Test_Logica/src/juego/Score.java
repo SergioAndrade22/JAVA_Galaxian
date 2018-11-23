@@ -12,7 +12,7 @@ public class Score extends JLabel {
 		super(base + 0);
 		points = 0;
 		this.setFocusable(false);
-		this.setBounds(1024, 0, 100, 35);
+		this.setBounds(900, 0, 100, 35);
 		this.setBackground(Color.CYAN);
 	}
 	

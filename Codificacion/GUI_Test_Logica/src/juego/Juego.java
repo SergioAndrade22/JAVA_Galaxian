@@ -58,8 +58,8 @@ public class Juego {
 		insertarPremio(c,new Congelar(c));
 		this.gui.addItem(score);
 		this.gui = gui;
-		//this.gui.addItem(score);
 		this.gui.addItem(jugador.getGrafico());
+		this.gui.addItem(score);
 	}
 	
 	public void nivelNuevo(Nivel n) {
@@ -123,13 +123,19 @@ public class Juego {
 	public void loss() {
 		gui.gameOver();
 	}
+	
 	public void congelar() {
 		for (Entidad a:entidades) {
 			a.congelar();
 		}
 	}
+	
 	public void descongelar() {
 		for(Entidad a:entidades)
 			a.descongelar();
+	}
+	
+	public void scoreUp() {
+		score.increase(100);
 	}
 }
