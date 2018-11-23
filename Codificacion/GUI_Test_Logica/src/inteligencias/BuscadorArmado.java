@@ -14,8 +14,8 @@ public class BuscadorArmado extends Strategy{
 	protected ArmaEnemigo miArma;
 	protected Juego juego;
 	
-	public BuscadorArmado(Malo e, Mediator med) {
-		super(e, med);
+	public BuscadorArmado(Malo e) {
+		super(e);
 		miArma=new ArmaEnemigo(e,10);
 	}
 

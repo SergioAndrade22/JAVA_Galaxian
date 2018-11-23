@@ -20,7 +20,6 @@ public class ConcreteFactoryObject extends AbstractFactoryObject {
 		for (int i=0 ; i< cant; i++) {
 			toRet.add(new Obstaculo());
 		}
-		
 		return toRet;
 	}
 }

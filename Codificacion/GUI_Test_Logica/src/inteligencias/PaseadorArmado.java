@@ -10,12 +10,11 @@ public class PaseadorArmado extends Strategy {
 
 	protected ArmaEnemigo miArma;
 	
-	public PaseadorArmado(Malo e, Mediator med) {
-		super(e,med);
-		miArma=new ArmaEnemigo(e,10);
+	public PaseadorArmado(Malo e) {
+		super(e);
+		miArma = new ArmaEnemigo(e,10);
 	}
 
-	@Override
 	public void mover() {
 		Random r = new Random();		
 		int dir = r.nextInt(3);		

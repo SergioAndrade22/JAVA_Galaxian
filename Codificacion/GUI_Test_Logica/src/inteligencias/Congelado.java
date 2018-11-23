@@ -1,15 +1,14 @@
 package inteligencias;
 
+import personajes.Entidad;
+
 public class Congelado extends Strategy {
 	
-	
-	public Congelado() {
-		
+	public Congelado(Entidad en) {
+		super(en);
 	}
-
-	@Override
+	
 	public void mover() {
-		// TODO Auto-generated method stub
 		
 	}
 }

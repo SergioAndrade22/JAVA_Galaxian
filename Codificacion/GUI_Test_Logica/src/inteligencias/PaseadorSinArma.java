@@ -7,10 +7,9 @@ import personajes.Malo;
 
 public class PaseadorSinArma extends Strategy{
 
-	public PaseadorSinArma(Malo e, Mediator med) {
-		super(e, med);
+	public PaseadorSinArma(Malo e) {
+		super(e);
 	}
-	
 
 	public void mover() {
 		Random r = new Random();		
