@@ -16,6 +16,7 @@ public class ColliderDisparoJugador implements Collider {
 
 	public void collideWith(Malo m) {
 		m.disminuirHP(disparo.getDaño());
+		disparo.morir();
 	}
 
 	public void collideWith(Obstaculo o) {
