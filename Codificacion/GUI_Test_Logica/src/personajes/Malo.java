@@ -15,13 +15,13 @@ public class Malo extends Personaje{
 	protected Juego juego;
 	protected Strategy anterior;
 	
-	public Malo(Mediator m) {
+	public Malo() {
 		super();
-		collider=new ColliderMalo(this);
-		hp=50;
-		fuerza_kamikaze=50;
+		collider = new ColliderMalo(this);
+		hp = 50;
+		fuerza_kamikaze = 50;
 		grafico = new MaloGrafico(velocidad,0,0);
-		juego=m.getJuego();
+		juego = Mediator.getInstance().getJuego();
 	}
 	
 	public Malo(Strategy s) {
@@ -57,20 +57,23 @@ public class Malo extends Personaje{
 		if(hp<=0)
 			morir();
 	}
+	
 	public void setEstrategia(Strategy s) {
 		strat=s;
 	}
 
 	public void congelar() {
 		anterior=strat;
-		strat=new Congelado();
+		strat=new Congelado(this);
 	}
+	
 	public void descongelar() {
 		if(anterior!=null) {
 			strat=anterior;
 			anterior=null;
 		}
 	}
+	
 	public void mover(int dir) {
 		synchronized (pos) {
 			Celda next = this.pos.getVecina(dir);
@@ -89,5 +92,4 @@ public class Malo extends Personaje{
 			pos.addEntidad(this);
 		}
 	}
-	
 }

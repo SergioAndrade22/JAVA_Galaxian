@@ -9,10 +9,9 @@ import Objetos.Obstaculo;
 import Objetos.Premio;
 import gui.GUI;
 import inteligencias.Mediator;
-import mapa.Celda;
-import mapa.Mapa;
+import mapa.*;
 import niveles.Nivel;
-import niveles.NivelUnico;
+import niveles.NivelInicial;
 import personajes.*;
 
 public class Juego {
@@ -38,8 +37,9 @@ public class Juego {
 		med.setJuego(this);
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		score = new Score();
-		nivel = new NivelUnico();
-		nivel.createEnemies(med);
+		nivel = new NivelInicial(6);
+		
+		nivel.createEnemies();
 		for (Entidad en : nivel.getEnemies()) 
 			entidades.add(en);
 		mapa.place(entidades);
@@ -55,30 +55,14 @@ public class Juego {
 			this.gui.addItem(b.getGrafico());
 		for (Obstaculo o: obstaculos)
 			this.gui.addItem(o.getGrafico());
-		insertarPremio(c,new Congelar(c));
+		
 		this.gui.addItem(score);
 		this.gui = gui;
 		this.gui.addItem(jugador.getGrafico());
 		this.gui.addItem(score);
 	}
 	
-	public void nivelNuevo(Nivel n) {
-		if(n!=null) {
-			nivel = n;
-			nivel.createEnemies(med);
-			for (Entidad e: nivel.getEnemies())
-				entidades.add(e);
-			nivel.createBarricadas();
-			barricadas = nivel.getBarricadas();
-			mapa.place(entidades);
-			for (Entidad e : entidades)
-				gui.addItem(e.getGrafico());
-			mapa.placeB(barricadas);
-			for (Barricada b : barricadas)
-				this.gui.addItem(b.getGrafico());
-		}
-		else 
-			System.out.println("Fin de Juego!");
+	private void crearNivel() {
 	}
 	
 	public void moverEntidades(){
@@ -137,5 +121,15 @@ public class Juego {
 	
 	public void scoreUp() {
 		score.increase(100);
+	}
+	
+	public boolean nextLevel() {
+		if (nivel.getSiguiente() == null)
+			return false;
+		else {
+			nivel = nivel.getSiguiente();
+			crearNivel();
+			return true;
+		}
 	}
 }

@@ -1,16 +1,14 @@
 package inteligencias;
 
-import personajes.Malo;
+import personajes.Entidad;
 
 public abstract class Strategy {
-	protected Malo en;
+	protected Entidad en;
 	protected Mediator mediator;
 	
-	public Strategy() {}
-
-	public Strategy(Malo e, Mediator med) {
+	public Strategy(Entidad e) {
 		en = e;
-		mediator = med;
+		mediator = Mediator.getInstance();
 	}
 	
 	public abstract void mover();

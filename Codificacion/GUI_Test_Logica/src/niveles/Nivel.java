@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
-import inteligencias.Mediator;
 import personajes.Malo;
 
 public abstract class Nivel {
@@ -24,7 +23,7 @@ public abstract class Nivel {
 		premios=new ArrayList<Premio>();
 	}
 	
-	public abstract void createEnemies(Mediator med);
+	public abstract void createEnemies();
 	
 	public void createBarricadas() {
 		barricadas = objectFac.createBarricadas(cant);
