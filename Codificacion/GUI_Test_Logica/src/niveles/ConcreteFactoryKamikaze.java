@@ -1,12 +1,12 @@
-package mapa;
+package niveles;
 
 import java.util.ArrayList;
 
+import inteligencias.Mediator;
 import personajes.KamikazeAleatorio;
 import personajes.KamikazeBuscador;
 import personajes.KamikazePaseador;
 import personajes.Malo;
-import personajes.Mediator;
 
 public class ConcreteFactoryKamikaze extends AbstractFactoryKamikaze {
 

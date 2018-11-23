@@ -1,5 +1,9 @@
 package personajes;
 
+import inteligencias.BuscadorSinArma;
+import inteligencias.Mediator;
+import inteligencias.PaseadorSinArma;
+
 public class KamikazeAleatorio extends Malo {
 	
 	protected Mediator med;

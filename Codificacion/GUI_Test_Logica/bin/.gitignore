@@ -1,6 +1,7 @@
-/gui/
-/juego/
-/mapa/
-/personajes/
 /Disparo/
 /Objetos/
+/personajes/
+/juego/
+/inteligencias/
+/mapa/
+/niveles/

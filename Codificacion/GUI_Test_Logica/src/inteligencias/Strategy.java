@@ -1,4 +1,6 @@
-package personajes;
+package inteligencias;
+
+import personajes.Malo;
 
 public abstract class Strategy {
 	protected Malo en;

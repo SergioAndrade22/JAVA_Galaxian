@@ -1,6 +1,6 @@
-package mapa;
+package niveles;
 
-import personajes.Mediator;
+import inteligencias.Mediator;
 
 public class NivelDos extends Nivel{
 

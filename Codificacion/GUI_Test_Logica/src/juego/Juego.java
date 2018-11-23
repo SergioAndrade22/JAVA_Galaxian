@@ -9,10 +9,11 @@ import Objetos.Obstaculo;
 import Objetos.Premio;
 import Objetos.SuperMisil;
 import gui.GUI;
+import inteligencias.Mediator;
 import mapa.Celda;
 import mapa.Mapa;
-import mapa.Nivel;
-import mapa.NivelUnico;
+import niveles.Nivel;
+import niveles.NivelUnico;
 import personajes.*;
 
 public class Juego {

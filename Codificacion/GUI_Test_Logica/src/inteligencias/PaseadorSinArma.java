@@ -1,8 +1,9 @@
-package personajes;
+package inteligencias;
 
 import java.util.Random;
 
 import mapa.Celda;
+import personajes.Malo;
 
 public class PaseadorSinArma extends Strategy{
 

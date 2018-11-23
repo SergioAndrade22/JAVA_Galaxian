@@ -1,8 +1,9 @@
-package mapa;
+package niveles;
 
 import java.util.ArrayList;
+
+import inteligencias.Mediator;
 import personajes.Malo;
-import personajes.Mediator;
 
 public abstract class AbstractFactoryDisparador {
 	public abstract ArrayList<Malo> createPerdedorArma(int cant, Mediator med);

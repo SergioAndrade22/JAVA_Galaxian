@@ -1,9 +1,11 @@
-package personajes;
+package inteligencias;
 
 import Disparo.ArmaEnemigo;
 import Disparo.Disparo;
 import juego.Juego;
 import mapa.Celda;
+import personajes.Malo;
+
 import java.util.Random;
 
 public class BuscadorArmado extends Strategy{

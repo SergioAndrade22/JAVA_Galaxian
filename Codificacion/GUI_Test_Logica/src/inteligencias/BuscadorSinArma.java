@@ -1,6 +1,7 @@
-package personajes;
+package inteligencias;
 
 import mapa.Celda;
+import personajes.Malo;
 
 public class BuscadorSinArma extends Strategy {
 

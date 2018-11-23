@@ -1,8 +1,9 @@
-package mapa;
+package niveles;
 
 import java.util.ArrayList;
+
+import inteligencias.Mediator;
 import personajes.Malo;
-import personajes.Mediator;
 
 public abstract class AbstractFactoryKamikaze {
 	public abstract ArrayList<Malo> createBuscador(int cant, Mediator med);

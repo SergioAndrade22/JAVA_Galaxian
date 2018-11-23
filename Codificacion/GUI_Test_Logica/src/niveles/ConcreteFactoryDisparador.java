@@ -1,9 +1,10 @@
-package mapa;
+package niveles;
 
 import java.util.ArrayList;
+
+import inteligencias.Mediator;
 import personajes.Malo;
 import personajes.MaloQueDispara;
-import personajes.Mediator;
 import personajes.PerdedorArma;
 
 public class ConcreteFactoryDisparador extends AbstractFactoryDisparador {

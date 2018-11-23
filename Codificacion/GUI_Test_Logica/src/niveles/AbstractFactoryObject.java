@@ -1,4 +1,4 @@
-package mapa;
+package niveles;
 
 import java.util.ArrayList;
 import Objetos.Barricada;

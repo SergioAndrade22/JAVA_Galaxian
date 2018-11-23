@@ -1,4 +1,4 @@
-package personajes;
+package inteligencias;
 
 public class Congelado extends Strategy {
 	

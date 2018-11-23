@@ -1,7 +1,7 @@
-package mapa;
+package niveles;
 
+import inteligencias.Mediator;
 import personajes.Malo;
-import personajes.Mediator;
 
 public class NivelUnico extends Nivel {
 	

@@ -1,7 +1,8 @@
-package personajes;
+package inteligencias;
 
 import juego.Juego;
 import mapa.Celda;
+import personajes.Jugador;
 
 public class Mediator {
 	private Jugador jugador;

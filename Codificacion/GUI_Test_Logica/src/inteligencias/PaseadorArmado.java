@@ -1,9 +1,10 @@
-package personajes;
+package inteligencias;
 
 import java.util.Random;
 import Disparo.ArmaEnemigo;
 import Disparo.Disparo;
 import mapa.Celda;
+import personajes.Malo;
 
 public class PaseadorArmado extends Strategy {
 

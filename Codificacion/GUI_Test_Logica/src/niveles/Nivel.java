@@ -1,11 +1,11 @@
-package mapa;
+package niveles;
 
 import java.util.ArrayList;
 import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
+import inteligencias.Mediator;
 import personajes.Malo;
-import personajes.Mediator;
 
 public abstract class Nivel {
 	protected AbstractFactoryKamikaze kamikazeFac;
