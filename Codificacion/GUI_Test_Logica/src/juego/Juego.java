@@ -7,7 +7,6 @@ import Objetos.Barricada;
 import Objetos.Congelar;
 import Objetos.Obstaculo;
 import Objetos.Premio;
-import Objetos.SuperMisil;
 import gui.GUI;
 import inteligencias.Mediator;
 import mapa.Celda;
@@ -34,7 +33,9 @@ public class Juego {
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c, this);
 		this.gui.addItem(jugador.getGrafico());
-		med = new Mediator(jugador,this);
+		med = Mediator.getInstance();
+		med.setJugador(jugador);
+		med.setJuego(this);
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		score = new Score();
 		nivel = new NivelUnico();

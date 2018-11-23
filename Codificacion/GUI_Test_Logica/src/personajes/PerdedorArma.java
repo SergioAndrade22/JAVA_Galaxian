@@ -14,7 +14,6 @@ public class PerdedorArma extends Malo{
 	public void disminuirHP(int i) {
 		super.disminuirHP(i);
 		if(hp<=50)
-			strat=new PaseadorSinArma(this, new Mediator());
+			strat=new PaseadorSinArma(this, Mediator.getInstance());
 	}
-
 }

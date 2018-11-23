@@ -7,18 +7,18 @@ import personajes.Jugador;
 public class Mediator {
 	private Jugador jugador;
 	private Juego juego;
+	private static Mediator instance = null;
 	
-	public Mediator(Jugador j,Juego juego) {
-		jugador = j;
-		this.juego=juego;
-	}
-	
-	public Mediator() {
-
+	private Mediator() {
+		
 	}
 	
 	public void setJugador(Jugador j) {
 		jugador = j;
+	}
+	
+	public void setJuego(Juego j) {
+		juego = j;
 	}
 	
 	public Celda getPosJ() {
@@ -26,5 +26,9 @@ public class Mediator {
 	}
 	public Juego getJuego() {
 		return juego;
+	}
+	
+	public static Mediator getInstance() {
+		return (instance == null) ? instance = new Mediator() : instance;
 	}
 }
