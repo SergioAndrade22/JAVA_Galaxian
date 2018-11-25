@@ -1,10 +1,10 @@
 package niveles;
 
 import java.util.ArrayList;
-import Objetos.Barricada;
-import Objetos.Objeto_precioso;
-import Objetos.Obstaculo;
-import Objetos.Premio;
+import java.util.Random;
+
+import Objetos.*;
+import mapa.Celda;
 
 public class ConcreteFactoryObject extends AbstractFactoryObject {
 
@@ -21,5 +21,19 @@ public class ConcreteFactoryObject extends AbstractFactoryObject {
 			toRet.add(new Obstaculo());
 		}
 		return toRet;
+	}
+	public Premio createPremio() {
+		Random r=new Random();
+		Premio toRet=null;
+		int i=r.nextInt(5);
+		switch (i) {
+			case 0: toRet= new Congelar();break;
+			case 1: toRet=new MejoraArma();break;
+			case 2: toRet= new PocionMagica();break;
+			case 3: toRet= new Proteccion();break;
+			case 4: toRet= new SuperMisil();break;
+		}
+		return toRet;
+			
 	}
 }

@@ -89,8 +89,9 @@ public class Juego {
 			gui.addItem(d.getGrafico());
 		}
 	}	
-	public void insertarPremio(Celda c, Premio p) {
+	public void insertarPremio(Celda c) {
 		synchronized (entidades) {
+			Premio p=nivel.getPremio();
 			entidades.add(p);
 			p.setPos(c);
 			gui.addItem(p.getGrafico());

@@ -7,19 +7,22 @@ import mapa.Celda;
 import personajes.Jugador;
 
 public class Congelar extends Magia_temporal{
-	protected static Timer timer=new Timer();
-	private static int seconds=0;
+	protected  Timer timer=new Timer();
+	private int seconds=0;
 	
 
 	public Congelar(Celda c) {
 		super(c);
 	}
-
+	public Congelar() {
+		super();
+	}
 	public void actuar(Jugador j) {
+		System.out.println("Activar congelar");
 		duracion=10;
 		myTimer(j);
 	}
-	public static void myTimer(Jugador j) {
+	public void myTimer(Jugador j) {
 		seconds=0;
 		TimerTask task;
 		task=new TimerTask() {

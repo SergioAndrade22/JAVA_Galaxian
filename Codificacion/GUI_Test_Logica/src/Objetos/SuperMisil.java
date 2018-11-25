@@ -3,33 +3,40 @@ package Objetos;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import Disparo.Arma;
+import Disparo.ArmaMisil;
 import mapa.Celda;
 import personajes.Jugador;
 
 public class SuperMisil extends Magia_temporal{
-	protected static Timer timer=new Timer();
-	private static int seconds=0;
+	protected  Timer timer=new Timer();
+	private int seconds=0;
 	
 
 	
 	public SuperMisil(Celda c) {
 		super(c);
 	}
+	public SuperMisil() {
+		super();
+	}
 
 	public void actuar(Jugador j) {
+		System.out.println("Activado SuperMisil");
 		duracion=10;
 		myTimer(j);
 	}
-	public static void myTimer(Jugador j) {
+	public void myTimer(Jugador j) {
 		seconds=0;
+		Arma ant=j.setArma(new ArmaMisil(j,100));
 		TimerTask task;
 		task=new TimerTask() {
 			public void run() {
 				 if (seconds < duracion) {
-		                j.enableMisil();
+					 	
 		                seconds++;
 		            } else {
-		            	j.disableMisil();
+		            	j.setArma(ant);
 		                cancel();
 		            }
 		        }

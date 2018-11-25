@@ -1,7 +1,21 @@
+<<<<<<< HEAD
+/inteligencias/
+/juego/
+/niveles/
+/personajes/
+/Colliders/
+=======
 /niveles/
 /juego/
 /inteligencias/
 /personajes/
 /Disparo/
+<<<<<<< HEAD
 /BattleCity/
 /gui/
+=======
+>>>>>>> 27d437fb9e12ea907df5a6cc571e2faa6d2c26fb
+/BattleCity/
+/Objetos/
+/mapa/
+>>>>>>> dbd0ec4706e5d447cf3f089d3a3922ac03b9794e

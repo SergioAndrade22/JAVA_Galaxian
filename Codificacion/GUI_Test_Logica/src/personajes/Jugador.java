@@ -16,6 +16,7 @@ public class Jugador extends Personaje{
 	protected final int  hp_max=100;
 	protected Juego juego;
 	protected Arma provisoria;
+	public State vida;
 		
 	public Jugador(Celda pos, Juego j) {
 		super(pos);
@@ -26,6 +27,7 @@ public class Jugador extends Personaje{
 		escudo=false;
 		arma=new ArmaJugador(this,10);
 		juego = j;
+		vida=new VidaSinEscudo(this);
 	}
 
 	public void mover(int dir){
@@ -58,35 +60,37 @@ public class Jugador extends Personaje{
 	}
 
 	public void disminuirHP(int i) {
-		hp-=i;		
-		if(hp==0) {
-			juego.loss();
-			System.out.printf("El jugador murio.");
-		}
-	}
-	
-	public void aumentarHP(int i) {
-		hp+=i;
-	}
-
-	public void setEscudo(boolean b) {
-		escudo=b;
-	}
-
-	public void recibirGolpe() {
-		if(escudo)
-			escudo=false;
-		else 
-			disminuirHP(10);
-		
+		vida.disminuirHP(i);
 	}
 	
 	public void completarHP() {
-		hp=hp_max;
+		vida.completarHP();
 	}
+
+	public void setEscudo(boolean b) {
+		if(b) {
+			int v=vida.getVida();
+			vida=new VidaConEscudo(this,v);
+		}
+		else {
+			int v=vida.getVida();
+			vida=new VidaSinEscudo(this,v);
+		}
+	}
+
+	public void loss() {
+		juego.loss();
+		System.out.println("El jugador murio");
+	}
+
 	
 	public Arma getArma() {
 		return arma;
+	}
+	public Arma setArma(Arma a){
+		Arma toRet=arma;
+		arma=a;
+		return toRet;
 	}
 	public void enableMisil() {
 		provisoria=arma;
