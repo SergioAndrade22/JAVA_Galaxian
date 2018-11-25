@@ -29,11 +29,11 @@ public class Celda {
 	}
 
 	public void addEntidad(Entidad e) {
-		synchronized (entidades) {
+		//synchronized (entidades) {
 			entidades.add(e);
 			for (Entidad en : entidades)
 				en.colision(e);
-		}
+		//}
 	}
 
 	public void removeEntidad(Entidad e) {

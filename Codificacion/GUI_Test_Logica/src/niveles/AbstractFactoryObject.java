@@ -8,4 +8,5 @@ import Objetos.Premio;
 public abstract class AbstractFactoryObject {
 	public abstract ArrayList<Barricada> createBarricadas(int cant);
 	public abstract ArrayList<Obstaculo> createObstaculos(int cant);
+	public abstract Premio createPremio();
 }

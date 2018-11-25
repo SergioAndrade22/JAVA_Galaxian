@@ -25,7 +25,7 @@ public class Objeto_precioso extends Premio {
 	@Override
 	
 	public void actuar(Jugador j) {
-		j.aumentarHP(10); //Provisorio
+	//	j.aumentarHP(10); //Provisorio
 		
 	}
 

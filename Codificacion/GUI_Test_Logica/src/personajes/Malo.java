@@ -9,6 +9,7 @@ import inteligencias.Strategy;
 import juego.Juego;
 import mapa.Celda;
 import Objetos.PocionMagica;
+import Objetos.SuperMisil;
 
 public class Malo extends Personaje{
 	protected Strategy strat;
@@ -47,8 +48,8 @@ public class Malo extends Personaje{
 	public void morir() {
 		super.morir();
 		Random r=new Random();
-		if(r.nextInt(5)>3)
-			juego.insertarPremio(pos, new PocionMagica(pos));
+		//if(r.nextInt(5)>3)
+			juego.insertarPremio(pos);
 		juego.scoreUp();
 	}
 	

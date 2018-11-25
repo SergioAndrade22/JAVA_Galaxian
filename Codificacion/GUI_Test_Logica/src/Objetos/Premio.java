@@ -19,9 +19,10 @@ public abstract class Premio extends Objeto { //Sirve para diferenciar de los ob
 	}
 	
 	public Premio() {
+		velocidad=4;
 		this.grafico=new BonusGrafico(velocidad,0,0);
 		collider=new ColliderPremio(this);
-		velocidad=20;
+		
 	}
 	
 	public Premio(Celda c, int hp){
