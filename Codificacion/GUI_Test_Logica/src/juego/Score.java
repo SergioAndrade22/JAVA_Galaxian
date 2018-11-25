@@ -25,4 +25,8 @@ public class Score extends JLabel {
 		points = 0;
 		this.setText(base + points);
 	}
+	
+	public int getTotal() {
+		return points;
+	}
 }

@@ -38,7 +38,10 @@ public class Juego {
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		score = new Score();
 		nivel = new NivelInicial(6);
-		
+		crearNivel();		
+	}
+	
+	private void crearNivel() {
 		nivel.createEnemies();
 		for (Entidad en : nivel.getEnemies()) 
 			entidades.add(en);
@@ -55,14 +58,8 @@ public class Juego {
 			this.gui.addItem(b.getGrafico());
 		for (Obstaculo o: obstaculos)
 			this.gui.addItem(o.getGrafico());
-		
-		this.gui.addItem(score);
-		this.gui = gui;
 		this.gui.addItem(jugador.getGrafico());
 		this.gui.addItem(score);
-	}
-	
-	private void crearNivel() {
 	}
 	
 	public void moverEntidades(){
@@ -73,8 +70,9 @@ public class Juego {
 	}
 	
 	public void mover(int dir){
-		jugador.mover(dir);
-		
+		synchronized(jugador){
+			jugador.mover(dir);
+		}
 	}
 	
 	public void removerEntidad(Entidad e) {
@@ -121,15 +119,16 @@ public class Juego {
 	
 	public void scoreUp() {
 		score.increase(100);
+		if (score.getTotal() > 200)
+			gui.nextLevel();
 	}
 	
-	public boolean nextLevel() {
-		if (nivel.getSiguiente() == null)
-			return false;
-		else {
-			nivel = nivel.getSiguiente();
-			crearNivel();
-			return true;
-		}
+	public boolean isNextLevel() {
+		return nivel.getSiguiente() != null;
+	}
+	
+	public void playNext() {
+		nivel = nivel.getSiguiente();
+		crearNivel();
 	}
 }

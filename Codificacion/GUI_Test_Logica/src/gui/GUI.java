@@ -114,6 +114,42 @@ public class GUI extends JFrame {
 		tiempoEntidades.start();	
 	}
 	
+	public void nextLevel() {
+		if (j.isNextLevel()) {
+			tiempoEntidades.interrupt();
+			tiempoJugador.interrupt();
+			ambiente.stop();
+			contentPane.removeAll();
+			f = new JLabel();
+			ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/levelWin.png"));
+			f.setBounds(0, 0, 1000, 600);
+			f.setIcon(i);
+			contentPane.add(f);
+			contentPane.repaint();
+			contentPane.revalidate();
+			contentPane.updateUI();
+			MouseListener ml = new MouseAdapter() {
+				public void mouseClicked(MouseEvent arg0) {
+					contentPane.remove(f);
+					contentPane.repaint();
+					contentPane.revalidate();
+					contentPane.updateUI();
+					removeMouseListener(this);
+					j.playNext();
+					contentPane.repaint();
+					contentPane.revalidate();
+					contentPane.updateUI();
+				}
+			};
+			addMouseListener(ml);
+			contentPane.removeAll();
+			agregarFondo();
+			ambiente.start();
+			tiempoEntidades.start();
+			tiempoJugador.start();
+		}
+	}
+	
 	public void gameOver() {
 		ambiente.stop();
 		ambiente = musicaAmbienteDerrota();
