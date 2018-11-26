@@ -15,7 +15,7 @@ public class ColliderMalo implements Collider {
 	}
 
 	public void collideWith(Jugador j) {
-		j.disminuirHP(10);
+		j.recibirGolpe(malo.getGolpe());
 		malo.disminuirHP(100);
 	}
 

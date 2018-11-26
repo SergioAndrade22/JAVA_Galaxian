@@ -93,4 +93,8 @@ public class Malo extends Personaje{
 			pos.addEntidad(this);
 		}
 	}
+
+	public int getGolpe() {
+		return fuerza_kamikaze;
+	}
 }

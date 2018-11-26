@@ -11,14 +11,7 @@ public class VidaConEscudo extends State {
 	}
 
 	@Override
-	public void disminuirHP(int i) {	}
-	public void completarHP() {
-		vida=100;
-	}
-	@Override
-	public int getVida() {
-		return vida;
-	}
+	public void recibirGolpe(int i) {}
 	
 	
 }

@@ -3,6 +3,7 @@ package personajes;
 import java.awt.event.KeyEvent;
 import grafica.JugadorGrafico;
 import juego.Juego;
+import juego.Vida;
 import mapa.Celda;
 import Colliders.*;
 import Disparo.Arma;
@@ -16,7 +17,8 @@ public class Jugador extends Personaje{
 	protected final int  hp_max=100;
 	protected Juego juego;
 	protected Arma provisoria;
-	public State vida;
+	protected State vida;
+	protected Vida observer;
 		
 	public Jugador(Celda pos, Juego j) {
 		super(pos);
@@ -61,10 +63,12 @@ public class Jugador extends Personaje{
 
 	public void disminuirHP(int i) {
 		vida.disminuirHP(i);
+		observer.update();
 	}
 	
 	public void completarHP() {
 		vida.completarHP();
+		observer.update();
 	}
 
 	public void setEscudo(boolean b) {
@@ -105,5 +109,17 @@ public class Jugador extends Personaje{
 	
 	public void descongelar() {
 		juego.descongelar();
+	}
+
+	public void addObserver(Vida vidaJugador) {
+		observer=vidaJugador;
+	}
+
+	public int getVida() {
+		return vida.getVida();
+	}
+	public void recibirGolpe(int i) {
+		vida.recibirGolpe(i);
+		observer.update();
 	}
 }
