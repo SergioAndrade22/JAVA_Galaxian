@@ -6,14 +6,10 @@ import grafica.MaloGrafico;
 import inteligencias.Congelado;
 import inteligencias.Mediator;
 import inteligencias.Strategy;
-import juego.Juego;
 import mapa.Celda;
-import Objetos.PocionMagica;
-import Objetos.SuperMisil;
 
 public class Malo extends Personaje{
 	protected Strategy strat;
-	protected Juego juego;
 	protected Strategy anterior;
 	
 	public Malo() {
@@ -22,7 +18,6 @@ public class Malo extends Personaje{
 		hp = 50;
 		fuerza_kamikaze = 50;
 		grafico = new MaloGrafico(velocidad,0,0);
-		juego = Mediator.getInstance().getJuego();
 	}
 	
 	public Malo(Strategy s) {
@@ -31,8 +26,8 @@ public class Malo extends Personaje{
 		hp=50;
 		fuerza_kamikaze=50;
 		strat=s;
-		
 	}
+	
 	public void mover() {
 		strat.mover();
 	}
@@ -48,9 +43,9 @@ public class Malo extends Personaje{
 	public void morir() {
 		super.morir();
 		Random r=new Random();
-		//if(r.nextInt(5)>3)
-			juego.insertarPremio(pos);
-		juego.scoreUp();
+		if(r.nextInt(5)>3)
+			Mediator.getInstance().insertarPremio(pos);
+		Mediator.getInstance().scoreUp();
 	}
 	
 	public void disminuirHP(int i) {

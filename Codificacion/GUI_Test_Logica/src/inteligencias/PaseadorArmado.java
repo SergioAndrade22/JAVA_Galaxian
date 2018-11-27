@@ -37,6 +37,6 @@ public class PaseadorArmado extends Strategy {
 	
 	private void disparar(){
 		Disparo d=miArma.createDisparo();
-		mediator.getJuego().agregarDisparo(d);
+		mediator.agregarDisparo(d);
 	}
 }

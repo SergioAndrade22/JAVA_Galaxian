@@ -5,12 +5,10 @@ import Disparo.Disparo;
 import juego.Juego;
 import mapa.Celda;
 import personajes.Malo;
-
 import java.util.Random;
 
 public class BuscadorArmado extends Strategy{
 
-	
 	protected ArmaEnemigo miArma;
 	protected Juego juego;
 	
@@ -21,13 +19,13 @@ public class BuscadorArmado extends Strategy{
 
 	
 	public void mover() {		
-		Celda posJug = mediator.getPosJ();
+		int posJugY = mediator.getPosJY();
 		int yMalo=en.getPos().getY();
-		if(posJug.getY()<yMalo) {
+		if(posJugY<yMalo) {
 			en.mover(Celda.UP);
 		}
 		else {
-			if(posJug.getY()>yMalo) 
+			if(posJugY>yMalo) 
 				en.mover(Celda.DOWN);
 			else
 				en.mover(Celda.LEFT);
@@ -39,7 +37,7 @@ public class BuscadorArmado extends Strategy{
 	
 	private void disparar(){
 		Disparo d=miArma.createDisparo();
-		mediator.getJuego().agregarDisparo(d);
+		mediator.agregarDisparo(d);
 		
 	}
 }

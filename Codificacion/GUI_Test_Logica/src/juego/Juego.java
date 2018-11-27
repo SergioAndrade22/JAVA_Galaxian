@@ -38,13 +38,12 @@ public class Juego {
 		med = Mediator.getInstance();
 		med.setJugador(jugador);
 		med.setJuego(this);
-		entidades = new CopyOnWriteArrayList<Entidad>();
-		score = new Score();
 		nivel = new NivelInicial(6);
 		crearNivel();		
 	}
 	
 	private void crearNivel() {
+		entidades = new CopyOnWriteArrayList<Entidad>();
 		nivel.createEnemies();
 		for (Entidad en : nivel.getEnemies()) 
 			entidades.add(en);
@@ -61,15 +60,10 @@ public class Juego {
 			this.gui.addItem(b.getGrafico());
 		for (Obstaculo o: obstaculos)
 			this.gui.addItem(o.getGrafico());
-<<<<<<< HEAD
-=======
-		
+		score = new Score();
 		this.gui.addItem(score);
 		this.gui.addItem(vidaJugador);
-		this.gui = gui;
->>>>>>> 67818253a977c84a72e15a0dbbf070fce0d2c907
 		this.gui.addItem(jugador.getGrafico());
-		this.gui.addItem(score);
 	}
 	
 	public void moverEntidades(){
@@ -118,14 +112,17 @@ public class Juego {
 	}
 	
 	public void congelar() {
-		for (Entidad a:entidades) {
-			a.congelar();
+		synchronized(entidades) {
+			for (Entidad a:entidades) 
+				a.congelar();
 		}
 	}
 	
 	public void descongelar() {
-		for(Entidad a:entidades)
-			a.descongelar();
+		synchronized(entidades) {
+			for(Entidad a:entidades)
+				a.descongelar();	
+		}
 	}
 	
 	public void scoreUp() {
@@ -134,12 +131,20 @@ public class Juego {
 			gui.nextLevel();
 	}
 	
-	public boolean isNextLevel() {
+	public boolean hasNextLevel() {
 		return nivel.getSiguiente() != null;
 	}
 	
 	public void playNext() {
 		nivel = nivel.getSiguiente();
 		crearNivel();
+	}
+	
+	public void clean() {
+		for (int i = 0; i < mapa.getWidth(); i++) {
+			for (int j = 0; j < mapa.getHeight(); j++) {
+				mapa.getCelda(i, j).clean();
+			}
+		}
 	}
 }

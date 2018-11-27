@@ -83,12 +83,6 @@ public class GUI extends JFrame {
 				startGame();
 			}
 		};
-		addMouseListener(ml);
-	}
-	
-	public void startGame() {
-		ambiente = musicaAmbienteJuego();
-		ambiente.start();
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent arg0) {
 				switch(arg0.getKeyCode()) {
@@ -106,6 +100,12 @@ public class GUI extends JFrame {
 				}
 			}
 		});
+		addMouseListener(ml);
+	}
+	
+	public void startGame() {
+		ambiente = musicaAmbienteJuego();
+		ambiente.start();
 		agregarFondo();
 		j = new Juego(this);
 		tiempoJugador = new ContadorTiempoJugador(j, this);
@@ -115,9 +115,7 @@ public class GUI extends JFrame {
 	}
 	
 	public void nextLevel() {
-		if (j.isNextLevel()) {
-			tiempoEntidades.interrupt();
-			tiempoJugador.interrupt();
+		if (j.hasNextLevel()) {
 			ambiente.stop();
 			contentPane.removeAll();
 			f = new JLabel();
@@ -128,25 +126,26 @@ public class GUI extends JFrame {
 			contentPane.repaint();
 			contentPane.revalidate();
 			contentPane.updateUI();
+			tiempoEntidades.stop();
+			tiempoJugador.stop();
+			tiempoEntidades = new ContadorTiempoEntidades(j);
+			tiempoJugador = new ContadorTiempoJugador(j, this);
+			j.clean();
 			MouseListener ml = new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					contentPane.remove(f);
+					agregarFondo();
+					j.playNext();
+					ambiente.start();
+					tiempoEntidades.start();
+					tiempoJugador.start();
 					contentPane.repaint();
 					contentPane.revalidate();
 					contentPane.updateUI();
 					removeMouseListener(this);
-					j.playNext();
-					contentPane.repaint();
-					contentPane.revalidate();
-					contentPane.updateUI();
 				}
 			};
 			addMouseListener(ml);
-			contentPane.removeAll();
-			agregarFondo();
-			ambiente.start();
-			tiempoEntidades.start();
-			tiempoJugador.start();
 		}
 	}
 	
@@ -176,6 +175,7 @@ public class GUI extends JFrame {
 		addMouseListener(ml);
 		tiempoEntidades.stop();
 		tiempoJugador.stop();
+		j.clean();
 	}
 	
 	protected void mover(KeyEvent key){

@@ -10,13 +10,13 @@ public class BuscadorSinArma extends Strategy {
 	}
 	
 	public void mover() {		
-		Celda posJug = mediator.getPosJ();
+		int posJugY = mediator.getPosJY();
 		int yMalo=en.getPos().getY();
-		if(posJug.getY()<yMalo) {
+		if(posJugY<yMalo) {
 			en.mover(Celda.UP);
 		}
 		else {
-			if(posJug.getY()>yMalo) 
+			if(posJugY>yMalo) 
 				en.mover(Celda.DOWN);
 			else
 				en.mover(Celda.LEFT);

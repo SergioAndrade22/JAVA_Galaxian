@@ -1,5 +1,6 @@
 package inteligencias;
 
+import Disparo.Disparo;
 import juego.Juego;
 import mapa.Celda;
 import personajes.Jugador;
@@ -21,14 +22,23 @@ public class Mediator {
 		juego = j;
 	}
 	
-	public Celda getPosJ() {
-		return jugador.getPos();
-	}
-	public Juego getJuego() {
-		return juego;
-	}
-	
 	public static Mediator getInstance() {
 		return (instance == null) ? instance = new Mediator() : instance;
+	}
+	
+	public int getPosJY() {
+		return jugador.getPos().getY();
+	}
+	
+	public void agregarDisparo(Disparo d) {
+		juego.agregarDisparo(d);
+	}
+	
+	public void insertarPremio(Celda c) {
+		juego.insertarPremio(c);
+	}
+	
+	public void scoreUp() {
+		juego.scoreUp();
 	}
 }

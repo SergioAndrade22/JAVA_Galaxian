@@ -11,11 +11,14 @@ public abstract class State {
 			System.out.printf("El jugador murio.");
 		}
 	}
+	
 	public void completarHP() {
 		vida=100;
 	}
+	
 	public int getVida() {
 		return vida;
 	}
+	
 	public abstract void recibirGolpe(int i);
 }

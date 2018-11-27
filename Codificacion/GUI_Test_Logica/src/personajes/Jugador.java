@@ -84,25 +84,27 @@ public class Jugador extends Personaje{
 
 	public void loss() {
 		juego.loss();
-		System.out.println("El jugador murio");
 	}
 
-	
 	public Arma getArma() {
 		return arma;
 	}
+	
 	public Arma setArma(Arma a){
 		Arma toRet=arma;
 		arma=a;
 		return toRet;
 	}
+	
 	public void enableMisil() {
 		provisoria=arma;
 		arma=new ArmaMisil(this,100);
 	}
+	
 	public void disableMisil() {
 		arma=provisoria;
 	}
+	
 	public void congelar() {
 		juego.congelar();
 	}
@@ -118,6 +120,7 @@ public class Jugador extends Personaje{
 	public int getVida() {
 		return vida.getVida();
 	}
+	
 	public void recibirGolpe(int i) {
 		vida.recibirGolpe(i);
 		observer.update();

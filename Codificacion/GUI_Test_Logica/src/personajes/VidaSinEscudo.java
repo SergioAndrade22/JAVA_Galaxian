@@ -10,11 +10,7 @@ public class VidaSinEscudo extends State{
 		j=jug;
 	}
 	
-	@Override
 	public void recibirGolpe(int i) {
 		vida-=i;
-		
 	}
-	
-
 }
