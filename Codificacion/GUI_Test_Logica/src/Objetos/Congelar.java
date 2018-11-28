@@ -9,14 +9,16 @@ import personajes.Jugador;
 public class Congelar extends Magia_temporal{
 	protected  Timer timer=new Timer();
 	private int seconds=0;
+	private static Congelar instance;
 	
 
-	public Congelar(Celda c) {
-		super(c);
-	}
-	public Congelar() {
+	private Congelar() {
 		super();
 	}
+	public static Congelar getInstance() {
+		return (instance==null)?instance=new Congelar():instance;
+	}
+	
 	public void actuar(Jugador j) {
 		System.out.println("Activar congelar");
 		duracion=10;

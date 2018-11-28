@@ -73,15 +73,6 @@ public class Malo extends Personaje{
 	public void mover(int dir) {
 		synchronized (pos) {
 			Celda next = this.pos.getVecina(dir);
-			while(next.esObstaculo()) {
-				switch(dir) {
-					case Celda.DOWN: dir=Celda.LEFT;break;
-					case Celda.LEFT: dir=Celda.UP;break;
-					case Celda.RIGHT: dir=Celda.DOWN;break;
-					case Celda.UP: dir=Celda.RIGHT;break;
-				}
-				next=pos.getVecina(dir);
-			}
 			this.pos.removeEntidad(this);
 			this.pos = next;
 			this.grafico.mover(dir);

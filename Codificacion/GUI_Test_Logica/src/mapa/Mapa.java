@@ -70,7 +70,6 @@ public class Mapa {
 			b.setPos(c);
 			c.addEntidad(b);
 			b.setGrafico();
-			c.setObstaculo(true);
 		}
 	}
 	
@@ -85,7 +84,6 @@ public class Mapa {
 			o.setPos(c);
 			c.addEntidad(o);
 			o.setGrafico();
-			c.setObstaculo(true);
 		}
 	}
 }

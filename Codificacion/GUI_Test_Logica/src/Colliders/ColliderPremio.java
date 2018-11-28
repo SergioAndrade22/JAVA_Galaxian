@@ -17,10 +17,7 @@ public class ColliderPremio implements Collider {
 	}
 
 	@Override
-	public void collideWith(Jugador j) {
-		premio.actuar(j);
-		premio.morir();
-	}
+	public void collideWith(Jugador j) { /*NADA*/ }
 
 	public void collideWith(Malo m) { /*NADA*/ }
 

@@ -15,12 +15,10 @@ public class ColliderJugador implements Collider {
 	}
 
 	public void collideWith(Malo m) {
-		m.disminuirHP(100);
-		jugador.recibirGolpe(m.getGolpe());
+		m.morir();
 	}
 
 	public void collideWith(DisparoEnemigo de) {
-		jugador.disminuirHP(de.getDaño());
 		de.morir();
 	}
 

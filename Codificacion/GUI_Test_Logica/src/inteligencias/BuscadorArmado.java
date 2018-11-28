@@ -31,7 +31,7 @@ public class BuscadorArmado extends Strategy{
 				en.mover(Celda.LEFT);
 		}
 		Random r = new Random();
-		if (r.nextInt(10) < 5)
+		if (r.nextInt(100) < 45)
 			disparar();
 	}
 	

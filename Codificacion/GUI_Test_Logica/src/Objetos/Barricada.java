@@ -16,7 +16,6 @@ public class Barricada extends Objeto{
 	
 	public Barricada(Celda c){
 		super(c);
-		c.setObstaculo(true);
 		grafico = new BarricadaGrafica(velocidad, c.getX(), c.getY());
 		collider = new ColliderBarricada(this);
 		hp = 100;
@@ -24,7 +23,6 @@ public class Barricada extends Objeto{
 	
 	public Barricada(Celda c, int hp){
 		super(c,hp);
-		c.setObstaculo(true);
 		grafico=new BarricadaGrafica(velocidad, c.getX(),c.getY());
 		collider = new ColliderBarricada(this);
 		hp = 100;
@@ -51,7 +49,6 @@ public class Barricada extends Objeto{
 	public void mover() {}
 	
 	public void morir(){
-		pos.setObstaculo(false);
 		super.morir();
 	}
 }

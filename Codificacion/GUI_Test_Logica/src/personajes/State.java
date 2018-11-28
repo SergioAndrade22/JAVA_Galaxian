@@ -8,7 +8,6 @@ public abstract class State {
 		vida-=i;
 		if(vida<=0) {
 			j.loss();
-			System.out.printf("El jugador murio.");
 		}
 	}
 	

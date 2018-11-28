@@ -3,6 +3,7 @@ package personajes;
 public class VidaSinEscudo extends State{
 
 	public VidaSinEscudo(Jugador j) {
+		vida=100;
 		this.j=j;
 	}
 	public VidaSinEscudo(Jugador jug,int vida) {

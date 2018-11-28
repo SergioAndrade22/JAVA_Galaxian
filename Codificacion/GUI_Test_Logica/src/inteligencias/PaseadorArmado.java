@@ -31,7 +31,7 @@ public class PaseadorArmado extends Strategy {
 				break;
 		}
 		en.mover(direccion);
-		if (r.nextInt(10) < 5)
+		if (r.nextInt(100) < 45)
 			disparar();
 	}
 	

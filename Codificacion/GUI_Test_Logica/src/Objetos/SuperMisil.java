@@ -11,16 +11,17 @@ import personajes.Jugador;
 public class SuperMisil extends Magia_temporal{
 	protected  Timer timer=new Timer();
 	private int seconds=0;
+	private static SuperMisil instance;
 	
 
 	
-	public SuperMisil(Celda c) {
-		super(c);
-	}
-	public SuperMisil() {
+	private SuperMisil() {
 		super();
 	}
 
+	public static SuperMisil getInstance() {
+		return (instance==null)?instance=new SuperMisil():instance;
+	}
 	public void actuar(Jugador j) {
 		System.out.println("Activado SuperMisil");
 		duracion=10;

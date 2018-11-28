@@ -27,11 +27,11 @@ public class ConcreteFactoryObject extends AbstractFactoryObject {
 		Premio toRet=null;
 		int i=r.nextInt(5);
 		switch (i) {
-			case 0: toRet= new Congelar();break;
+			case 0: toRet= Congelar.getInstance();break;
 			case 1: toRet=new MejoraArma();break;
 			case 2: toRet= new PocionMagica();break;
 			case 3: toRet= new Proteccion();break;
-			case 4: toRet= new SuperMisil();break;
+			case 4: toRet= SuperMisil.getInstance();break;
 		}
 		return toRet;
 			

@@ -17,12 +17,10 @@ public class ColliderDisparoEnemigo implements Collider {
 
 	public void collideWith(Jugador j) {
 		j.disminuirHP(disparo.getDaño());
-		disparo.morir();
 	}
 
 	public void collideWith(Obstaculo o) {
 		o.morir();
-		disparo.morir();
 	}
 	
 	public void collideWith(Barricada b) { /*NADA*/ }

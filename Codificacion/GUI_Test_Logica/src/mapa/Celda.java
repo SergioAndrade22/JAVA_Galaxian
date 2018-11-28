@@ -14,14 +14,12 @@ public class Celda {
 	private Mapa mapa;
 	private int x;
 	private int y;
-	protected boolean hayObstaculo;
 
 	public Celda(Mapa mapa, int x, int y) {
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		this.mapa = mapa;
 		this.x = x;
 		this.y = y;
-		hayObstaculo = false;
 	}
 
 	public List<Entidad> entidades() {
@@ -31,8 +29,10 @@ public class Celda {
 	public void addEntidad(Entidad e) {
 		synchronized (entidades) {
 			entidades.add(e);
-			for (Entidad en : entidades)
+			for (Entidad en : entidades) {
 				en.colision(e);
+				e.colision(en);
+			}
 		}
 	}
 
@@ -45,7 +45,6 @@ public class Celda {
 	public void eliminarEntidad(Entidad e) {
 		synchronized (entidades) {
 			entidades.remove(e);
-			entidades.clear();
 			mapa.remove(e);
 		}
 
@@ -97,19 +96,11 @@ public class Celda {
 		return mapa.getCelda(0, y) == this;
 	}
 
-	public void setObstaculo(boolean es) {
-		hayObstaculo = es;
-	}
-
-	public boolean esObstaculo() {
-		return hayObstaculo;
-	}
 	
 	public void clean() {
 		synchronized(entidades){
 			for (Entidad e : entidades)
 				entidades.remove(e);
-			hayObstaculo = false;
 		}
 	}
 }
