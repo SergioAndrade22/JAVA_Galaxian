@@ -120,7 +120,6 @@ public class GUI extends JFrame {
 			contentPane.removeAll();
 			tiempoEntidades.detener();
 			tiempoJugador.detener();
-			j.clean();
 			f = new JLabel();
 			ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/levelWin.png"));
 			f.setBounds(0, 0, 1000, 600);
@@ -152,7 +151,6 @@ public class GUI extends JFrame {
 			contentPane.removeAll();
 			tiempoEntidades.detener();
 			tiempoJugador.detener();
-			j.clean();
 			f = new JLabel();
 			ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/GameWin.png"));
 			f.setBounds(0, 0, 1000, 600);
@@ -197,7 +195,6 @@ public class GUI extends JFrame {
 		addMouseListener(ml);
 		tiempoEntidades.detener();
 		tiempoJugador.detener();
-		j.clean();
 	}
 	
 	protected void mover(KeyEvent key){

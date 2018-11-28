@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import Disparo.Disparo;
 import Objetos.Barricada;
-import Objetos.Congelar;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import gui.GUI;
@@ -24,25 +23,21 @@ public class Juego {
 	private GUI gui;
 	private Score score;
 	private Nivel nivel;
-	private Mediator med;
-	private Vida vidaJugador;
 	
 	public Juego(GUI gui){
 		this.gui = gui;
-		mapa = new Mapa(this, (gui.getWidth()/tamanioCelda)-1, (gui.getHeight()/tamanioCelda)-1); 
-		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
-		jugador = new Jugador(c, this);
-		vidaJugador=new Vida(jugador);
-		jugador.addObserver(vidaJugador);
-		this.gui.addItem(jugador.getGrafico());
-		med = Mediator.getInstance();
-		med.setJugador(jugador);
-		med.setJuego(this);
 		nivel = new NivelInicial(6);
 		crearNivel();		
 	}
 	
 	private void crearNivel() {
+		mapa = new Mapa(this, (gui.getWidth()/tamanioCelda)-1, (gui.getHeight()/tamanioCelda)-1); 
+		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
+		jugador = new Jugador(c, this);
+		this.gui.addItem(jugador.getGrafico());
+		Mediator med = Mediator.getInstance();
+		med.setJugador(jugador);
+		med.setJuego(this);
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		nivel.createEnemies();
 		for (Entidad en : nivel.getEnemies()) 
@@ -62,7 +57,7 @@ public class Juego {
 			this.gui.addItem(o.getGrafico());
 		score = new Score();
 		this.gui.addItem(score);
-		this.gui.addItem(vidaJugador);
+		this.gui.addItem(jugador.getVida());
 		this.gui.addItem(jugador.getGrafico());
 	}
 	
@@ -138,13 +133,5 @@ public class Juego {
 	public void playNext() {
 		nivel = nivel.getSiguiente();
 		crearNivel();
-	}
-	
-	public void clean() {
-		for (int i = 0; i < mapa.getWidth(); i++) {
-			for (int j = 0; j < mapa.getHeight(); j++) {
-				mapa.getCelda(i, j).clean();
-			}
-		}
 	}
 }

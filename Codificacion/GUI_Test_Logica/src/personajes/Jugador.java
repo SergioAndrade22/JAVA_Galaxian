@@ -14,7 +14,6 @@ import Disparo.Disparo;
 public class Jugador extends Personaje{
 	protected boolean escudo;
 	protected Arma arma;
-	protected final int  hp_max=100;
 	protected Juego juego;
 	protected Arma provisoria;
 	protected State vida;
@@ -30,6 +29,7 @@ public class Jugador extends Personaje{
 		arma=new ArmaJugador(this,10);
 		juego = j;
 		vida=new VidaSinEscudo(this);
+		observer = new Vida(this);
 	}
 
 	public void mover(int dir){
@@ -113,11 +113,11 @@ public class Jugador extends Personaje{
 		juego.descongelar();
 	}
 
-	public void addObserver(Vida vidaJugador) {
-		observer=vidaJugador;
+	public Vida getVida() {
+		return observer;
 	}
-
-	public int getVida() {
+	
+	public int getHP() {
 		return vida.getVida();
 	}
 	
