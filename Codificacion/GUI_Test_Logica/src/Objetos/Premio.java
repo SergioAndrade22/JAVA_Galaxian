@@ -7,9 +7,7 @@ import grafica.BonusGrafico;
 import mapa.Celda;
 import personajes.*;
 
-public abstract class Premio extends Objeto { //Sirve para diferenciar de los obstaculos y barricadas. Tal vez podriamos borrarlo y
-												// dejar magia temporal y objeto precioso extendiendo de Objeto.
-												//Premio podría ser un paquete.
+public abstract class Premio extends Objeto { 
 	
 	public Premio(Celda c){
 		super(c);
@@ -22,7 +20,6 @@ public abstract class Premio extends Objeto { //Sirve para diferenciar de los ob
 		velocidad=4;
 		this.grafico=new BonusGrafico(velocidad,0,0);
 		collider=new ColliderPremio(this);
-		
 	}
 	
 	public Premio(Celda c, int hp){

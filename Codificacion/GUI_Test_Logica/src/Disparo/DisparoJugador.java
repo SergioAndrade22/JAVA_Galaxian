@@ -1,6 +1,6 @@
 package Disparo;
 
-import mapa.*;
+import mapa.Celda;
 import personajes.Entidad;
 import Colliders.*;
 
@@ -27,7 +27,6 @@ public class DisparoJugador extends Disparo{
 			super.mover(dir);
 	}
 	
-
 	public void congelar() {}
 	
 	public void descongelar() {}

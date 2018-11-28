@@ -3,6 +3,7 @@ package inteligencias;
 import Disparo.Disparo;
 import juego.Juego;
 import mapa.Celda;
+import personajes.Entidad;
 import personajes.Jugador;
 
 public class Mediator {
@@ -40,5 +41,21 @@ public class Mediator {
 	
 	public void scoreUp() {
 		juego.scoreUp();
+	}
+	
+	public void loss() {
+		juego.loss();
+	}
+	
+	public void congelar() {
+		juego.congelar();
+	}
+	
+	public void descongelar() {
+		juego.descongelar();
+	}
+	
+	public void removerEntidad(Entidad e) {
+		juego.removerEntidad(e);
 	}
 }

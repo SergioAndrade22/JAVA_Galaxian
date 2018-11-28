@@ -1,7 +1,6 @@
 package Colliders;
 
 import java.util.Random;
-
 import Disparo.DisparoEnemigo;
 import Disparo.DisparoJugador;
 import Objetos.Barricada;
@@ -42,5 +41,4 @@ public class ColliderObstaculo implements Collider {
 	public void collideWith(Premio p) { /*NADA*/ }
 
 	public void collideWith(Jugador j) { /*NADA*/ }
-
 }

@@ -1,6 +1,7 @@
 package Objetos;
-import personajes.*;
-import mapa.*;
+
+import personajes.Entidad;
+import mapa.Celda;
 
 public abstract class Objeto extends Entidad{
 
@@ -20,7 +21,5 @@ public abstract class Objeto extends Entidad{
 	
 	public void descongelar() {}
 	
-	//Se contempla separar en Barricada y Obstaculo, ya que cuando un disparo del enemigo colisione con uno o con otro, necesito saber
-	// si fue con una barricada o con un obstaculo para saber si hacer algo o no. (Los disparos de los enemigos no afectan barricadas)
-	
+	public void setGrafico() {}
 }

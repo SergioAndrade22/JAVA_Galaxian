@@ -2,18 +2,16 @@ package mapa;
 
 import java.util.List;
 import java.util.Random;
-import Objetos.Barricada;
-import Objetos.Obstaculo;
-import juego.Juego;
+
+import Objetos.Objeto;
+import inteligencias.Mediator;
 import personajes.Entidad;
 
 public class Mapa {
 	private Celda mapa[][];
 	private int width, height;
-	private Juego juego;
 
-	public Mapa(Juego juego, int width, int height){
-		this.juego = juego;
+	public Mapa(int width, int height){
 		this.width = width;
 		this.height = height;
 		this.mapa = new Celda[width][height];
@@ -41,10 +39,10 @@ public class Mapa {
 	}
 	
 	public void remove(Entidad e) {
-		juego.removerEntidad(e);
+		Mediator.getInstance().removerEntidad(e);
 	}
 	
-	public void place(List<Entidad> l) {
+	public void orderPlace(List<Entidad> l) {
 		int i = 4;
 		int j = this.getWidth()-1;
 		Celda c;
@@ -59,23 +57,9 @@ public class Mapa {
 		}
 	}
 	
-	public void placeB(List<Barricada> l) {
+	public void randomPlace(List<Objeto> l) {
 		Random r = new Random();
-		for (Barricada b : l) {
-			int x = r.nextInt(getWidth());
-			int y = r.nextInt(getHeight());
-			if (x == 0)
-				x++;
-			Celda c = getCelda(x, y);
-			b.setPos(c);
-			c.addEntidad(b);
-			b.setGrafico();
-		}
-	}
-	
-	public void placeO(List<Obstaculo> l) {
-		Random r = new Random();
-		for (Obstaculo o : l) {
+		for (Objeto o : l) {
 			int x = r.nextInt(getWidth());
 			int y = r.nextInt(getHeight());
 			if (x == 0)

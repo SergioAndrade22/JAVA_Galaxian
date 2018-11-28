@@ -1,11 +1,10 @@
 package Objetos;
 
 import Colliders.ColliderPremio;
-import grafica.BonusGrafico;
 import mapa.Celda;
 import personajes.Jugador;
 
-public class Objeto_precioso extends Premio {
+public abstract class Objeto_precioso extends Premio {
 	
 	public Objeto_precioso(Celda c){
 		super(c);
@@ -21,13 +20,6 @@ public class Objeto_precioso extends Premio {
 	public Objeto_precioso() {
 		super();
 	}
-
-	@Override
 	
-	public void actuar(Jugador j) {
-	//	j.aumentarHP(10); //Provisorio
-		
-	}
-
-	
+	public abstract void actuar(Jugador j);
 }

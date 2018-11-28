@@ -1,6 +1,6 @@
 package Disparo;
 
-import mapa.*;
+import mapa.Celda;
 import personajes.Entidad;
 import Colliders.*;
 import grafica.DisparoEnemigoGrafico;
@@ -28,9 +28,11 @@ public class DisparoEnemigo extends Disparo{
 	public void mover() {
 		miEstado.mover();
 	}
+	
 	public void congelar() {
 		miEstado=new Congelado(this);
 	}
+	
 	public void descongelar() {
 		miEstado=new Normal(this);
 	}

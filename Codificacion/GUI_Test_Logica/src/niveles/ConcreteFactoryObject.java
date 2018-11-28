@@ -2,26 +2,24 @@ package niveles;
 
 import java.util.ArrayList;
 import java.util.Random;
-
 import Objetos.*;
-import mapa.Celda;
 
 public class ConcreteFactoryObject extends AbstractFactoryObject {
 
-	public ArrayList<Barricada> createBarricadas(int cant) {
-		ArrayList<Barricada> toRet = new ArrayList<Barricada>();
-		for (int i = 0; i < cant; i++)
+	public ArrayList<Objeto> createBarricadas(int cant) {
+		ArrayList<Objeto> toRet = new ArrayList<Objeto>();
+		for (int i = 0; i < cant; i++) 
 			toRet.add(new Barricada());
 		return toRet;
 	}
 	
-	public ArrayList<Obstaculo> createObstaculos(int cant){
-		ArrayList<Obstaculo> toRet= new ArrayList<Obstaculo>();
-		for (int i=0 ; i< cant; i++) {
+	public ArrayList<Objeto> createObstaculos(int cant){
+		ArrayList<Objeto> toRet= new ArrayList<Objeto>();
+		for (int i=0 ; i< cant; i++) 
 			toRet.add(new Obstaculo());
-		}
 		return toRet;
 	}
+	
 	public Premio createPremio() {
 		Random r=new Random();
 		Premio toRet=null;

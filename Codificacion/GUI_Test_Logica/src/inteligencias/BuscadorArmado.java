@@ -2,7 +2,6 @@ package inteligencias;
 
 import Disparo.ArmaEnemigo;
 import Disparo.Disparo;
-import juego.Juego;
 import mapa.Celda;
 import personajes.Malo;
 import java.util.Random;
@@ -10,7 +9,6 @@ import java.util.Random;
 public class BuscadorArmado extends Strategy{
 
 	protected ArmaEnemigo miArma;
-	protected Juego juego;
 	
 	public BuscadorArmado(Malo e) {
 		super(e);
@@ -38,6 +36,5 @@ public class BuscadorArmado extends Strategy{
 	private void disparar(){
 		Disparo d=miArma.createDisparo();
 		mediator.agregarDisparo(d);
-		
 	}
 }

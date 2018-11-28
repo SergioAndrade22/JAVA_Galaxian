@@ -2,7 +2,7 @@ package personajes;
 
 import java.awt.event.KeyEvent;
 import grafica.JugadorGrafico;
-import juego.Juego;
+import inteligencias.Mediator;
 import juego.Vida;
 import mapa.Celda;
 import Colliders.*;
@@ -14,12 +14,11 @@ import Disparo.Disparo;
 public class Jugador extends Personaje{
 	protected boolean escudo;
 	protected Arma arma;
-	protected Juego juego;
 	protected Arma provisoria;
 	protected State vida;
 	protected Vida observer;
 		
-	public Jugador(Celda pos, Juego j) {
+	public Jugador(Celda pos) {
 		super(pos);
 		this.grafico = new JugadorGrafico(velocidad, this.pos.getX(), this.pos.getY());
 		collider = new ColliderJugador(this);
@@ -27,7 +26,6 @@ public class Jugador extends Personaje{
 		fuerza_kamikaze=50;
 		escudo=false;
 		arma=new ArmaJugador(this,10);
-		juego = j;
 		vida=new VidaSinEscudo(this);
 		observer = new Vida(this);
 	}
@@ -41,7 +39,6 @@ public class Jugador extends Personaje{
 			super.mover(KeyEvent.VK_DOWN);
 			break;
 		}
-		
 	}
 
 	public void mover() {}
@@ -83,7 +80,7 @@ public class Jugador extends Personaje{
 	}
 
 	public void loss() {
-		juego.loss();
+		Mediator.getInstance().loss();
 	}
 
 	public Arma getArma() {
@@ -106,11 +103,11 @@ public class Jugador extends Personaje{
 	}
 	
 	public void congelar() {
-		juego.congelar();
+		Mediator.getInstance().congelar();
 	}
 	
 	public void descongelar() {
-		juego.descongelar();
+		Mediator.getInstance().descongelar();
 	}
 
 	public Vida getVida() {

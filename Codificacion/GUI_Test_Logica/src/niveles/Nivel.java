@@ -1,8 +1,7 @@
 package niveles;
 
 import java.util.ArrayList;
-import Objetos.Barricada;
-import Objetos.Obstaculo;
+import Objetos.Objeto;
 import Objetos.Premio;
 import personajes.Malo;
 
@@ -12,33 +11,28 @@ public abstract class Nivel {
 	protected AbstractFactoryObject objectFac;
 	protected Nivel next;
 	protected ArrayList<Malo> enemies;
-	protected ArrayList<Barricada> barricadas;
-	protected ArrayList<Obstaculo> obstaculos;
+	protected ArrayList<Objeto> objetos;
 	protected ArrayList<Premio> premios;
 	protected int cant;
 	
 	public Nivel() {
 		enemies = new ArrayList<Malo>();
-		barricadas = new ArrayList<Barricada>();
+		objetos = new ArrayList<Objeto>();
 		premios=new ArrayList<Premio>();
 	}
 	
 	public abstract void createEnemies();
 	
 	public void createBarricadas() {
-		barricadas = objectFac.createBarricadas(cant);
+		objetos.addAll(objectFac.createBarricadas(cant));
 	}
 	
 	public void createObstaculos() {
-		obstaculos = objectFac.createObstaculos(cant);
+		objetos.addAll(objectFac.createObstaculos(cant));
 	}
 	
-	public ArrayList<Barricada> getBarricadas(){
-		return barricadas;
-	}
-	
-	public ArrayList<Obstaculo> getObstaculos(){
-		return obstaculos;
+	public ArrayList<Objeto> getObjetos(){
+		return objetos;
 	}
 	
 	public ArrayList<Malo> getEnemies(){

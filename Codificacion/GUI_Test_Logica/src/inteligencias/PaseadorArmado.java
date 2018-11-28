@@ -7,7 +7,6 @@ import mapa.Celda;
 import personajes.Malo;
 
 public class PaseadorArmado extends Strategy {
-
 	protected ArmaEnemigo miArma;
 	
 	public PaseadorArmado(Malo e) {

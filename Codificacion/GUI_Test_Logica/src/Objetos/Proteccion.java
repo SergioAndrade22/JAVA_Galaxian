@@ -8,6 +8,7 @@ public class Proteccion extends Premio{
 	public Proteccion(Celda c) {
 		super(c);
 	}
+	
 	public Proteccion() {
 		super();
 	}

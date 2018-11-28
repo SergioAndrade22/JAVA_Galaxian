@@ -12,8 +12,4 @@ public abstract class Strategy {
 	}
 	
 	public abstract void mover();
-	
-	public Mediator getMed() {
-		return mediator;
-	}
 }

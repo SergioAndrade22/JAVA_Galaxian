@@ -5,7 +5,6 @@ import Disparo.DisparoJugador;
 import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
-import mapa.Celda;
 import personajes.*;
 
 public class ColliderMalo implements Collider {

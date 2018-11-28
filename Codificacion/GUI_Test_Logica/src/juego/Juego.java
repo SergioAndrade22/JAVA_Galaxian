@@ -3,8 +3,7 @@ package juego;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import Disparo.Disparo;
-import Objetos.Barricada;
-import Objetos.Obstaculo;
+import Objetos.Objeto;
 import Objetos.Premio;
 import gui.GUI;
 import inteligencias.Mediator;
@@ -16,8 +15,6 @@ import personajes.*;
 public class Juego {
 	private Jugador jugador;
 	private List<Entidad> entidades;
-	private List<Barricada> barricadas;
-	private List<Obstaculo> obstaculos;
 	private Mapa mapa;
 	private int tamanioCelda = 50;
 	private GUI gui;
@@ -31,9 +28,9 @@ public class Juego {
 	}
 	
 	private void crearNivel() {
-		mapa = new Mapa(this, (gui.getWidth()/tamanioCelda)-1, (gui.getHeight()/tamanioCelda)-1); 
+		mapa = new Mapa((gui.getWidth()/tamanioCelda)-1, (gui.getHeight()/tamanioCelda)-1); 
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
-		jugador = new Jugador(c, this);
+		jugador = new Jugador(c);
 		this.gui.addItem(jugador.getGrafico());
 		Mediator med = Mediator.getInstance();
 		med.setJugador(jugador);
@@ -42,18 +39,15 @@ public class Juego {
 		nivel.createEnemies();
 		for (Entidad en : nivel.getEnemies()) 
 			entidades.add(en);
-		mapa.place(entidades);
+		mapa.orderPlace(entidades);
 		for (Entidad en : entidades)
 			this.gui.addItem(en.getGrafico());
 		nivel.createBarricadas();
 		nivel.createObstaculos();
-		barricadas = nivel.getBarricadas();
-		obstaculos = nivel.getObstaculos();
-		mapa.placeB(barricadas);
-		mapa.placeO(obstaculos);
-		for (Barricada b : barricadas)
-			this.gui.addItem(b.getGrafico());
-		for (Obstaculo o: obstaculos)
+		List<Objeto> aux = nivel.getObjetos();
+		mapa.randomPlace(aux);
+		entidades.addAll(aux);
+		for (Objeto o: aux) 
 			this.gui.addItem(o.getGrafico());
 		score = new Score();
 		this.gui.addItem(score);

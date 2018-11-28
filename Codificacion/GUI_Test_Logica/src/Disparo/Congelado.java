@@ -8,5 +8,4 @@ public class Congelado extends State{
 	public void mover() {
 	
 	}
-
 }

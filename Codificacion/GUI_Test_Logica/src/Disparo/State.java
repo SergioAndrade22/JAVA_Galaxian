@@ -8,8 +8,8 @@ public abstract class State {
 	public State(DisparoEnemigo d) {
 		disparo=d;
 	}
+	
 	public void mover() {
 		
 	}
-
 }

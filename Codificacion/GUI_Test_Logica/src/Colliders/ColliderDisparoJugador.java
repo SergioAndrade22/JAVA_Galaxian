@@ -7,6 +7,7 @@ import Objetos.Barricada;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import personajes.*;
+
 public class ColliderDisparoJugador implements Collider {
 	protected Disparo disparo;
 
