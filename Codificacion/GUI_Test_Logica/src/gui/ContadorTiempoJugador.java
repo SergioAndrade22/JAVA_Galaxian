@@ -5,6 +5,7 @@ import juego.Juego;
 public class ContadorTiempoJugador extends Thread {
 	private Juego juego;
 	private GUI gui;
+	private volatile boolean runing = true;
 
 	ContadorTiempoJugador(Juego j, GUI gui) {
 		this.juego = j;
@@ -12,7 +13,7 @@ public class ContadorTiempoJugador extends Thread {
 	}
 
 	public void run() {
-		while(true){
+		while(runing){
 			try {
 				Thread.sleep((long) 0.50);
 			} 
@@ -24,5 +25,9 @@ public class ContadorTiempoJugador extends Thread {
 				gui.toggleLock();
 			}
 		}
+	}
+	
+	public void detener() {
+		runing = false;
 	}
 }

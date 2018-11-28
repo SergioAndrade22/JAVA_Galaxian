@@ -4,13 +4,14 @@ import juego.Juego;
 
 public class ContadorTiempoEntidades extends Thread {
 	private Juego juego;
+	private volatile boolean runing = true;
 
 	ContadorTiempoEntidades(Juego j) {
 		this.juego = j;
 	}
 
 	public void run() {
-		while(true) {
+		while(runing) {
 			try {
 				juego.moverEntidades();
 				Thread.sleep((long)700);
@@ -19,5 +20,9 @@ public class ContadorTiempoEntidades extends Thread {
 				ex.printStackTrace();
 			}
 		}
+	}
+	
+	public void detener() {
+		runing = false;
 	}
 }

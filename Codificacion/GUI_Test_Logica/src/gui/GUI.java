@@ -118,6 +118,9 @@ public class GUI extends JFrame {
 		if (j.hasNextLevel()) {
 			ambiente.stop();
 			contentPane.removeAll();
+			tiempoEntidades.detener();
+			tiempoJugador.detener();
+			j.clean();
 			f = new JLabel();
 			ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/levelWin.png"));
 			f.setBounds(0, 0, 1000, 600);
@@ -126,22 +129,41 @@ public class GUI extends JFrame {
 			contentPane.repaint();
 			contentPane.revalidate();
 			contentPane.updateUI();
-			tiempoEntidades.stop();
-			tiempoJugador.stop();
 			tiempoEntidades = new ContadorTiempoEntidades(j);
 			tiempoJugador = new ContadorTiempoJugador(j, this);
-			j.clean();
 			MouseListener ml = new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
 					contentPane.remove(f);
+					ambiente.start();
 					agregarFondo();
 					j.playNext();
-					ambiente.start();
-					tiempoEntidades.start();
-					tiempoJugador.start();
 					contentPane.repaint();
 					contentPane.revalidate();
 					contentPane.updateUI();
+					removeMouseListener(this);
+					tiempoEntidades.start();
+					tiempoJugador.start();
+				}
+			};
+			addMouseListener(ml);
+		}
+		else {
+			ambiente.stop();
+			contentPane.removeAll();
+			tiempoEntidades.detener();
+			tiempoJugador.detener();
+			j.clean();
+			f = new JLabel();
+			ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/GameWin.png"));
+			f.setBounds(0, 0, 1000, 600);
+			f.setIcon(i);
+			contentPane.add(f);
+			contentPane.repaint();
+			contentPane.revalidate();
+			contentPane.updateUI();
+			MouseListener ml = new MouseAdapter() {
+				public void mouseClicked(MouseEvent arg0) {
+					startGame();
 					removeMouseListener(this);
 				}
 			};
@@ -173,8 +195,8 @@ public class GUI extends JFrame {
 			}
 		};
 		addMouseListener(ml);
-		tiempoEntidades.stop();
-		tiempoJugador.stop();
+		tiempoEntidades.detener();
+		tiempoJugador.detener();
 		j.clean();
 	}
 	
