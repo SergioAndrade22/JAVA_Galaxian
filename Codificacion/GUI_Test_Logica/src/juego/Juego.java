@@ -20,6 +20,7 @@ public class Juego {
 	private GUI gui;
 	private Score score;
 	private Nivel nivel;
+	private int maxScore;
 	
 	public Juego(GUI gui){
 		this.gui = gui;
@@ -50,6 +51,7 @@ public class Juego {
 		for (Objeto o: aux) 
 			this.gui.addItem(o.getGrafico());
 		score = new Score();
+		maxScore = nivel.getCant() * 100;
 		this.gui.addItem(score);
 		this.gui.addItem(jugador.getVida());
 		this.gui.addItem(jugador.getGrafico());
@@ -116,7 +118,7 @@ public class Juego {
 	
 	public void scoreUp() {
 		score.increase(100);
-		if (score.getTotal() > 200)
+		if (score.getTotal() == maxScore)
 			gui.nextLevel();
 	}
 	

@@ -42,7 +42,12 @@ public abstract class Nivel {
 	public Nivel getSiguiente() {
 		return next;
 	}
+	
 	public Premio getPremio() {
 		return objectFac.createPremio();
+	}
+	
+	public int getCant() {
+		return cant;
 	}
 }
