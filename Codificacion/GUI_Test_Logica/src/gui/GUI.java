@@ -108,6 +108,9 @@ public class GUI extends JFrame {
 		ambiente.start();
 		agregarFondo();
 		j = new Juego(this);
+		contentPane.repaint();
+		contentPane.revalidate();
+		contentPane.updateUI();
 		tiempoJugador = new ContadorTiempoJugador(j, this);
 		tiempoEntidades = new ContadorTiempoEntidades(j);
 		tiempoJugador.start();
@@ -161,7 +164,11 @@ public class GUI extends JFrame {
 			contentPane.updateUI();
 			MouseListener ml = new MouseAdapter() {
 				public void mouseClicked(MouseEvent arg0) {
-					startGame();
+					contentPane.removeAll();
+					contentPane.repaint();
+					contentPane.revalidate();
+					contentPane.updateUI();
+					mainScreen();
 					removeMouseListener(this);
 				}
 			};
