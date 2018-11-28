@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import Disparo.Disparo;
 import Objetos.Barricada;
-import Objetos.Congelar;
 import Objetos.Obstaculo;
 import Objetos.Premio;
 import gui.GUI;
@@ -29,6 +28,11 @@ public class Juego {
 	
 	public Juego(GUI gui){
 		this.gui = gui;
+		nivel = new NivelInicial(6);
+		crearNivel();		
+	}
+	
+	private void crearNivel() {
 		mapa = new Mapa(this, (gui.getWidth()/tamanioCelda)-1, (gui.getHeight()/tamanioCelda)-1); 
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c, this);
@@ -38,11 +42,6 @@ public class Juego {
 		med = Mediator.getInstance();
 		med.setJugador(jugador);
 		med.setJuego(this);
-		nivel = new NivelInicial(6);
-		crearNivel();		
-	}
-	
-	private void crearNivel() {
 		entidades = new CopyOnWriteArrayList<Entidad>();
 		nivel.createEnemies();
 		for (Entidad en : nivel.getEnemies()) 
@@ -138,13 +137,5 @@ public class Juego {
 	public void playNext() {
 		nivel = nivel.getSiguiente();
 		crearNivel();
-	}
-	
-	public void clean() {
-		for (int i = 0; i < mapa.getWidth(); i++) {
-			for (int j = 0; j < mapa.getHeight(); j++) {
-				mapa.getCelda(i, j).clean();
-			}
-		}
 	}
 }
