@@ -12,5 +12,7 @@ public class VidaConEscudo extends State {
 		j=jug;
 	}
 
-	public void recibirGolpe(int i) {}
+	public void recibirGolpe(int i) {
+		j.setEscudo(false);
+	}
 }
