@@ -22,7 +22,7 @@ public class Vida extends JLabel{
 	}
 	public void update() {
 		System.out.println("Me actualizaron");
-		hp=jugador.getVida();
+		hp = jugador.getHP();
 		this.setText(base + hp);
 	}
 }

@@ -23,8 +23,6 @@ public class Juego {
 	private GUI gui;
 	private Score score;
 	private Nivel nivel;
-	private Mediator med;
-	private Vida vidaJugador;
 	
 	public Juego(GUI gui){
 		this.gui = gui;
@@ -36,10 +34,8 @@ public class Juego {
 		mapa = new Mapa(this, (gui.getWidth()/tamanioCelda)-1, (gui.getHeight()/tamanioCelda)-1); 
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c, this);
-		vidaJugador=new Vida(jugador);
-		jugador.addObserver(vidaJugador);
 		this.gui.addItem(jugador.getGrafico());
-		med = Mediator.getInstance();
+		Mediator med = Mediator.getInstance();
 		med.setJugador(jugador);
 		med.setJuego(this);
 		entidades = new CopyOnWriteArrayList<Entidad>();
@@ -61,7 +57,7 @@ public class Juego {
 			this.gui.addItem(o.getGrafico());
 		score = new Score();
 		this.gui.addItem(score);
-		this.gui.addItem(vidaJugador);
+		this.gui.addItem(jugador.getVida());
 		this.gui.addItem(jugador.getGrafico());
 	}
 	

@@ -2,7 +2,7 @@ package personajes;
 
 public abstract class State {
 	protected Jugador j;
-	protected int vida;
+	protected int vida = 100;
 	
 	public void disminuirHP(int i) {
 		vida-=i;
