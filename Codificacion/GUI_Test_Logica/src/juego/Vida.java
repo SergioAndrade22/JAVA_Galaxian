@@ -21,7 +21,6 @@ public class Vida extends JLabel{
 		this.setBackground(Color.CYAN);
 	}
 	public void update() {
-		System.out.println("Me actualizaron");
 		hp = jugador.getHP();
 		this.setText(base + hp);
 	}
