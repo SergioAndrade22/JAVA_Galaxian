@@ -11,6 +11,7 @@ public class Proteccion extends Premio{
 	
 	public Proteccion() {
 		super();
+		
 	}
 
 	public void actuar(Jugador j) {

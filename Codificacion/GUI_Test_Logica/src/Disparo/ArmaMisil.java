@@ -2,25 +2,13 @@ package Disparo;
 
 import personajes.Jugador;
 
-public class ArmaMisil extends Arma{
-
-	protected int daño;
-	protected Jugador jugador;
+public class ArmaMisil extends ArmaJugador{
 
 	public ArmaMisil(Jugador j, int d){
-		daño=d;
-		jugador=j;
+		super(j, d);
 	}
 	
 	public Disparo createDisparo() {
-		return new DisparoJugador(jugador.getPos(), 50, daño);
-	}
-	
-	public void aumentarDaño(int i) {
-		daño=+i;
-	}
-	
-	public int getDaño() {
-		return daño;
+		return new DisparoMisil(jugador.getPos(), 50, daño);
 	}
 }

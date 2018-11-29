@@ -3,11 +3,15 @@ package Disparo;
 
 public abstract class Arma {
 
+	protected int daño;
+	
 	public Arma() {
 		
 	}
 	
 	public abstract Disparo createDisparo() ;
-
-	public abstract void aumentarDaño(int i) ;
+	
+	public int getDaño() {
+		return daño;
+	}
 }

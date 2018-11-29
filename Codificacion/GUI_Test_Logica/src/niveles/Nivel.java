@@ -45,4 +45,7 @@ public abstract class Nivel {
 	public Premio getPremio() {
 		return objectFac.createPremio();
 	}
+	public int getCant() {
+		return cant;
+	}
 }

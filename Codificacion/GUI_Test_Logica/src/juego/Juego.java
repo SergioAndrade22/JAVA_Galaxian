@@ -116,7 +116,7 @@ public class Juego {
 	
 	public void scoreUp() {
 		score.increase(100);
-		if (score.getTotal() > 200)
+		if (score.getTotal() >= (nivel.getCant()*100))
 			gui.nextLevel();
 	}
 	

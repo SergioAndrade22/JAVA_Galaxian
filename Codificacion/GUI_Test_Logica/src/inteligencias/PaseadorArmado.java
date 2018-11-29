@@ -1,13 +1,15 @@
 package inteligencias;
 
 import java.util.Random;
+
+import Disparo.Arma;
 import Disparo.ArmaEnemigo;
 import Disparo.Disparo;
 import mapa.Celda;
 import personajes.Malo;
 
 public class PaseadorArmado extends Strategy {
-	protected ArmaEnemigo miArma;
+	protected Arma miArma;
 	
 	public PaseadorArmado(Malo e) {
 		super(e);

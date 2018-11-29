@@ -7,14 +7,11 @@ import juego.Vida;
 import mapa.Celda;
 import Colliders.*;
 import Disparo.Arma;
-import Disparo.ArmaJugador;
-import Disparo.ArmaMisil;
+import Disparo.ArmaComun;
 import Disparo.Disparo;
 
 public class Jugador extends Personaje{
-	protected boolean escudo;
 	protected Arma arma;
-	protected Arma provisoria;
 	protected State vida;
 	protected Vida observer;
 		
@@ -24,8 +21,7 @@ public class Jugador extends Personaje{
 		collider = new ColliderJugador(this);
 		hp=100;
 		fuerza_kamikaze=50;
-		escudo=false;
-		arma=new ArmaJugador(this,10);
+		arma=new ArmaComun(this,10);
 		vida=new VidaSinEscudo(this);
 		observer = new Vida(this);
 	}
@@ -91,15 +87,6 @@ public class Jugador extends Personaje{
 		Arma toRet=arma;
 		arma=a;
 		return toRet;
-	}
-	
-	public void enableMisil() {
-		provisoria=arma;
-		arma=new ArmaMisil(this,100);
-	}
-	
-	public void disableMisil() {
-		arma=provisoria;
 	}
 	
 	public void congelar() {

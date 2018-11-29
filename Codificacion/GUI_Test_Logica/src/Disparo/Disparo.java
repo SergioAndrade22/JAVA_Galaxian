@@ -1,6 +1,5 @@
 package Disparo;
 
-import grafica.*;
 import mapa.Celda;
 import personajes.Entidad;
 
@@ -10,7 +9,6 @@ public abstract class Disparo extends Entidad{
 	
 	public Disparo(Celda c, int velocidad, int daño){
 		super(c,velocidad);
-		this.grafico = new DisparoMisilGrafico(velocidad, c.getX(), c.getY());
 		dir = -1;
 		this.daño=daño;	
 	}
