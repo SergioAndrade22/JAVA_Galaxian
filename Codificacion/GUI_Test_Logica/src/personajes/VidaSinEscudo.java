@@ -12,6 +12,6 @@ public class VidaSinEscudo extends State{
 	}
 	
 	public void recibirGolpe(int i) {
-		vida-=i;
+		disminuirHP(i);
 	}
 }
