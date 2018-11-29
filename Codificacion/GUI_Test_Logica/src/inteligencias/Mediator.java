@@ -1,6 +1,8 @@
 package inteligencias;
 
-import Disparo.Disparo;
+import java.util.List;
+
+import disparo.Disparo;
 import juego.Juego;
 import mapa.Celda;
 import personajes.Entidad;
@@ -55,7 +57,7 @@ public class Mediator {
 		juego.descongelar();
 	}
 	
-	public void removerEntidad(Entidad e) {
-		juego.removerEntidad(e);
+	public void removerEntidades(List<Entidad> l) {
+		juego.removerEntidades(l);
 	}
 }

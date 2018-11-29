@@ -1,14 +1,15 @@
 package personajes;
 
 import java.awt.event.KeyEvent;
+
+import colliders.*;
 import grafica.JugadorGrafico;
 import inteligencias.Mediator;
 import juego.Vida;
 import mapa.Celda;
-import Colliders.*;
-import Disparo.Arma;
-import Disparo.ArmaComun;
-import Disparo.Disparo;
+import disparo.Arma;
+import disparo.ArmaComun;
+import disparo.Disparo;
 
 public class Jugador extends Personaje{
 	protected Arma arma;

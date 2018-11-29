@@ -1,7 +1,8 @@
 package personajes;
 
 import java.util.Random;
-import Colliders.*;
+
+import colliders.*;
 import grafica.MaloGrafico;
 import inteligencias.Congelado;
 import inteligencias.Mediator;

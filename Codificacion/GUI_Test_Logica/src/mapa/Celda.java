@@ -1,6 +1,7 @@
 package mapa;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import personajes.Entidad;
@@ -29,10 +30,16 @@ public class Celda {
 	public void addEntidad(Entidad e) {
 		synchronized (entidades) {
 			entidades.add(e);
+			List<Entidad> aux = new ArrayList<Entidad>();
 			for (Entidad en : entidades) {
 				en.colision(e);
+				if (!en.isAlive())
+					aux.add(en);
 				e.colision(en);
+				if (!e.isAlive())
+					aux.add(e);
 			}
+			this.eliminarEntidades(aux);
 		}
 	}
 
@@ -42,12 +49,11 @@ public class Celda {
 		}
 	}
 
-	public void eliminarEntidad(Entidad e) {
+	public void eliminarEntidades(List<Entidad> l) {
 		synchronized (entidades) {
-			entidades.remove(e);
-			mapa.remove(e);
+			entidades.removeAll(l);	
+			mapa.remove(l);
 		}
-
 	}
 
 	public Celda getVecina(int dir) {

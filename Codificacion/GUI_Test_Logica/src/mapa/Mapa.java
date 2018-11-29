@@ -3,8 +3,8 @@ package mapa;
 import java.util.List;
 import java.util.Random;
 
-import Objetos.Objeto;
 import inteligencias.Mediator;
+import objetos.Objeto;
 import personajes.Entidad;
 
 public class Mapa {
@@ -38,8 +38,8 @@ public class Mapa {
 		return height;
 	}
 	
-	public void remove(Entidad e) {
-		Mediator.getInstance().removerEntidad(e);
+	public void remove(List<Entidad> l) {
+		Mediator.getInstance().removerEntidades(l);
 	}
 	
 	public void orderPlace(List<Entidad> l) {

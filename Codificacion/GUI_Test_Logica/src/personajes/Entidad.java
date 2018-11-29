@@ -1,7 +1,8 @@
 package personajes;
 
 import javax.swing.JLabel;
-import Colliders.*;
+
+import colliders.*;
 import grafica.EntidadGrafica;
 import mapa.Celda;
 
@@ -36,10 +37,7 @@ public abstract class Entidad {
 	}
 
 	public void morir() {
-		synchronized (pos) {
-			pos.eliminarEntidad(this);
 			hp = 0;
-		}
 	}
 
 	public void mover(int dir) {

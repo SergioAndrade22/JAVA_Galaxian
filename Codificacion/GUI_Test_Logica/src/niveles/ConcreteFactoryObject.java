@@ -2,7 +2,8 @@ package niveles;
 
 import java.util.ArrayList;
 import java.util.Random;
-import Objetos.*;
+
+import objetos.*;
 
 public class ConcreteFactoryObject extends AbstractFactoryObject {
 

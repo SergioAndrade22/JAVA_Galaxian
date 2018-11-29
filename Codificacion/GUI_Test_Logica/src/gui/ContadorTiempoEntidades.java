@@ -14,7 +14,7 @@ public class ContadorTiempoEntidades extends Thread {
 		while(runing) {
 			try {
 				juego.moverEntidades();
-				Thread.sleep((long)700);
+				Thread.sleep((long)500);
 			}
 			catch (InterruptedException ex) {
 				ex.printStackTrace();

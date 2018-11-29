@@ -1,8 +1,9 @@
 package niveles;
 
 import java.util.ArrayList;
-import Objetos.Objeto;
-import Objetos.Premio;
+
+import objetos.Objeto;
+import objetos.Premio;
 import personajes.Malo;
 
 public abstract class Nivel {

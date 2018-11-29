@@ -1,11 +1,12 @@
 package inteligencias;
 
-import Disparo.Arma;
-import Disparo.ArmaEnemigo;
-import Disparo.Disparo;
 import mapa.Celda;
 import personajes.Malo;
 import java.util.Random;
+
+import disparo.Arma;
+import disparo.ArmaEnemigo;
+import disparo.Disparo;
 
 public class BuscadorArmado extends Strategy{
 
@@ -29,9 +30,11 @@ public class BuscadorArmado extends Strategy{
 			else
 				en.mover(Celda.LEFT);
 		}
+		/*
 		Random r = new Random();
 		if (r.nextInt(100) < 45)
 			disparar();
+			*/
 	}
 	
 	private void disparar(){

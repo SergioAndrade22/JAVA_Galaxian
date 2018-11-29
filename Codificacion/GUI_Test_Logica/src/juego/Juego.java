@@ -2,14 +2,15 @@ package juego;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import Disparo.Disparo;
-import Objetos.Objeto;
-import Objetos.Premio;
+
+import disparo.Disparo;
 import gui.GUI;
 import inteligencias.Mediator;
 import mapa.*;
 import niveles.Nivel;
 import niveles.NivelInicial;
+import objetos.Objeto;
+import objetos.Premio;
 import personajes.*;
 
 public class Juego {
@@ -70,10 +71,11 @@ public class Juego {
 		}
 	}
 	
-	public void removerEntidad(Entidad e) {
+	public void removerEntidades(List<Entidad> l) {
 		synchronized (entidades) {
-			entidades.remove(e);
-			gui.remover(e.getGrafico());
+			entidades.removeAll(l);
+			for (Entidad e : l)
+				gui.remover(e.getGrafico());
 		}
 	}
 	
@@ -118,8 +120,10 @@ public class Juego {
 	
 	public void scoreUp() {
 		score.increase(100);
+		/*
 		if (score.getTotal() == maxScore)
 			gui.nextLevel();
+			*/
 	}
 	
 	public boolean hasNextLevel() {

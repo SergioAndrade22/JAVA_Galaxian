@@ -2,9 +2,9 @@ package inteligencias;
 
 import java.util.Random;
 
-import Disparo.Arma;
-import Disparo.ArmaEnemigo;
-import Disparo.Disparo;
+import disparo.Arma;
+import disparo.ArmaEnemigo;
+import disparo.Disparo;
 import mapa.Celda;
 import personajes.Malo;
 
@@ -32,8 +32,10 @@ public class PaseadorArmado extends Strategy {
 				break;
 		}
 		en.mover(direccion);
+		/*
 		if (r.nextInt(100) < 45)
 			disparar();
+			*/
 	}
 	
 	private void disparar(){
