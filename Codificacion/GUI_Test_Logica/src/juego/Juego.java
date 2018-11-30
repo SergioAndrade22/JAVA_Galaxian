@@ -33,6 +33,7 @@ public class Juego {
 		mapa = new Mapa((gui.getWidth()/tamanioCelda)-1, (gui.getHeight()/tamanioCelda)-1); 
 		Celda c = this.mapa.getCelda(0, gui.getHeight()/tamanioCelda/2);
 		jugador = new Jugador(c);
+		c.addEntidad(jugador);
 		this.gui.addItem(jugador.getGrafico());
 		Mediator med = Mediator.getInstance();
 		med.setJugador(jugador);
