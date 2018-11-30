@@ -5,15 +5,15 @@ import mapa.Celda;
 
 public abstract class Objeto extends Entidad{
 
-	public Objeto() {
+	protected Objeto() {
 		hp = 100;
 	}
 	
-	public Objeto(Celda c){
+	protected Objeto(Celda c){
 		super(c);
 	}
 	
-	public Objeto(Celda c,int hp){
+	protected Objeto(Celda c,int hp){
 		super(c,hp);
 	}
 	

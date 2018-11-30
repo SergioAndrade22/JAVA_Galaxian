@@ -25,10 +25,6 @@ public class Mapa {
 	public Celda getCelda(int x, int y){
 		return this.mapa[x][y];
 	}
-	
-	public Celda[][] getMapa() {
-		return mapa;
-	}
 
 	public int getWidth() {
 		return width;
@@ -38,8 +34,8 @@ public class Mapa {
 		return height;
 	}
 	
-	public void remove(List<Entidad> l) {
-		Mediator.getInstance().removerEntidades(l);
+	public void remove(Entidad e) {
+		Mediator.getInstance().removerEntidad(e);
 	}
 	
 	public void orderPlace(List<Entidad> l) {

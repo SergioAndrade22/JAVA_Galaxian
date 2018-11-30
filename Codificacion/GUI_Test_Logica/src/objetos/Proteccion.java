@@ -1,14 +1,9 @@
 package objetos;
 
-import mapa.Celda;
 import personajes.Jugador;
 
 public class Proteccion extends Premio{
 
-	public Proteccion(Celda c) {
-		super(c);
-	}
-	
 	public Proteccion() {
 		super();
 		

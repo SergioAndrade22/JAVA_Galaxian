@@ -10,21 +10,21 @@ public class Barricada extends Objeto{
 	
 	public Barricada() {
 		grafico=new BarricadaGrafica(velocidad,0,0);
-		collider = new ColliderBarricada(this);
+		collider = new ColliderBarricada();
 		hp = 100;
 	}
 	
 	public Barricada(Celda c){
 		super(c);
 		grafico = new BarricadaGrafica(velocidad, c.getX(), c.getY());
-		collider = new ColliderBarricada(this);
+		collider = new ColliderBarricada();
 		hp = 100;
 	}
 	
 	public Barricada(Celda c, int hp){
 		super(c,hp);
 		grafico=new BarricadaGrafica(velocidad, c.getX(),c.getY());
-		collider = new ColliderBarricada(this);
+		collider = new ColliderBarricada();
 		hp = 100;
 	}
 

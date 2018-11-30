@@ -12,10 +12,9 @@ import personajes.Jugador;
 import personajes.Malo;
 
 public class ColliderBarricada implements Collider {
-	private Barricada bar;
 	
-	public ColliderBarricada(Barricada b) {
-		bar = b;
+	public ColliderBarricada() {	
+		
 	}
 
 	public void collideWith(DisparoJugador d) {

@@ -9,7 +9,5 @@ public abstract class State {
 		disparo=d;
 	}
 	
-	public void mover() {
-		
-	}
+	public abstract void mover() ;
 }

@@ -71,11 +71,10 @@ public class Juego {
 		}
 	}
 	
-	public void removerEntidades(List<Entidad> l) {
+	public void removerEntidad(Entidad e) {
 		synchronized (entidades) {
-			entidades.removeAll(l);
-			for (Entidad e : l)
-				gui.remover(e.getGrafico());
+			entidades.remove(e);
+			gui.remover(e.getGrafico());
 		}
 	}
 	
@@ -120,10 +119,8 @@ public class Juego {
 	
 	public void scoreUp() {
 		score.increase(100);
-		/*
 		if (score.getTotal() == maxScore)
 			gui.nextLevel();
-			*/
 	}
 	
 	public boolean hasNextLevel() {

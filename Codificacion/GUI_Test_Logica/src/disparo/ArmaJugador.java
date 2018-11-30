@@ -4,7 +4,6 @@ import personajes.Jugador;
 
 public abstract class ArmaJugador extends Arma{
 	
-	protected int daño;
 	protected Jugador jugador;
 
 	public ArmaJugador(Jugador j, int d){

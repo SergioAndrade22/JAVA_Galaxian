@@ -21,11 +21,6 @@ public class Score extends JLabel {
 		this.setText(base + points);
 	}
 	
-	public void reset() {
-		points = 0;
-		this.setText(base + points);
-	}
-	
 	public int getTotal() {
 		return points;
 	}

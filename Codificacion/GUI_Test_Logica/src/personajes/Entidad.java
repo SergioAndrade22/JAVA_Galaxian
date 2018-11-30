@@ -38,6 +38,7 @@ public abstract class Entidad {
 
 	public void morir() {
 			hp = 0;
+			pos.eliminarEntidad(this);
 	}
 
 	public void mover(int dir) {

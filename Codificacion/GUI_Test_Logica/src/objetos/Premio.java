@@ -9,16 +9,16 @@ import personajes.*;
 
 public abstract class Premio extends Objeto { 
 	
+	public Premio() {
+		velocidad=4;
+		this.grafico=new BonusGrafico(velocidad,0,0);
+		collider=new ColliderPremio(this);
+	}
+	
 	public Premio(Celda c){
 		super(c);
 		velocidad = 4;
 		this.grafico=new BonusGrafico(velocidad,c.getX(),c.getY());
-		collider=new ColliderPremio(this);
-	}
-	
-	public Premio() {
-		velocidad=4;
-		this.grafico=new BonusGrafico(velocidad,0,0);
 		collider=new ColliderPremio(this);
 	}
 	
@@ -43,5 +43,7 @@ public abstract class Premio extends Objeto {
 	
 	public void mover() {
 		super.mover(Celda.LEFT);
+		if (pos.isEndX())
+			super.morir();
 	}
 }

@@ -32,10 +32,8 @@ public class PaseadorArmado extends Strategy {
 				break;
 		}
 		en.mover(direccion);
-		/*
 		if (r.nextInt(100) < 45)
 			disparar();
-			*/
 	}
 	
 	private void disparar(){

@@ -13,13 +13,11 @@ public abstract class Nivel {
 	protected Nivel next;
 	protected ArrayList<Malo> enemies;
 	protected ArrayList<Objeto> objetos;
-	protected ArrayList<Premio> premios;
 	protected int cant;
 	
 	public Nivel() {
 		enemies = new ArrayList<Malo>();
 		objetos = new ArrayList<Objeto>();
-		premios=new ArrayList<Premio>();
 	}
 	
 	public abstract void createEnemies();
