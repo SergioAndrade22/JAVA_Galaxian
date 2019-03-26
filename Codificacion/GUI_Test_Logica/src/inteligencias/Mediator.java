@@ -58,4 +58,12 @@ public class Mediator {
 	public void removerEntidad(Entidad e) {
 		juego.removerEntidad(e);
 	}
+	
+	public void pause() {
+		juego.pause();
+	}
+	
+	public void reanudar() {
+		juego.reanudar();
+	}
 }

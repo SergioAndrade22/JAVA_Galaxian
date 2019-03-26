@@ -3,6 +3,8 @@ package mapa;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import inteligencias.Mediator;
 import personajes.Entidad;
 
 public class Celda {
@@ -45,7 +47,7 @@ public class Celda {
 	public void eliminarEntidad(Entidad e) {
 		synchronized (entidades) {
 			entidades.remove(e);
-			mapa.remove(e);
+			Mediator.getInstance().removerEntidad(e);
 		}
 	}
 

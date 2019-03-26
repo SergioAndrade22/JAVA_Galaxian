@@ -132,4 +132,12 @@ public class Juego {
 		nivel = nivel.getSiguiente();
 		crearNivel();
 	}
+	
+	public void pause() {
+		gui.pause();
+	}
+	
+	public void reanudar() {
+		gui.reanudar();
+	}
 }

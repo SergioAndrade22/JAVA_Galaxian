@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 
 import colliders.*;
 import grafica.EntidadGrafica;
+import inteligencias.Mediator;
 import mapa.Celda;
 
 public abstract class Entidad {
@@ -38,7 +39,9 @@ public abstract class Entidad {
 
 	public void morir() {
 			hp = 0;
+			Mediator.getInstance().pause();
 			pos.eliminarEntidad(this);
+			Mediator.getInstance().reanudar();
 	}
 
 	public void mover(int dir) {

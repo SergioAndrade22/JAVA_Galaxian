@@ -34,10 +34,6 @@ public class Mapa {
 		return height;
 	}
 	
-	public void remove(Entidad e) {
-		Mediator.getInstance().removerEntidad(e);
-	}
-	
 	public void orderPlace(List<Entidad> l) {
 		int i = 4;
 		int j = this.getWidth()-1;

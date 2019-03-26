@@ -67,6 +67,14 @@ public class GUI extends JFrame {
 		mainScreen();
 	}
 	
+	public void pause() {
+		tiempoEntidades.detener();
+	}
+	
+	public void reanudar() {
+		tiempoEntidades.reanudar();
+	}
+	
 	public void mainScreen() {
 		f = new JLabel();
 		ImageIcon i = new ImageIcon(this.getClass().getResource("/BattleCity/Start.jpg"));
